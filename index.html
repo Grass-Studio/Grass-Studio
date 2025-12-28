@@ -4,31 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Grass Studio</title>
-<style>
-  body { margin:0; font-family: Arial, sans-serif; line-height:1.6; background:#0b1a0b; color:#e6f0e6; }
-  header { padding:80px 20px; text-align:center; background:linear-gradient(180deg, #184d18, #0b1a0b); color:#d0ffd0; }
-  header h1 { font-size:48px; margin:0; text-shadow:2px 2px 5px #0a100a; }
-  header p { font-size:18px; opacity:0.9; line-height:1.5; }
-  nav a { color:#aaffaa; margin-right:15px; text-decoration:none; }
-  nav a:hover { color:#00ff00; }
-
-  section { padding:60px 20px; max-width:900px; margin:auto; }
-  h2 { font-size:32px; border-bottom: 2px solid #336633; padding-bottom:10px; color:#aaffaa; }
-
-  footer { text-align:center; padding:30px; background:linear-gradient(180deg, #0b1a0b, #184d18); opacity:0.9; }
-</style>
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
 <header>
   <h1>Grass Studio</h1>
-  <p>Independent indie game studio<br>No genre, no limits<br>Just games & passion</p>
   <nav>
     <a href="index.html">Home</a>
     <a href="games.html">Games</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
+
+<section class="hero">
+  <h2>Independent Indie Games</h2>
+  <p>No genre. No limits. Just games & passion.</p>
+</section>
 
 <section id="about">
   <h2>About Us</h2>
@@ -37,7 +29,20 @@
   <p>Never lose hope. Never lose the flame.</p>
 </section>
 
-<footer>© 2025 Grass Studio. All rights reserved.</footer>
+<section id="games-preview">
+  <h2>Our Games</h2>
+  <div class="games">
+    <div class="game-card">
+      <h3><a href="mountain-tales.html">Mountain Tales</a></h3>
+      <p>Adventure in vast mountains and mystical villages. Discover secrets, legends, and epic stories.</p>
+    </div>
+    <div class="game-card">
+      <h3><a href="heartfall.html">Heartfall</a></h3>
+      <p>Open-world fantasy exploration where freedom comes first. Explore at your own pace.</p>
+    </div>
+  </div>
+</section>
 
+<footer>© 2025 Grass Studio. All rights reserved.</footer>
 </body>
 </html>
