@@ -89,3 +89,16 @@ h2 { font-size:36px; border-bottom:2px solid var(--primary-green); padding-botto
 
 /* === Footer === */
 footer { text-align:center; padding:35px; background: linear-gradient(180deg, var(--bg-dark), #184d18); opacity:0.95; font-size:14px; }
+
+/* === Animations === */
+.fade-in { opacity:0; transform: translateY(30px); animation:fadeInUp 0.8s forwards; }
+@keyframes fadeInUp { to { opacity:1; transform: translateY(0); } }
+
+/* === Responsive === */
+@media(max-width:768px){
+  header h1 { font-size:32px; }
+  nav a { margin:0 12px; font-size:16px; }
+  .hero h2 { font-size:3rem; }
+  .hero p { font-size:1.2rem; }
+  .games { grid-template-columns:1fr; gap:20px; }
+}
