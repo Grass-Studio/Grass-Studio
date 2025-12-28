@@ -1,3 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Books - Grass Studio</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>Grass Studio</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="games.html">Games</a>
+    <a href="books.html">Books</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
 <section id="books" class="fade-in">
   <h2>Our Books</h2>
   <div class="games">
@@ -19,3 +39,21 @@
     </div>
   </div>
 </section>
+
+<footer>© 2025 Grass Studio. All rights reserved.</footer>
+
+<script>
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+  entries.forEach(entry => {
+    if(!entry.isIntersecting) return;
+    entry.target.style.animationPlayState = 'running';
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+faders.forEach(fader => { appearOnScroll.observe(fader); });
+</script>
+
+</body>
+</html>
