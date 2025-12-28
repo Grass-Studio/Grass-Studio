@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
 <header>
   <h1>Grass Studio</h1>
   <nav>
@@ -16,17 +17,31 @@
   </nav>
 </header>
 
-<section id="contact">
-  <h2>Contact</h2>
+<section id="contact" class="fade-in">
+  <h2>Contact Us</h2>
   <p>Business inquiries: <strong>grass.stu@gmail.com</strong></p>
   <p>Follow us on social media:</p>
   <p class="contact-links">
-    <a href="https://www.instagram.com/grass.stu/?igsh=MW82cGN3dTN2Z3d1Mg%3D%3D#" target="_blank">Instagram</a>
-    <a href="https://discord.com/invite/DCHUzHJDfg" target="_blank">Discord</a>
+    <a href="https://twitter.com/yourhandle" target="_blank">Twitter</a>
+    <a href="https://instagram.com/yourhandle" target="_blank">Instagram</a>
+    <a href="https://discord.com/invite/yourserver" target="_blank">Discord</a>
   </p>
 </section>
 
 <footer>© 2025 Grass Studio. All rights reserved.</footer>
+
+<script>
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+  entries.forEach(entry => {
+    if(!entry.isIntersecting) return;
+    entry.target.style.animationPlayState = 'running';
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+faders.forEach(fader => { appearOnScroll.observe(fader); });
+</script>
+
 </body>
 </html>
-
