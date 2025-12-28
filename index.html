@@ -5,22 +5,89 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Grass Studio</title>
 <style>
-  body { margin:0; font-family: Arial, sans-serif; line-height:1.6; background:#111; color:#eee; }
-  header { padding:80px 20px; text-align:center; background:#181818; }
-  header h1 { font-size:48px; margin:0; }
-  header p { font-size:18px; opacity:0.8; }
+  /* Base styles */
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background: #0b1a0b; /* dark green background */
+    color: #e6f0e6; /* soft light green text */
+    transition: background 0.5s;
+  }
 
-  section { padding:60px 20px; max-width:900px; margin:auto; }
-  h2 { font-size:32px; border-bottom:2px solid #333; padding-bottom:10px; }
+  header {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(180deg, #184d18, #0b1a0b);
+    color: #d0ffd0;
+  }
+  header h1 {
+    font-size: 48px;
+    margin: 0;
+    text-shadow: 2px 2px 5px #0a100a;
+  }
+  header p {
+    font-size: 18px;
+    opacity: 0.9;
+    line-height: 1.5;
+  }
 
-  .games { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-  .game-card { background:#1c1c1c; padding:20px; border-radius:8px; }
-  .game-card h3 { margin-top:0; }
-  .game-card p { opacity:0.9; }
-  footer { text-align:center; padding:30px; background:#181818; opacity:0.7; }
+  section {
+    padding: 60px 20px;
+    max-width: 900px;
+    margin: auto;
+  }
+  h2 {
+    font-size: 32px;
+    border-bottom: 2px solid #336633;
+    padding-bottom: 10px;
+    color: #aaffaa;
+  }
+
+  /* Games grid */
+  .games {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .game-card {
+    background: #113311;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+  }
+  .game-card h3 {
+    margin-top: 0;
+    color: #aaffaa;
+  }
+  .game-card p {
+    opacity: 0.9;
+  }
+
+  /* Contact & social */
+  #contact a {
+    color: #aaffaa;
+    text-decoration: none;
+    margin-right: 15px;
+    transition: color 0.3s;
+  }
+  #contact a:hover {
+    color: #00ff00;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(180deg, #0b1a0b, #184d18);
+    opacity: 0.9;
+  }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -52,14 +119,14 @@
       <h3>Mountain Tales</h3>
       <p>
         Mountain Tales is an adventure game set in a vast world of towering mountains and wide plateaus, where harsh nature meets deep tranquility. 
-        The journey begins in a small, simple village, whose people live surrounded by ancient legends and old tales passed down through generations—stories of heroes, mysterious creatures, and hidden forces dwelling in the high peaks.
+        The journey begins in a small, simple village, whose people live surrounded by ancient legends and old tales passed down through generations.
       </p>
       <p>
         The player embarks on mythical adventures focused on exploration, uncovering secrets, and facing challenges inspired by folklore and epic fantasy. 
-        Every mountain tells a story, every plateau hides a mystery, and as the journey progresses, deep connections between the village and the surrounding world are gradually revealed.
+        Every mountain tells a story, every plateau hides a mystery.
       </p>
       <p>
-        The game emphasizes atmosphere, storytelling, and the feeling of a slow, meaningful journey. Adventure is not just about combat, but about discovery, reflection, and living within a world rich with lore, choices, and consequences. Mountain Tales is not just a game—it is a story experienced step by step among the peaks.
+        Adventure is not just about combat, but about discovery, reflection, and living within a world rich with lore, choices, and consequences.
       </p>
     </div>
 
@@ -81,7 +148,12 @@
 <section id="contact">
   <h2>Contact</h2>
   <p>Business inquiries: <strong>grass.stu@gmail.com</strong></p>
-  <p>(Or reach us on Discord or social media—coming soon!)</p>
+  <p>Follow us on social media:</p>
+  <p>
+    <a href="https://www.instagram.com/grass.stu?igsh=MW82cGN3dTN2Z3d1Mg==" target="_blank">Instagram</a>
+    <a href="https://t.me/GrassStudio" target="_blank">Telegram</a>
+    <a href="https://discord.gg/DCHUzHJDfg" target="_blank">Discord</a>
+  </p>
 </section>
 
 <footer>© 2025 Grass Studio. All rights reserved.</footer>
