@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
 <header>
   <h1>Grass Studio</h1>
   <nav>
@@ -16,14 +17,26 @@
   </nav>
 </header>
 
-<section class="game-detail">
+<section class="game-detail fade-in">
   <h2>Mountain Tales</h2>
   <img src="assets/images/mountain-tales-1.jpg" alt="Mountain Tales Screenshot 1">
   <img src="assets/images/mountain-tales-2.jpg" alt="Mountain Tales Screenshot 2">
-  <p>Adventure game in vast mountains and mystical villages. Explore legends and epic stories while interacting with a living world.</p>
+  <p>Adventure game set in vast mountains and mystical villages. Explore legends and epic stories while interacting with a living world. Every peak holds a secret, and every village tells a story.</p>
   <a class="back-btn" href="games.html">← Back to Games</a>
 </section>
 
 <footer>© 2025 Grass Studio. All rights reserved.</footer>
+
+<script>
+// Fade-in on scroll
+const faders = document.querySelectorAll('.fade-in');
+window.addEventListener('scroll', () => {
+  faders.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 100) el.style.animationPlayState = 'running';
+  });
+});
+</script>
+
 </body>
 </html>
