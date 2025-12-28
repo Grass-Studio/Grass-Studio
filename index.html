@@ -8,13 +8,7 @@
 </head>
 <body>
 
-<!-- شاشة دخول PRO -->
-<div class="intro-screen">
-  <img src="assets/img/logo.png" class="intro-pro-logo" alt="Grass Studio Logo">
-</div>
-
 <header>
-  <img src="assets/img/logo.png" class="header-pro-logo" alt="Grass Studio Logo">
   <h1>Grass Studio</h1>
   <nav>
     <a href="index.html">Home</a>
@@ -31,11 +25,8 @@
 <section id="about" class="fade-in">
   <h2>About Us</h2>
   <p>
-    This studio didn’t start with a big plan.
-    It started with learning, curiosity, and small random games. 
-    Before COVID, we were just learning how to code. During COVID, Grass Studio was born not as a business, but as an attempt to create something meaningful.
-    Most early games failed. None of them really took off. But we kept going.
-    Years later, this studio is still here. No fixed genre. No limits. Just experiments, growth, and honest indie games.
+    This studio didn’t start with a big plan. It started with curiosity and small random games.
+    Years later, still building and still learning.
   </p>
 </section>
 
@@ -44,49 +35,26 @@
   <div class="games">
     <div class="game-card fade-in">
       <h3><a href="mountain-tales.html">Mountain Tales</a></h3>
-      <p>Adventure in vast mountains and mystical villages. Discover secrets, legends, and epic stories.</p>
+      <p>Adventure in vast mountains and mystical villages.</p>
     </div>
+
     <div class="game-card fade-in">
       <h3><a href="heartfall.html">Heartfall</a></h3>
-      <p>Open-world fantasy exploration where freedom comes first. Explore at your own pace.</p>
+      <p>Open-world fantasy exploration at your pace.</p>
     </div>
   </div>
 </section>
 
 <footer>© 2025 Grass Studio. All rights reserved.</footer>
 
-
-<!-- ========================= -->
-<!-- 🔥 SCRIPTS PRO VERSION 🔥 -->
-<!-- ========================= -->
 <script>
-// شاشة الدخول PRO
-window.addEventListener("load", () => {
-  const intro = document.querySelector(".intro-screen");
-  const headerLogo = document.querySelector(".header-pro-logo");
-
-  setTimeout(() => {
-    headerLogo.style.opacity = "1";
-    headerLogo.style.transform = "translateY(0)";
-  }, 2600);
-
-  setTimeout(() => {
-    intro.style.opacity = "0";
-    intro.style.pointerEvents = "none";
-  }, 2800);
-
-  setTimeout(() => {
-    intro.style.display = "none";
-  }, 3300);
-});
-
-// نظام الفيد على التمرير
+// scroll animation
 const faders = document.querySelectorAll('.fade-in');
-const appearOptions = { threshold: 0.25, rootMargin: "0px 0px -80px 0px" };
+const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
 
 const appearOnScroll = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
-    if(!entry.isIntersecting) return;
+    if (!entry.isIntersecting) return;
     entry.target.style.animationPlayState = 'running';
     observer.unobserve(entry.target);
   });
