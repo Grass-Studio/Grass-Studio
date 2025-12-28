@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
 <header>
   <h1>Grass Studio</h1>
   <nav>
@@ -16,14 +17,14 @@
   </nav>
 </header>
 
-<section id="games">
+<section id="games" class="fade-in">
   <h2>Our Games</h2>
   <div class="games">
-    <div class="game-card">
+    <div class="game-card fade-in">
       <h3><a href="mountain-tales.html">Mountain Tales</a></h3>
       <p>Adventure in vast mountains and mystical villages. Discover secrets, legends, and epic stories.</p>
     </div>
-    <div class="game-card">
+    <div class="game-card fade-in">
       <h3><a href="heartfall.html">Heartfall</a></h3>
       <p>Open-world fantasy exploration where freedom comes first. Explore at your own pace.</p>
     </div>
@@ -31,5 +32,17 @@
 </section>
 
 <footer>© 2025 Grass Studio. All rights reserved.</footer>
+
+<script>
+// Simple fade-in on scroll
+const faders = document.querySelectorAll('.fade-in');
+window.addEventListener('scroll', () => {
+  faders.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 100) el.style.animationPlayState = 'running';
+  });
+});
+</script>
+
 </body>
 </html>
