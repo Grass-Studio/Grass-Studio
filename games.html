@@ -34,14 +34,16 @@
 <footer>© 2025 Grass Studio. All rights reserved.</footer>
 
 <script>
-// Simple fade-in on scroll
 const faders = document.querySelectorAll('.fade-in');
-window.addEventListener('scroll', () => {
-  faders.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 100) el.style.animationPlayState = 'running';
+const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+  entries.forEach(entry => {
+    if(!entry.isIntersecting) return;
+    entry.target.style.animationPlayState = 'running';
+    observer.unobserve(entry.target);
   });
-});
+}, appearOptions);
+faders.forEach(fader => { appearOnScroll.observe(fader); });
 </script>
 
 </body>
