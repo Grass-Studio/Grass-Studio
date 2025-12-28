@@ -1,30 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Books - Grass Studio</title>
-<link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-
-<header>
-  <h1>Grass Studio</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="games.html">Games</a>
-    <a href="books.html">Books</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
-
 <section id="books" class="fade-in">
   <h2>Our Books</h2>
   <div class="games">
     <div class="game-card fade-in">
-      <h3><a href="https://www.smashwords.com/books/view/1878337" target="_blank">Grass Studio</a></h3>
-      <img src="assets/images/book1.jpg" alt="Grass Studio Book Cover">
-      <p>The first book about our studio's journey, experiments, and indie game creation.</p>
+      <h3><a href="https://www.smashwords.com/books/view/1878337" target="_blank">The Undead Nightmare: Origins</a></h3>
+      <img src="assets/images/book1.jpg" alt="The Undead Nightmare: Origins Cover">
+      <p>
+        By Walid Bahri Menad. <br>
+        Series: The Undead Nightmare, Book 0. <br>
+        Before the world ended, the real nightmare had already begun. 
+        Undead Nightmare: Origins follows the hidden stories of those who lived before the fall: children in shelters, survivors of storms, and scientists uncovering a terrifying truth. 
+        A haunting tale of survival, secrets, and what it means to be human.
+      </p>
     </div>
     <div class="game-card fade-in">
       <h3>Coming Soon</h3>
@@ -33,21 +19,3 @@
     </div>
   </div>
 </section>
-
-<footer>© 2025 Grass Studio. All rights reserved.</footer>
-
-<script>
-const faders = document.querySelectorAll('.fade-in');
-const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-  entries.forEach(entry => {
-    if(!entry.isIntersecting) return;
-    entry.target.style.animationPlayState = 'running';
-    observer.unobserve(entry.target);
-  });
-}, appearOptions);
-faders.forEach(fader => { appearOnScroll.observe(fader); });
-</script>
-
-</body>
-</html>
