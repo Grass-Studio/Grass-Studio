@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
 <header>
   <h1>Grass Studio</h1>
   <nav>
@@ -16,14 +17,26 @@
   </nav>
 </header>
 
-<section class="game-detail">
+<section class="game-detail fade-in">
   <h2>Heartfall</h2>
   <img src="assets/images/heartfall-1.jpg" alt="Heartfall Screenshot 1">
   <img src="assets/images/heartfall-2.jpg" alt="Heartfall Screenshot 2">
-  <p>Open-world fantasy exploration. Optional story, total freedom to explore at your own pace and discover hidden locations.</p>
+  <p>Open-world fantasy exploration game. Story is optional, freedom comes first. Wander a petrified world, uncover hidden locations, forgotten creatures, and mysteries at your own pace.</p>
   <a class="back-btn" href="games.html">← Back to Games</a>
 </section>
 
 <footer>© 2025 Grass Studio. All rights reserved.</footer>
+
+<script>
+// Fade-in on scroll
+const faders = document.querySelectorAll('.fade-in');
+window.addEventListener('scroll', () => {
+  faders.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 100) el.style.animationPlayState = 'running';
+  });
+});
+</script>
+
 </body>
 </html>
