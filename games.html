@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Games - Grass Studio</title>
+<style>
+  body { margin:0; font-family: Arial, sans-serif; line-height:1.6; background:#0b1a0b; color:#e6f0e6; }
+  header { padding:40px 20px; text-align:center; background:linear-gradient(180deg, #184d18, #0b1a0b); color:#d0ffd0; }
+  header h1 { margin:0; }
+  nav a { color:#aaffaa; margin-right:15px; text-decoration:none; }
+  nav a:hover { color:#00ff00; }
+
+  section { padding:60px 20px; max-width:900px; margin:auto; }
+  h2 { font-size:32px; border-bottom: 2px solid #336633; padding-bottom:10px; color:#aaffaa; }
+
+  .games { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .game-card { background:#113311; padding:20px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.5); transition:transform 0.3s; }
+  .game-card:hover { transform: translateY(-5px); }
+  .game-card h3 a { color:#aaffaa; text-decoration:none; }
+  .game-card h3 a:hover { color:#00ff00; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Grass Studio</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="games.html">Games</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section id="games">
+  <h2>Our Games</h2>
+  <div class="games">
+    <div class="game-card">
+      <h3><a href="mountain-tales.html">Mountain Tales</a></h3>
+      <p>Adventure in vast mountains and mystical villages. Discover secrets, legends, and epic stories.</p>
+    </div>
+
+    <div class="game-card">
+      <h3><a href="heartfall.html">Heartfall</a></h3>
+      <p>Open-world fantasy exploration where freedom comes first. Explore at your own pace.</p>
+    </div>
+  </div>
+</section>
+
+<footer>© 2025 Grass Studio. All rights reserved.</footer>
+
+</body>
+</html>
