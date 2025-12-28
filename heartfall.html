@@ -21,21 +21,26 @@
   <h2>Heartfall</h2>
   <img src="assets/images/heartfall-1.jpg" alt="Heartfall Screenshot 1">
   <img src="assets/images/heartfall-2.jpg" alt="Heartfall Screenshot 2">
-  <p>Open-world fantasy exploration game. Story is optional, freedom comes first. Wander a petrified world, uncover hidden locations, forgotten creatures, and mysteries at your own pace.</p>
+  <p>
+    Open-world fantasy exploration game. Story is optional, freedom comes first. Wander a petrified world,
+    uncover hidden locations, forgotten creatures, and mysteries at your own pace.
+  </p>
   <a class="back-btn" href="games.html">← Back to Games</a>
 </section>
 
 <footer>© 2025 Grass Studio. All rights reserved.</footer>
 
 <script>
-// Fade-in on scroll
 const faders = document.querySelectorAll('.fade-in');
-window.addEventListener('scroll', () => {
-  faders.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 100) el.style.animationPlayState = 'running';
+const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+  entries.forEach(entry => {
+    if(!entry.isIntersecting) return;
+    entry.target.style.animationPlayState = 'running';
+    observer.unobserve(entry.target);
   });
-});
+}, appearOptions);
+faders.forEach(fader => { appearOnScroll.observe(fader); });
 </script>
 
 </body>
