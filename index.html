@@ -1,91 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Grass Studio</title>
 <style>
-  /* Base styles */
-  body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    background: #0b1a0b; /* dark green background */
-    color: #e6f0e6; /* soft light green text */
-    transition: background 0.5s;
-  }
+  body { margin:0; font-family: Arial, sans-serif; line-height:1.6; background:#0b1a0b; color:#e6f0e6; }
+  header { padding:80px 20px; text-align:center; background:linear-gradient(180deg, #184d18, #0b1a0b); color:#d0ffd0; }
+  header h1 { font-size:48px; margin:0; text-shadow:2px 2px 5px #0a100a; }
+  header p { font-size:18px; opacity:0.9; line-height:1.5; }
+  nav a { color:#aaffaa; margin-right:15px; text-decoration:none; }
+  nav a:hover { color:#00ff00; }
 
-  header {
-    padding: 80px 20px;
-    text-align: center;
-    background: linear-gradient(180deg, #184d18, #0b1a0b);
-    color: #d0ffd0;
-  }
-  header h1 {
-    font-size: 48px;
-    margin: 0;
-    text-shadow: 2px 2px 5px #0a100a;
-  }
-  header p {
-    font-size: 18px;
-    opacity: 0.9;
-    line-height: 1.5;
-  }
+  section { padding:60px 20px; max-width:900px; margin:auto; }
+  h2 { font-size:32px; border-bottom: 2px solid #336633; padding-bottom:10px; color:#aaffaa; }
 
-  section {
-    padding: 60px 20px;
-    max-width: 900px;
-    margin: auto;
-  }
-  h2 {
-    font-size: 32px;
-    border-bottom: 2px solid #336633;
-    padding-bottom: 10px;
-    color: #aaffaa;
-  }
-
-  /* Games grid */
-  .games {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  .game-card {
-    background: #113311;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .game-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
-  }
-  .game-card h3 {
-    margin-top: 0;
-    color: #aaffaa;
-  }
-  .game-card p {
-    opacity: 0.9;
-  }
-
-  /* Contact & social */
-  #contact a {
-    color: #aaffaa;
-    text-decoration: none;
-    margin-right: 15px;
-    transition: color 0.3s;
-  }
-  #contact a:hover {
-    color: #00ff00;
-  }
-
-  footer {
-    text-align: center;
-    padding: 30px;
-    background: linear-gradient(180deg, #0b1a0b, #184d18);
-    opacity: 0.9;
-  }
+  footer { text-align:center; padding:30px; background:linear-gradient(180deg, #0b1a0b, #184d18); opacity:0.9; }
 </style>
 </head>
 <body>
@@ -93,67 +23,18 @@
 <header>
   <h1>Grass Studio</h1>
   <p>Independent indie game studio<br>No genre, no limits<br>Just games & passion</p>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="games.html">Games</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 </header>
 
 <section id="about">
   <h2>About Us</h2>
-  <p>
-    This studio didn’t start with a big plan. It started with learning, curiosity, and small random games. 
-    Before COVID, I was just learning how to code. During COVID, Grass Studio was born—not as a business, 
-    but as an attempt to create something meaningful.
-  </p>
-  <p>
-    Most early games failed. None really took off. But I kept going. Years later, this studio is still here. 
-    No fixed genre. No limits. Just experiments, growth, and honest indie games. Still learning. Still building. 
-    Still trying.
-  </p>
-  <p>
-    Never lose hope. Never lose the flame.
-  </p>
-</section>
-
-<section id="games">
-  <h2>Our Games</h2>
-  <div class="games">
-    <div class="game-card">
-      <h3>Mountain Tales</h3>
-      <p>
-        Mountain Tales is an adventure game set in a vast world of towering mountains and wide plateaus, where harsh nature meets deep tranquility. 
-        The journey begins in a small, simple village, whose people live surrounded by ancient legends and old tales passed down through generations.
-      </p>
-      <p>
-        The player embarks on mythical adventures focused on exploration, uncovering secrets, and facing challenges inspired by folklore and epic fantasy. 
-        Every mountain tells a story, every plateau hides a mystery.
-      </p>
-      <p>
-        Adventure is not just about combat, but about discovery, reflection, and living within a world rich with lore, choices, and consequences.
-      </p>
-    </div>
-
-    <div class="game-card">
-      <h3>Heartfall</h3>
-      <p>
-        Hony Life is a true open-world fantasy exploration game where the story is optional and freedom comes first.
-      </p>
-      <p>
-        Wander a petrified world shaped by a shattered crystal, uncover hidden locations, forgotten creatures, and mysteries at your own pace — or ignore the narrative entirely and simply explore.
-      </p>
-      <p>
-        More information
-      </p>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Business inquiries: <strong>grass.stu@gmail.com</strong></p>
-  <p>Follow us on social media:</p>
-  <p>
-    <a href="https://www.instagram.com/grass.stu?igsh=MW82cGN3dTN2Z3d1Mg==" target="_blank">Instagram</a>
-    <a href="https://t.me/GrassStudio" target="_blank">Telegram</a>
-    <a href="https://discord.gg/DCHUzHJDfg" target="_blank">Discord</a>
-  </p>
+  <p>This studio didn’t start with a big plan. It started with learning, curiosity, and small random games. Before COVID, I was just learning how to code. During COVID, Grass Studio was born—not as a business, but as an attempt to create something meaningful.</p>
+  <p>Most early games failed. None really took off. But I kept going. Years later, this studio is still here. No fixed genre. No limits. Just experiments, growth, and honest indie games. Still learning. Still building. Still trying.</p>
+  <p>Never lose hope. Never lose the flame.</p>
 </section>
 
 <footer>© 2025 Grass Studio. All rights reserved.</footer>
