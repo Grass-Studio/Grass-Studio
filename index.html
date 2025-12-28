@@ -1,3 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grass Studio</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>Grass Studio</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="games.html">Games</a>
+    <a href="books.html">Books</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero fade-in">
+  <h2>No Genre, No Limits</h2>
+  <p>Just games & passion</p>
+</section>
+
+<section id="about" class="fade-in">
+  <h2>About Us</h2>
+  <p>
+    This studio didn’t start with a big plan.
+    It started with learning, curiosity, and small random games. 
+    Before COVID, we were just learning how to code. During COVID, Grass Studio was born not as a business, but as an attempt to create something meaningful.
+    Most early games failed. None of them really took off. But we kept going.
+    Years later, this studio is still here. No fixed genre. No limits. Just experiments, growth, and honest indie games. Still learning. Still building. Still trying. Never lose hope, never lose the flame.
+  </p>
+</section>
+
+<section id="games" class="fade-in">
+  <h2>Our Games</h2>
+  <div class="games">
+    <div class="game-card fade-in">
+      <h3><a href="mountain-tales.html">Mountain Tales</a></h3>
+      <p>Adventure in vast mountains and mystical villages. Discover secrets, legends, and epic stories.</p>
+    </div>
+    <div class="game-card fade-in">
+      <h3><a href="heartfall.html">Heartfall</a></h3>
+      <p>Open-world fantasy exploration where freedom comes first. Explore at your own pace.</p>
+    </div>
+  </div>
+</section>
+
 <section id="books" class="fade-in">
   <h2>Our Books</h2>
   <div class="games">
@@ -19,3 +69,32 @@
     </div>
   </div>
 </section>
+
+<section id="contact" class="fade-in">
+  <h2>Contact</h2>
+  <p>Business inquiries: <strong>grass.stu@gmail.com</strong></p>
+  <p>Follow us on social media:</p>
+  <p class="contact-links">
+    <a href="https://twitter.com/yourhandle" target="_blank">Twitter</a>
+    <a href="https://instagram.com/yourhandle" target="_blank">Instagram</a>
+    <a href="https://discord.com/invite/yourserver" target="_blank">Discord</a>
+  </p>
+</section>
+
+<footer>© 2025 Grass Studio. All rights reserved.</footer>
+
+<script>
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+  entries.forEach(entry => {
+    if(!entry.isIntersecting) return;
+    entry.target.style.animationPlayState = 'running';
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+faders.forEach(fader => { appearOnScroll.observe(fader); });
+</script>
+
+</body>
+</html>
