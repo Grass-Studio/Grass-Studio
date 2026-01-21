@@ -5,9 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Grass Studio</title>
 <link rel="stylesheet" href="assets/css/style.css">
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2987449339782635"
-     crossorigin="anonymous"></script>
+crossorigin="anonymous"></script>
 </head>
+
 <body>
 
 <header>
@@ -18,14 +20,6 @@
     <a href="books.html">Books</a>
     <a href="contact.html">Contact</a>
   </nav>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DW043SKMH9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DW043SKMH9');
-</script>
 </header>
 
 <section class="hero fade-in">
@@ -37,10 +31,9 @@
   <h2>About Us</h2>
   <p>
     This studio didn’t start with a big plan.
-    It started with learning, curiosity, and small random games. 
-    Before COVID, we were just learning how to code. During COVID, Grass Studio was born not as a business, but as an attempt to create something meaningful.
-    Most early games failed. None of them really took off. But we kept going.
-    Years later, this studio is still here. No fixed genre. No limits. Just experiments, growth, and honest indie games. Still learning. Still building. Still trying. Never lose hope, never lose the flame.
+    It started with learning, curiosity, and small random games.
+    During COVID, Grass Studio was born as an experiment.
+    Still learning. Still building.
   </p>
 </section>
 
@@ -48,12 +41,12 @@
   <h2>Our Games</h2>
   <div class="games">
     <div class="game-card fade-in">
-      <h3><a href="mountain-tales.html">Mountain Tales</a></h3>
-      <p>Adventure in vast mountains and mystical villages. Discover secrets, legends, and epic stories.</p>
+      <h3>Mountain Tales</h3>
+      <p>Adventure in vast mountains and mythical villages.</p>
     </div>
     <div class="game-card fade-in">
-      <h3><a href="heartfall.html">Heartfall</a></h3>
-      <p>Open-world fantasy exploration where freedom comes first. Explore at your own pace.</p>
+      <h3>Heartfall</h3>
+      <p>Open-world fantasy exploration.</p>
     </div>
   </div>
 </section>
@@ -61,38 +54,77 @@
 <section id="books" class="fade-in">
   <h2>Our Books</h2>
   <div class="games">
+
     <div class="game-card fade-in">
-      <h3><a href="https://www.smashwords.com/books/view/1878337" target="_blank">The Undead Nightmare: Origins</a></h3>
-      <img src="assets/images/book1.jpg" alt="The Undead Nightmare: Origins Cover">
-      <p>
-        By Walid Bahri Menad. <br>
-        Series: The Undead Nightmare, Book 0. <br>
-        Before the world ended, the real nightmare had already begun. 
-        Undead Nightmare: Origins follows the hidden stories of those who lived before the fall: children in shelters, survivors of storms, and scientists uncovering a terrifying truth. 
-        A haunting tale of survival, secrets, and what it means to be human.
-      </p>
+      <h3>The Undead Nightmare: Origins</h3>
+      <img src="assets/images/book1.jpg" alt="Book Cover">
+      <p>Series: Book 0</p>
+      <button class="buy-btn" onclick="openStores('book1')">احصل عليه الآن</button>
     </div>
+
     <div class="game-card fade-in">
-      <h3>Coming Soon</h3>
-      <img src="assets/images/book2.jpg" alt="Coming Soon Book Cover">
-      <p>Our next book is on its way! Stay tuned for more stories and insights.</p>
+      <h3>The Undead Nightmare: Book I</h3>
+      <img src="assets/images/book2.jpg" alt="Book Cover">
+      <p>Pre-order available</p>
+      <button class="buy-btn" onclick="openStores('book2')">احصل عليه الآن</button>
     </div>
+
   </div>
 </section>
 
 <footer>© 2025 Grass Studio. All rights reserved.</footer>
 
+<!-- STORES MODAL -->
+<div id="store-modal" class="store-modal">
+  <div class="store-content">
+    <span class="close" onclick="closeStores()">×</span>
+    <h3>متوفر على</h3>
+    <div class="stores" id="stores-container"></div>
+  </div>
+</div>
+
+<script>
+const booksStores = {
+  book1: [
+    { logo:"assets/images/smashwords.png", url:"https://www.smashwords.com/books/view/1878337" }
+  ],
+  book2: [
+    { logo:"assets/images/amazon.png", url:"LINK" },
+    { logo:"assets/images/googleplay.png", url:"LINK" },
+    { logo:"assets/images/applebooks.png", url:"LINK" },
+    { logo:"assets/images/kobo.png", url:"LINK" },
+    { logo:"assets/images/bn.png", url:"LINK" },
+    { logo:"assets/images/smashwords.png", url:"LINK" }
+  ]
+};
+
+function openStores(bookId) {
+  const c = document.getElementById("stores-container");
+  c.innerHTML = "";
+  booksStores[bookId].forEach(s => {
+    c.innerHTML += `<a href="${s.url}" target="_blank" class="store">
+      <img src="${s.logo}">
+    </a>`;
+  });
+  document.getElementById("store-modal").style.display = "flex";
+}
+
+function closeStores() {
+  document.getElementById("store-modal").style.display = "none";
+}
+</script>
+
 <script>
 const faders = document.querySelectorAll('.fade-in');
-const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-  entries.forEach(entry => {
-    if(!entry.isIntersecting) return;
-    entry.target.style.animationPlayState = 'running';
-    observer.unobserve(entry.target);
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.animationPlayState="running";
+      observer.unobserve(e.target);
+    }
   });
-}, appearOptions);
-faders.forEach(fader => { appearOnScroll.observe(fader); });
+},{threshold:0.2});
+faders.forEach(f=>observer.observe(f));
 </script>
 
 </body>
