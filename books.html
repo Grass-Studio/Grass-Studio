@@ -6,6 +6,7 @@
 <title>Books - Grass Studio</title>
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
 
 <header>
@@ -21,39 +22,59 @@
 <section id="books" class="fade-in">
   <h2>Our Books</h2>
   <div class="games">
+
     <div class="game-card fade-in">
-      <h3><a href="https://www.smashwords.com/books/view/1878337" target="_blank">The Undead Nightmare: Origins</a></h3>
-      <img src="assets/images/book1.jpg" alt="The Undead Nightmare: Origins Cover">
-      <p>
-        By Walid Bahri Menad. <br>
-        Series: The Undead Nightmare, Book 0. <br>
-        Before the world ended, the real nightmare had already begun. 
-        Undead Nightmare: Origins follows the hidden stories of those who lived before the fall: children in shelters, survivors of storms, and scientists uncovering a terrifying truth. 
-        A haunting tale of survival, secrets, and what it means to be human.
-      </p>
+      <h3>The Undead Nightmare: Origins</h3>
+      <img src="assets/images/book1.jpg">
+      <button class="buy-btn" onclick="openStores('book1')">احصل عليه الآن</button>
     </div>
+
     <div class="game-card fade-in">
-      <h3>Coming Soon</h3>
-      <img src="assets/images/book2.jpg" alt="Coming Soon Book Cover">
-      <p>Our next book is on its way! Stay tuned for more stories and insights.</p>
+      <h3>The Undead Nightmare: Book I</h3>
+      <img src="assets/images/book2.jpg">
+      <button class="buy-btn" onclick="openStores('book2')">احصل عليه الآن</button>
     </div>
+
   </div>
 </section>
 
-<footer>© 2025 Grass Studio. All rights reserved.</footer>
+<footer>© 2025 Grass Studio</footer>
+
+<!-- SAME MODAL + SCRIPT -->
+<div id="store-modal" class="store-modal">
+  <div class="store-content">
+    <span class="close" onclick="closeStores()">×</span>
+    <h3>متوفر على</h3>
+    <div class="stores" id="stores-container"></div>
+  </div>
+</div>
 
 <script>
-const faders = document.querySelectorAll('.fade-in');
-const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-  entries.forEach(entry => {
-    if(!entry.isIntersecting) return;
-    entry.target.style.animationPlayState = 'running';
-    observer.unobserve(entry.target);
+const booksStores = {
+  book1: [
+    { logo:"assets/images/smashwords.png", url:"https://www.smashwords.com/books/view/1878337" }
+  ],
+  book2: [
+    { logo:"assets/images/amazon.png", url:"LINK" },
+    { logo:"assets/images/googleplay.png", url:"LINK" },
+    { logo:"assets/images/applebooks.png", url:"LINK" }
+  ]
+};
+
+function openStores(bookId){
+  const c=document.getElementById("stores-container");
+  c.innerHTML="";
+  booksStores[bookId].forEach(s=>{
+    c.innerHTML+=`<a href="${s.url}" target="_blank" class="store"><img src="${s.logo}"></a>`;
   });
-}, appearOptions);
-faders.forEach(fader => { appearOnScroll.observe(fader); });
+  document.getElementById("store-modal").style.display="flex";
+}
+function closeStores(){
+  document.getElementById("store-modal").style.display="none";
+}
 </script>
 
 </body>
 </html>
+
+
