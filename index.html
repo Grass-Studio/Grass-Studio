@@ -87,7 +87,7 @@ crossorigin="anonymous"></script>
           </div>
         </div>
       </div>
-      <button class="buy-btn" onclick="openStores('book2')">Get it Now</button>
+      <button class="buy-btn" onclick="openStores('book2')">Pre-order Now</button>
     </div>
 
   </div>
@@ -152,34 +152,41 @@ function closeStores() {
 </script>
 
 <script>
-// Countdown Timer for Book 2 (Pre-order ends February 15)
+// Countdown Timer for Book 2 (Pre-order ends February 15, 2026)
 function updateCountdown() {
-  const targetDate = new Date('February 15, 2025 23:59:59').getTime();
+  // تاريخ 15 فبراير 2026 الساعة 23:59:59
+  const targetDate = new Date('2026-02-15T23:59:59').getTime();
   const now = new Date().getTime();
   const timeLeft = targetDate - now;
   
+  // إذا انتهى الوقت، اظهر رسالة
   if (timeLeft < 0) {
-    document.getElementById('days').textContent = '00';
-    document.getElementById('hours').textContent = '00';
-    document.getElementById('minutes').textContent = '00';
-    document.getElementById('seconds').textContent = '00';
+    document.getElementById('countdown').innerHTML = 
+      '<div class="countdown-ended">Pre-order period has ended!</div>';
     return;
   }
   
+  // حساب الأيام، الساعات، الدقائق، الثواني
   const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
   const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
   
+  // تحديث القيم
   document.getElementById('days').textContent = days.toString().padStart(2, '0');
   document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
   document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
   document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
 }
 
-// Initialize countdown
-updateCountdown();
-setInterval(updateCountdown, 1000);
+// تهيئة العداد عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', function() {
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+  
+  // إضافة رسالة توضيحية للتصحيح
+  console.log('Countdown initialized for February 15, 2026');
+});
 
 // Intersection Observer for fade-in animations
 const faders = document.querySelectorAll('.fade-in');
