@@ -30,7 +30,7 @@ crossorigin="anonymous"></script>
 <section id="about" class="fade-in">
   <h2>About Us</h2>
   <p>
-    This studio didn’t start with a big plan.
+    This studio didn't start with a big plan.
     It started with learning, curiosity, and small random games.
     During COVID, Grass Studio was born as an experiment.
     Still learning. Still building.
@@ -86,13 +86,19 @@ crossorigin="anonymous"></script>
 <script>
 const booksStores = {
   book1: [
-    { logo:"assets/images/smashwords.png", url:"https://www.smashwords.com/books/view/1878337" }
+    { logo:"assets/images/smashwords.png", url:"https://www.smashwords.com/books/view/1878337" },
+    { logo:"assets/images/barnesandnoble.png", url:"https://www.barnesandnoble.com/w/x/x?ean=2940182427364" },
+    { logo:"assets/images/kobo.png", url:"https://kobo.com/search?query=9798232849467" },
+    { logo:"assets/images/applebooks.png", url:"https://books.apple.com/us/book/id6753977863" },
+    { logo:"assets/images/tolino.png", url:"https://www.thalia.de/shop/home/artikeldetails/A1077128144" },
+    { logo:"assets/images/vivlio.png", url:"https://shop.vivlio.com/product/9798232849467_9798232849467_10020/the-undead-nightmare-origins" },
+    { logo:"assets/images/fable.png", url:"https://fable.co/book/x-9798232849467" }
   ],
   book2: [
     { logo:"assets/images/tolino.png", url:"https://www.thalia.de/shop/home/artikeldetails/A1078033452" },
     { logo:"assets/images/Gardners.png", url:"LINK" },
     { logo:"assets/images/applebooks.png", url:"https://books.apple.com/us/book/the-undead-origins-be-awear/id6758108621" },
-    { logo:"assets/images/kobo.png", url:"kobo.com/search?query=9798233007323" },
+    { logo:"assets/images/kobo.png", url:"https://kobo.com/search?query=9798233007323" },
     { logo:"assets/images/vivlio.png", url:"https://shop.vivlio.com/product/9798233007323_9798233007323_10020/the-undead-origins-be-awear" },
     { logo:"assets/images/smashwords.png", url:"https://www.smashwords.com/books/view/1950152" }
   ]
@@ -102,9 +108,18 @@ function openStores(bookId) {
   const c = document.getElementById("stores-container");
   c.innerHTML = "";
   booksStores[bookId].forEach(s => {
-    c.innerHTML += `<a href="${s.url}" target="_blank" class="store">
-      <img src="${s.logo}">
-    </a>`;
+    // التحقق من وجود رابط قبل الإضافة
+    if (s.url && s.url !== "LINK") {
+      // إضافة https:// تلقائياً إذا لم تكن موجودة
+      let fullUrl = s.url;
+      if (!fullUrl.startsWith('http://') && !fullUrl.startsWith('https://')) {
+        fullUrl = 'https://' + fullUrl;
+      }
+      
+      c.innerHTML += `<a href="${fullUrl}" target="_blank" class="store">
+        <img src="${s.logo}" alt="Store Logo">
+      </a>`;
+    }
   });
   document.getElementById("store-modal").style.display = "flex";
 }
@@ -129,16 +144,3 @@ faders.forEach(f=>observer.observe(f));
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
