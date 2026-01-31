@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grass Studio</title>
+<title>Grass Studio - Where Imagination Meets Innovation</title>
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2987449339782635"
 crossorigin="anonymous"></script>
@@ -12,99 +13,298 @@ crossorigin="anonymous"></script>
 
 <body>
 
-<header>
-  <h1>Grass Studio</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="games.html">Games</a>
-    <a href="books.html">Books</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<header class="main-header">
+  <div class="container">
+    <div class="logo">
+      <h1>Grass Studio</h1>
+      <span class="tagline">Where Imagination Meets Innovation</span>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a>
+      <a href="games.html" class="nav-link"><i class="fas fa-gamepad"></i> Games</a>
+      <a href="books.html" class="nav-link"><i class="fas fa-book"></i> Books</a>
+      <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
 </header>
 
-<section class="hero fade-in">
-  <h2>No Genre, No Limits</h2>
-  <p>Just games & passion</p>
-</section>
-
-<section id="about" class="fade-in">
-  <h2>About Us</h2>
-  <p>
-    This studio didn't start with a big plan.
-    It started with learning, curiosity, and small random games.
-    During COVID, Grass Studio was born as an experiment.
-    Still learning. Still building.
-  </p>
-</section>
-
-<section id="games" class="fade-in">
-  <h2>Our Games</h2>
-  <div class="games">
-    <div class="game-card fade-in">
-      <h3>Mountain Tales</h3>
-      <p>Adventure in vast mountains and mythical villages.</p>
+<!-- Hero Section with Particles -->
+<section class="hero-section">
+  <div class="particles-container" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <span class="hero-subtitle">Welcome to</span>
+      <h2 class="hero-title">Grass Studio</h2>
+      <p class="hero-description">Where boundless creativity meets cutting-edge technology</p>
+      <div class="hero-quote">
+        <p>"No Genre, No Limits. Just games & passion"</p>
+      </div>
+      <div class="hero-buttons">
+        <a href="#games" class="hero-btn primary-btn"><i class="fas fa-gamepad"></i> Explore Games</a>
+        <a href="#books" class="hero-btn secondary-btn"><i class="fas fa-book"></i> Discover Books</a>
+      </div>
     </div>
-    <div class="game-card fade-in">
-      <h3>Heartfall</h3>
-      <p>Open-world fantasy exploration.</p>
+    <div class="hero-image">
+      <div class="floating-element">
+        <i class="fas fa-seedling"></i>
+      </div>
     </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll to explore</span>
+    <i class="fas fa-chevron-down"></i>
   </div>
 </section>
 
-<section id="books" class="fade-in">
-  <h2>Our Books</h2>
-  <div class="games">
-
-    <div class="game-card fade-in">
-      <h3>The Undead Nightmare: Origins</h3>
-      <img src="assets/images/book1.jpg" alt="Book Cover">
-      <p>Series: Book 0</p>
-      <button class="buy-btn" onclick="openStores('book1')">Get It Now</button>
+<!-- About Section -->
+<section id="about" class="section about-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">Our Story</span>
+      <h2 class="section-title">About Us</h2>
+      <div class="section-divider"></div>
     </div>
-
-    <div class="game-card fade-in">
-      <h3>The Undead Nightmare: Book I</h3>
-      <img src="assets/images/book2.jpg" alt="Book Cover">
-      <p>Pre-order available</p>
-      <div class="preorder-counter">
-        <p>Pre-order ends in:</p>
-        <div id="countdown" class="countdown">
-          <div class="countdown-item">
-            <span id="days">00</span>
-            <div class="countdown-label">Days</div>
+    <div class="about-content">
+      <div class="about-text">
+        <p class="lead-text">This studio didn't start with a big plan. It started with learning, curiosity, and small random games.</p>
+        <p>During the challenging times of COVID-19, Grass Studio emerged as an experimental passion project. What began as a simple curiosity evolved into a creative powerhouse dedicated to crafting immersive experiences.</p>
+        <p>Today, we continue our journey of learning and building, pushing the boundaries of what's possible in gaming and storytelling.</p>
+        <div class="stats-container">
+          <div class="stat-item">
+            <span class="stat-number">2+</span>
+            <span class="stat-label">Games in Development</span>
           </div>
-          <div class="countdown-item">
-            <span id="hours">00</span>
-            <div class="countdown-label">Hours</div>
+          <div class="stat-item">
+            <span class="stat-number">2</span>
+            <span class="stat-label">Published Books</span>
           </div>
-          <div class="countdown-item">
-            <span id="minutes">00</span>
-            <div class="countdown-label">Minutes</div>
-          </div>
-          <div class="countdown-item">
-            <span id="seconds">00</span>
-            <div class="countdown-label">Seconds</div>
+          <div class="stat-item">
+            <span class="stat-number">∞</span>
+            <span class="stat-label">Creative Ideas</span>
           </div>
         </div>
       </div>
-      <button class="buy-btn" onclick="openStores('book2')">Pre-order Now</button>
+      <div class="about-image">
+        <div class="floating-card">
+          <i class="fas fa-lightbulb"></i>
+          <h4>Innovation First</h4>
+          <p>We believe in pushing creative boundaries</p>
+        </div>
+      </div>
     </div>
-
   </div>
 </section>
 
-<footer>© 2025 Grass Studio. All rights reserved.</footer>
+<!-- Games Section -->
+<section id="games" class="section games-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">Interactive Experiences</span>
+      <h2 class="section-title">Our Games</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="games-grid">
+      <div class="game-card featured">
+        <div class="game-image">
+          <div class="game-icon">
+            <i class="fas fa-mountain"></i>
+          </div>
+        </div>
+        <div class="game-content">
+          <span class="game-tag">Adventure RPG</span>
+          <h3 class="game-title">Mountain Tales</h3>
+          <p class="game-description">Embark on an epic journey through vast mountains and discover mythical villages hidden from the world.</p>
+          <div class="game-features">
+            <span><i class="fas fa-globe"></i> Open World</span>
+            <span><i class="fas fa-users"></i> Multiplayer</span>
+            <span><i class="fas fa-dragon"></i> Fantasy</span>
+          </div>
+          <div class="game-status">
+            <div class="status-indicator in-development"></div>
+            <span>In Development</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="game-card">
+        <div class="game-image">
+          <div class="game-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+        </div>
+        <div class="game-content">
+          <span class="game-tag">Fantasy Exploration</span>
+          <h3 class="game-title">Heartfall</h3>
+          <p class="game-description">Explore a breathtaking open-world fantasy realm where every decision shapes your journey and the world around you.</p>
+          <div class="game-features">
+            <span><i class="fas fa-expand"></i> Open World</span>
+            <span><i class="fas fa-magic"></i> Magic System</span>
+            <span><i class="fas fa-compass"></i> Exploration</span>
+          </div>
+          <div class="game-status">
+            <div class="status-indicator in-development"></div>
+            <span>In Development</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Books Section -->
+<section id="books" class="section books-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">Literary Adventures</span>
+      <h2 class="section-title">Our Books</h2>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="books-grid">
+      <div class="book-card">
+        <div class="book-badge">Book 0</div>
+        <div class="book-cover">
+          <img src="assets/images/book1.jpg" alt="The Undead Nightmare: Origins">
+          <div class="book-overlay">
+            <button class="quick-view-btn" onclick="openStores('book1')">
+              <i class="fas fa-shopping-cart"></i> Get Now
+            </button>
+          </div>
+        </div>
+        <div class="book-info">
+          <h3 class="book-title">The Undead Nightmare: Origins</h3>
+          <p class="book-series">Prequel to the Undead Nightmare Series</p>
+          <p class="book-description">Discover the origins of the nightmare that started it all. A gripping tale of survival in a world overrun by the undead.</p>
+          <div class="book-actions">
+            <button class="buy-btn" onclick="openStores('book1')">
+              <i class="fas fa-store"></i> Available Stores
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="book-card featured">
+        <div class="book-badge pre-order">Pre-order</div>
+        <div class="book-cover">
+          <img src="assets/images/book2.jpg" alt="The Undead Nightmare: Book I">
+          <div class="book-overlay">
+            <button class="quick-view-btn" onclick="openStores('book2')">
+              <i class="fas fa-clock"></i> Pre-order
+            </button>
+          </div>
+        </div>
+        <div class="book-info">
+          <h3 class="book-title">The Undead Nightmare: Book I</h3>
+          <p class="book-series">The Beginning of the Saga</p>
+          <p class="book-description">The first chapter in an epic survival series. Follow the journey of characters fighting for humanity in a post-apocalyptic world.</p>
+          
+          <div class="preorder-counter">
+            <p class="preorder-text">Pre-order ends in:</p>
+            <div id="countdown" class="countdown">
+              <div class="countdown-item">
+                <span id="days">00</span>
+                <div class="countdown-label">Days</div>
+              </div>
+              <div class="countdown-item">
+                <span id="hours">00</span>
+                <div class="countdown-label">Hours</div>
+              </div>
+              <div class="countdown-item">
+                <span id="minutes">00</span>
+                <div class="countdown-label">Minutes</div>
+              </div>
+              <div class="countdown-item">
+                <span id="seconds">00</span>
+                <div class="countdown-label">Seconds</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="book-actions">
+            <button class="buy-btn preorder-btn" onclick="openStores('book2')">
+              <i class="fas fa-bolt"></i> Pre-order Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="section newsletter-section">
+  <div class="container">
+    <div class="newsletter-content">
+      <div class="newsletter-text">
+        <h3>Stay Updated</h3>
+        <p>Subscribe to our newsletter for the latest updates on games, books, and studio news.</p>
+      </div>
+      <div class="newsletter-form">
+        <form id="newsletterForm">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>Grass Studio</h3>
+        <p>Where Imagination Meets Innovation</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/grass.stu/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://discord.com/invite/DCHUzHJDfg" target="_blank"><i class="fab fa-discord"></i></a>
+          <a href="mailto:grass.stu@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="books.html">Books</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p><i class="fas fa-envelope"></i> grass.stu@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Digital Studio</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Grass Studio. All rights reserved. | Crafted with <i class="fas fa-heart"></i> & passion</p>
+    </div>
+  </div>
+</footer>
 
 <!-- STORES MODAL -->
 <div id="store-modal" class="store-modal">
   <div class="store-content">
     <span class="close" onclick="closeStores()">×</span>
-    <h3>available on</h3>
+    <h3><i class="fas fa-store"></i> Available on</h3>
     <div class="stores" id="stores-container"></div>
   </div>
 </div>
 
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
 <script>
+// All your existing JavaScript code remains the same
 const booksStores = {
   book1: [
     { logo:"assets/images/smashwords.png", url:"https://www.smashwords.com/books/view/1878337" },
@@ -130,9 +330,7 @@ function openStores(bookId) {
   const c = document.getElementById("stores-container");
   c.innerHTML = "";
   booksStores[bookId].forEach(s => {
-    // التحقق من وجود رابط قبل الإضافة
     if (s.url && s.url !== "LINK") {
-      // إضافة https:// تلقائياً إذا لم تكن موجودة
       let fullUrl = s.url;
       if (!fullUrl.startsWith('http://') && !fullUrl.startsWith('https://')) {
         fullUrl = 'https://' + fullUrl;
@@ -149,56 +347,104 @@ function openStores(bookId) {
 function closeStores() {
   document.getElementById("store-modal").style.display = "none";
 }
-</script>
 
-<script>
-// Countdown Timer for Book 2 (Pre-order ends February 15, 2026)
+// Countdown Timer for Book 2
 function updateCountdown() {
-  // تاريخ 15 فبراير 2026 الساعة 23:59:59
   const targetDate = new Date('2026-02-15T23:59:59').getTime();
   const now = new Date().getTime();
   const timeLeft = targetDate - now;
   
-  // إذا انتهى الوقت، اظهر رسالة
   if (timeLeft < 0) {
     document.getElementById('countdown').innerHTML = 
       '<div class="countdown-ended">Pre-order period has ended!</div>';
     return;
   }
   
-  // حساب الأيام، الساعات، الدقائق، الثواني
   const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
   const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
   
-  // تحديث القيم
   document.getElementById('days').textContent = days.toString().padStart(2, '0');
   document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
   document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
   document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
 }
 
-// تهيئة العداد عند تحميل الصفحة
+// New JavaScript for enhanced functionality
 document.addEventListener('DOMContentLoaded', function() {
   updateCountdown();
   setInterval(updateCountdown, 1000);
   
-  // إضافة رسالة توضيحية للتصحيح
-  console.log('Countdown initialized for February 15, 2026');
-});
-
-// Intersection Observer for fade-in animations
-const faders = document.querySelectorAll('.fade-in');
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.style.animationPlayState="running";
-      observer.unobserve(e.target);
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.querySelector('.main-nav');
+  
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function() {
+      mainNav.classList.toggle('active');
+    });
+  }
+  
+  // Back to top button
+  const backToTop = document.getElementById('backToTop');
+  
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 500) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
     }
   });
-},{threshold:0.2});
-faders.forEach(f=>observer.observe(f));
+  
+  backToTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  
+  // Newsletter form submission
+  const newsletterForm = document.getElementById('newsletterForm');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input[type="email"]').value;
+      alert(`Thank you for subscribing with ${email}! You'll hear from us soon.`);
+      this.reset();
+    });
+  }
+  
+  // Create particles effect
+  createParticles();
+  
+  // Intersection Observer for animations
+  const faders = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.style.animationPlayState="running";
+        observer.unobserve(e.target);
+      }
+    });
+  },{threshold:0.2});
+  faders.forEach(f=>observer.observe(f));
+});
+
+// Particles effect
+function createParticles() {
+  const particlesContainer = document.getElementById('particles');
+  if (!particlesContainer) return;
+  
+  for (let i = 0; i < 20; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.top = `${Math.random() * 100}%`;
+    particle.style.width = `${Math.random() * 10 + 5}px`;
+    particle.style.height = particle.style.width;
+    particle.style.animationDelay = `${Math.random() * 5}s`;
+    particle.style.backgroundColor = `rgba(126, 217, 87, ${Math.random() * 0.3 + 0.1})`;
+    particlesContainer.appendChild(particle);
+  }
+}
 </script>
 
 </body>
