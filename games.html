@@ -3,48 +3,251 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Games - Grass Studio</title>
+<title>Games - Grass Studio | Interactive Experiences</title>
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2987449339782635"
+crossorigin="anonymous"></script>
 </head>
 <body>
 
-<header>
-  <h1>Grass Studio</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="games.html">Games</a>
-    <a href="books.html">Books</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<header class="main-header">
+  <div class="container">
+    <div class="logo">
+      <h1>Grass Studio</h1>
+      <span class="tagline">Interactive Experiences</span>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+      <a href="games.html" class="nav-link active"><i class="fas fa-gamepad"></i> Games</a>
+      <a href="books.html" class="nav-link"><i class="fas fa-book"></i> Books</a>
+      <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
 </header>
 
-<section class="fade-in">
-  <h2>Our Games</h2>
-  <div class="games">
-    <div class="game-card fade-in">
-      <h3><a href="mountain-tales.html">Mountain Tales</a></h3>
-      <p>Adventure in vast mountains and mystical villages. Discover secrets, legends, and epic stories.</p>
-    </div>
-    <div class="game-card fade-in">
-      <h3><a href="heartfall.html">Heartfall</a></h3>
-      <p>Open-world fantasy exploration where freedom comes first. Explore at your own pace.</p>
+<section class="hero-section mini-hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h2 class="hero-title">Our Games</h2>
+        <p class="hero-description">Embark on unforgettable adventures in worlds crafted with passion and innovation</p>
+      </div>
     </div>
   </div>
 </section>
 
-<footer>© 2025 Grass Studio. All rights reserved.</footer>
+<section class="section games-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">Interactive Experiences</span>
+      <h2 class="section-title">Currently in Development</h2>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="games-grid">
+      <div class="game-card featured">
+        <div class="game-image">
+          <div class="game-icon">
+            <i class="fas fa-mountain"></i>
+          </div>
+        </div>
+        <div class="game-content">
+          <span class="game-tag">Adventure RPG</span>
+          <h3 class="game-title">Mountain Tales</h3>
+          <p class="game-description">Embark on an epic journey through vast mountains and discover mythical villages hidden from the world. Uncover ancient secrets, forge alliances, and become a legend in a living, breathing fantasy world.</p>
+          <div class="game-features">
+            <span><i class="fas fa-globe"></i> Open World</span>
+            <span><i class="fas fa-users"></i> Multiplayer</span>
+            <span><i class="fas fa-dragon"></i> Fantasy</span>
+            <span><i class="fas fa-quest"></i> Rich Story</span>
+          </div>
+          <div class="game-status">
+            <div class="status-indicator in-development"></div>
+            <span>In Development - Early 2025</span>
+          </div>
+          <div class="game-actions">
+            <a href="#" class="game-btn wishlist-btn"><i class="fas fa-heart"></i> Add to Wishlist</a>
+            <a href="#" class="game-btn follow-btn"><i class="fas fa-bell"></i> Follow Updates</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="game-card">
+        <div class="game-image">
+          <div class="game-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+        </div>
+        <div class="game-content">
+          <span class="game-tag">Fantasy Exploration</span>
+          <h3 class="game-title">Heartfall</h3>
+          <p class="game-description">Explore a breathtaking open-world fantasy realm where every decision shapes your journey and the world around you. From enchanted forests to mystical ruins, discover a world full of wonder and danger.</p>
+          <div class="game-features">
+            <span><i class="fas fa-expand"></i> Open World</span>
+            <span><i class="fas fa-magic"></i> Magic System</span>
+            <span><i class="fas fa-compass"></i> Exploration</span>
+            <span><i class="fas fa-puzzle-piece"></i> Puzzles</span>
+          </div>
+          <div class="game-status">
+            <div class="status-indicator in-development"></div>
+            <span>In Development - Mid 2025</span>
+          </div>
+          <div class="game-actions">
+            <a href="#" class="game-btn wishlist-btn"><i class="fas fa-heart"></i> Add to Wishlist</a>
+            <a href="#" class="game-btn follow-btn"><i class="fas fa-bell"></i> Follow Updates</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section features-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">Why Our Games</span>
+      <h2 class="section-title">Unique Experience</h2>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-hat-wizard"></i>
+        </div>
+        <h3>Immersive Worlds</h3>
+        <p>Carefully crafted environments that tell their own stories and invite exploration.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <h3>Community Focused</h3>
+        <p>We develop with our community in mind, incorporating feedback and building together.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <h3>Innovative Design</h3>
+        <p>Pushing boundaries with unique mechanics and fresh approaches to gaming.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-palette"></i>
+        </div>
+        <h3>Artistic Vision</h3>
+        <p>Distinct visual styles that create memorable and atmospheric experiences.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section newsletter-section">
+  <div class="container">
+    <div class="newsletter-content">
+      <div class="newsletter-text">
+        <h3>Stay Updated on Our Games</h3>
+        <p>Subscribe to be the first to know about releases, updates, and exclusive content.</p>
+      </div>
+      <div class="newsletter-form">
+        <form id="newsletterForm">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>Grass Studio</h3>
+        <p>Where Imagination Meets Innovation</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/grass.stu/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://discord.com/invite/DCHUzHJDfg" target="_blank"><i class="fab fa-discord"></i></a>
+          <a href="mailto:grass.stu@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="books.html">Books</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4>Our Games</h4>
+        <a href="#">Mountain Tales</a>
+        <a href="#">Heartfall</a>
+        <a href="#">Future Projects</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p><i class="fas fa-envelope"></i> grass.stu@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Digital Studio</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Grass Studio. All rights reserved. | Crafted with <i class="fas fa-heart"></i> & passion</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop">
+  <i class="fas fa-chevron-up"></i>
+</button>
 
 <script>
-const faders = document.querySelectorAll('.fade-in');
-const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-  entries.forEach(entry => {
-    if(!entry.isIntersecting) return;
-    entry.target.style.animationPlayState = 'running';
-    observer.unobserve(entry.target);
+document.addEventListener('DOMContentLoaded', function() {
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.querySelector('.main-nav');
+  
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function() {
+      mainNav.classList.toggle('active');
+    });
+  }
+  
+  // Back to top button
+  const backToTop = document.getElementById('backToTop');
+  
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 500) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
   });
-}, appearOptions);
-faders.forEach(fader => { appearOnScroll.observe(fader); });
+  
+  backToTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  
+  // Newsletter form submission
+  const newsletterForm = document.getElementById('newsletterForm');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input[type="email"]').value;
+      alert(`Thank you for subscribing with ${email}! You'll be the first to know about our game releases.`);
+      this.reset();
+    });
+  }
+});
 </script>
 
 </body>
