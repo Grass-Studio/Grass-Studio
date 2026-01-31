@@ -3,84 +3,261 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact - Grass Studio</title>
+<title>Contact - Grass Studio | Get in Touch</title>
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<header>
-  <h1>Grass Studio</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="games.html">Games</a>
-    <a href="books.html">Books</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<header class="main-header">
+  <div class="container">
+    <div class="logo">
+      <h1>Grass Studio</h1>
+      <span class="tagline">Get in Touch</span>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+      <a href="games.html" class="nav-link"><i class="fas fa-gamepad"></i> Games</a>
+      <a href="books.html" class="nav-link"><i class="fas fa-book"></i> Books</a>
+      <a href="contact.html" class="nav-link active"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
 </header>
 
-<section id="contact" class="fade-in">
-  <h2>Contact Us</h2>
-  
-  <div class="contact-grid">
-    <div class="contact-card">
-      <h3>📧 Business Inquiries</h3>
-      <p><strong>Email:</strong> grass.stu@gmail.com</p>
-      <p><em>For partnerships, media inquiries, and business opportunities</em></p>
-    </div>
-    
-    <div class="contact-card">
-      <h3>🌐 Social Media</h3>
-      <div class="social-links">
-        <a href="https://www.instagram.com/grass.stu/?igsh=MW82cGN3dTN2Z3d1Mg%3D%3D#" target="_blank" class="social-btn instagram">
-          Instagram
-        </a>
-        <a href="https://discord.com/invite/DCHUzHJDfg" target="_blank" class="social-btn discord">
-          Discord Community
-        </a>
+<section class="hero-section mini-hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h2 class="hero-title">Contact Us</h2>
+        <p class="hero-description">We'd love to hear from you. Get in touch for collaborations, questions, or just to say hello!</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="founders" class="fade-in">
-  <h2>Founders and Executive Leadership</h2>
-  
-  <div class="founders-grid">
-    <div class="founder-card">
-      <div class="founder-avatar">WM</div>
-      <h3>Walid Bahri Menad</h3>
-      <p class="founder-role">Co-Founder and Co-Chief Executive Officer (Co-CEO)</p>
-      <p>Born in 2008, Business Administration student, Web Developer, and Game Developer. Responsible for overseeing the company's technical and strategic direction, including digital product development, software systems, and technical infrastructure, as well as contributing to the formulation and execution of operational and strategic plans to ensure efficiency, innovation, scalability, and compliance with the company's objectives and internal regulations.</p>
+<section id="contact" class="section contact-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">Get in Touch</span>
+      <h2 class="section-title">Contact Information</h2>
+      <div class="section-divider"></div>
     </div>
     
-    <div class="founder-card">
-      <div class="founder-avatar">AA</div>
-      <h3>Ahmed Issa Ahmed</h3>
-      <p class="founder-role">Co-Founder, Co-Chief Executive Officer (Co-CEO), and Head of Marketing</p>
-      <p>Responsible for leading the company's marketing and commercial functions, including the development and execution of marketing strategies, brand management, oversight of marketing and communication activities, and supporting the company's growth and expansion in target markets, in accordance with approved policies and governance frameworks.</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <h3>Business Inquiries</h3>
+        <p><strong>Email:</strong> grass.stu@gmail.com</p>
+        <p><em>For partnerships, media inquiries, and business opportunities</em></p>
+        <a href="mailto:grass.stu@gmail.com" class="contact-btn">
+          <i class="fas fa-paper-plane"></i> Send Email
+        </a>
+      </div>
+      
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fas fa-comments"></i>
+        </div>
+        <h3>Community & Support</h3>
+        <p>Join our community for updates, discussions, and support</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/grass.stu/?igsh=MW82cGN3dTN2Z3d1Mg%3D%3D#" target="_blank" class="social-btn instagram">
+            <i class="fab fa-instagram"></i> Instagram
+          </a>
+          <a href="https://discord.com/invite/DCHUzHJDfg" target="_blank" class="social-btn discord">
+            <i class="fab fa-discord"></i> Discord Community
+          </a>
+        </div>
+      </div>
+      
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <h3>Response Time</h3>
+        <p>We aim to respond to all inquiries within 24-48 hours during business days.</p>
+        <div class="response-info">
+          <span><i class="fas fa-calendar"></i> Business Days: Monday - Friday</span>
+          <span><i class="fas fa-hourglass-half"></i> Response: 24-48 hours</span>
+        </div>
+      </div>
     </div>
-  </div>
-  
-  <div class="mission-statement">
-    <h3>Our Philosophy</h3>
-    <p>"The Co-Chief Executive Officers exercise their authority in accordance with the company's Articles of Association and duly adopted corporate resolutions."</p>
-    <p class="philosophy-quote">"<strong>No Genre, No Limits. Just games & passion.</strong> We believe in keeping the flame of passion alive, working tirelessly on our craft until we achieve what we aspire to. Never lose that spark - keep creating until you reach your goals."</p>
   </div>
 </section>
 
-<footer>© 2025 Grass Studio. All rights reserved.</footer>
+<section id="founders" class="section founders-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">Meet the Team</span>
+      <h2 class="section-title">Founders & Leadership</h2>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="founders-grid">
+      <div class="founder-card">
+        <div class="founder-avatar">WM</div>
+        <div class="founder-info">
+          <h3 class="founder-name">Walid Bahri Menad</h3>
+          <p class="founder-role">Co-Founder and Co-Chief Executive Officer (Co-CEO)</p>
+          <div class="founder-details">
+            <p><i class="fas fa-birthday-cake"></i> Born in 2008</p>
+            <p><i class="fas fa-graduation-cap"></i> Business Administration Student</p>
+            <p><i class="fas fa-code"></i> Web Developer & Game Developer</p>
+          </div>
+          <p class="founder-bio">Responsible for overseeing the company's technical and strategic direction, including digital product development, software systems, and technical infrastructure, as well as contributing to the formulation and execution of operational and strategic plans to ensure efficiency, innovation, scalability, and compliance with the company's objectives and internal regulations.</p>
+        </div>
+      </div>
+      
+      <div class="founder-card">
+        <div class="founder-avatar">AA</div>
+        <div class="founder-info">
+          <h3 class="founder-name">Ahmed Issa Ahmed</h3>
+          <p class="founder-role">Co-Founder, Co-Chief Executive Officer (Co-CEO), and Head of Marketing</p>
+          <div class="founder-details">
+            <p><i class="fas fa-chart-line"></i> Marketing Strategy</p>
+            <p><i class="fas fa-bullhorn"></i> Brand Management</p>
+            <p><i class="fas fa-globe"></i> Market Expansion</p>
+          </div>
+          <p class="founder-bio">Responsible for leading the company's marketing and commercial functions, including the development and execution of marketing strategies, brand management, oversight of marketing and communication activities, and supporting the company's growth and expansion in target markets, in accordance with approved policies and governance frameworks.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mission-statement">
+      <div class="mission-icon">
+        <i class="fas fa-quote-left"></i>
+      </div>
+      <div class="mission-content">
+        <h3>Our Philosophy</h3>
+        <p class="mission-quote">"The Co-Chief Executive Officers exercise their authority in accordance with the company's Articles of Association and duly adopted corporate resolutions."</p>
+        <p class="philosophy-quote">"<strong>No Genre, No Limits. Just games & passion.</strong> We believe in keeping the flame of passion alive, working tirelessly on our craft until we achieve what we aspire to. Never lose that spark - keep creating until you reach your goals."</p>
+        <div class="mission-tags">
+          <span class="tag">Passion</span>
+          <span class="tag">Innovation</span>
+          <span class="tag">Creativity</span>
+          <span class="tag">Persistence</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section faq-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">Questions</span>
+      <h2 class="section-title">Frequently Asked</h2>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3><i class="fas fa-question-circle"></i> How can I purchase your books?</h3>
+        <p>Our books are available on multiple platforms including Amazon, Apple Books, Kobo, and others. Click the "Get It Now" button on any book to see all available stores.</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3><i class="fas fa-question-circle"></i> When will your games be released?</h3>
+        <p>Our games are currently in development. Mountain Tales is scheduled for early 2025 and Heartfall for mid 2025. Follow us on social media for updates!</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3><i class="fas fa-question-circle"></i> Can I collaborate with Grass Studio?</h3>
+        <p>Yes! We're open to collaborations. Please send your proposal to grass.stu@gmail.com with the subject "Collaboration Inquiry".</p>
+      </div>
+      
+      <div class="faq-item">
+        <h3><i class="fas fa-question-circle"></i> Do you accept submissions for game/book ideas?</h3>
+        <p>While we appreciate creative ideas, we're currently not accepting unsolicited submissions due to our full development schedule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>Grass Studio</h3>
+        <p>Where Imagination Meets Innovation</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/grass.stu/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://discord.com/invite/DCHUzHJDfg" target="_blank"><i class="fab fa-discord"></i></a>
+          <a href="mailto:grass.stu@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="books.html">Books</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4>Resources</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p><i class="fas fa-envelope"></i> grass.stu@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Digital Studio</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Grass Studio. All rights reserved. | Crafted with <i class="fas fa-heart"></i> & passion</p>
+      <p class="legal-note">The Co-Chief Executive Officers exercise their authority in accordance with the company's Articles of Association and duly adopted corporate resolutions.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop">
+  <i class="fas fa-chevron-up"></i>
+</button>
 
 <script>
-const faders = document.querySelectorAll('.fade-in');
-const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-  entries.forEach(entry => {
-    if(!entry.isIntersecting) return;
-    entry.target.style.animationPlayState = 'running';
-    observer.unobserve(entry.target);
+document.addEventListener('DOMContentLoaded', function() {
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.querySelector('.main-nav');
+  
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function() {
+      mainNav.classList.toggle('active');
+    });
+  }
+  
+  // Back to top button
+  const backToTop = document.getElementById('backToTop');
+  
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 500) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
   });
-}, appearOptions);
-faders.forEach(fader => { appearOnScroll.observe(fader); });
+  
+  backToTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  
+  // FAQ accordion
+  const faqItems = document.querySelectorAll('.faq-item h3');
+  faqItems.forEach(item => {
+    item.addEventListener('click', function() {
+      const parent = this.parentElement;
+      parent.classList.toggle('active');
+    });
+  });
+});
 </script>
 
 </body>
