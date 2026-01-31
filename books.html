@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Books - Grass Studio</title>
 <link rel="stylesheet" href="assets/css/style.css">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2987449339782635"
+crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -25,14 +28,37 @@
 
     <div class="game-card fade-in">
       <h3>The Undead Nightmare: Origins</h3>
-      <img src="assets/images/book1.jpg">
-      <button class="buy-btn" onclick="openStores('book1')">احصل عليه الآن</button>
+      <img src="assets/images/book1.jpg" alt="The Undead Nightmare: Origins Book Cover">
+      <p>Series: Book 0</p>
+      <button class="buy-btn" onclick="openStores('book1')">Get It Now</button>
     </div>
 
     <div class="game-card fade-in">
       <h3>The Undead Nightmare: Book I</h3>
-      <img src="assets/images/book2.jpg">
-      <button class="buy-btn" onclick="openStores('book2')">احصل عليه الآن</button>
+      <img src="assets/images/book2.jpg" alt="The Undead Nightmare: Book I Book Cover">
+      <p>Pre-order available</p>
+      <div class="preorder-counter">
+        <p>Pre-order ends in:</p>
+        <div id="countdown" class="countdown">
+          <div class="countdown-item">
+            <span id="days">00</span>
+            <div class="countdown-label">Days</div>
+          </div>
+          <div class="countdown-item">
+            <span id="hours">00</span>
+            <div class="countdown-label">Hours</div>
+          </div>
+          <div class="countdown-item">
+            <span id="minutes">00</span>
+            <div class="countdown-label">Minutes</div>
+          </div>
+          <div class="countdown-item">
+            <span id="seconds">00</span>
+            <div class="countdown-label">Seconds</div>
+          </div>
+        </div>
+      </div>
+      <button class="buy-btn" onclick="openStores('book2')">Pre-order Now</button>
     </div>
 
   </div>
@@ -40,11 +66,11 @@
 
 <footer>© 2025 Grass Studio</footer>
 
-<!-- SAME MODAL + SCRIPT -->
+<!-- STORES MODAL -->
 <div id="store-modal" class="store-modal">
   <div class="store-content">
     <span class="close" onclick="closeStores()">×</span>
-    <h3>متوفر على</h3>
+    <h3>Available On</h3>
     <div class="stores" id="stores-container"></div>
   </div>
 </div>
@@ -52,29 +78,89 @@
 <script>
 const booksStores = {
   book1: [
-    { logo:"assets/images/smashwords.png", url:"https://www.smashwords.com/books/view/1878337" }
+    { logo:"assets/images/smashwords.png", url:"https://www.smashwords.com/books/view/1878337" },
+    { logo:"assets/images/barnesandnoble.png", url:"https://www.barnesandnoble.com/w/x/x?ean=2940182427364" },
+    { logo:"assets/images/kobo.png", url:"https://kobo.com/search?query=9798232849467" },
+    { logo:"assets/images/applebooks.png", url:"https://books.apple.com/us/book/id6753977863" },
+    { logo:"assets/images/tolino.png", url:"https://www.thalia.de/shop/home/artikeldetails/A1077128144" },
+    { logo:"assets/images/vivlio.png", url:"https://shop.vivlio.com/product/9798232849467_9798232849467_10020/the-undead-nightmare-origins" },
+    { logo:"assets/images/fable.png", url:"https://fable.co/book/x-9798232849467" },
+    { logo:"assets/images/amazon.png", url:"https://www.amazon.com/dp/B0GJ5RDZBY" }
   ],
   book2: [
-    { logo:"assets/images/amazon.png", url:"LINK" },
-    { logo:"assets/images/googleplay.png", url:"LINK" },
-    { logo:"assets/images/applebooks.png", url:"LINK" }
+    { logo:"assets/images/tolino.png", url:"https://www.thalia.de/shop/home/artikeldetails/A1078033452" },
+    { logo:"assets/images/applebooks.png", url:"https://books.apple.com/us/book/the-undead-origins-be-awear/id6758108621" },
+    { logo:"assets/images/kobo.png", url:"https://kobo.com/search?query=9798233007323" },
+    { logo:"assets/images/vivlio.png", url:"https://shop.vivlio.com/product/9798233007323_9798233007323_10020/the-undead-origins-be-awear" },
+    { logo:"assets/images/smashwords.png", url:"https://www.smashwords.com/books/view/1950152" }
   ]
 };
 
-function openStores(bookId){
-  const c=document.getElementById("stores-container");
-  c.innerHTML="";
-  booksStores[bookId].forEach(s=>{
-    c.innerHTML+=`<a href="${s.url}" target="_blank" class="store"><img src="${s.logo}"></a>`;
+function openStores(bookId) {
+  const c = document.getElementById("stores-container");
+  c.innerHTML = "";
+  booksStores[bookId].forEach(s => {
+    if (s.url && s.url !== "LINK") {
+      let fullUrl = s.url;
+      if (!fullUrl.startsWith('http://') && !fullUrl.startsWith('https://')) {
+        fullUrl = 'https://' + fullUrl;
+      }
+      
+      c.innerHTML += `<a href="${fullUrl}" target="_blank" class="store">
+        <img src="${s.logo}" alt="Store Logo">
+      </a>`;
+    }
   });
-  document.getElementById("store-modal").style.display="flex";
+  document.getElementById("store-modal").style.display = "flex";
 }
-function closeStores(){
-  document.getElementById("store-modal").style.display="none";
+
+function closeStores() {
+  document.getElementById("store-modal").style.display = "none";
 }
+</script>
+
+<script>
+// Countdown Timer for Book 2 (Pre-order ends February 15, 2026)
+function updateCountdown() {
+  const targetDate = new Date('2026-02-15T23:59:59').getTime();
+  const now = new Date().getTime();
+  const timeLeft = targetDate - now;
+  
+  if (timeLeft < 0) {
+    document.getElementById('countdown').innerHTML = 
+      '<div class="countdown-ended">Pre-order period has ended!</div>';
+    return;
+  }
+  
+  const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+  
+  document.getElementById('days').textContent = days.toString().padStart(2, '0');
+  document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+  document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+  document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+}
+
+// Initialize countdown
+document.addEventListener('DOMContentLoaded', function() {
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+});
+
+// Intersection Observer for fade-in animations
+const faders = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.animationPlayState="running";
+      observer.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
+faders.forEach(f=>observer.observe(f));
 </script>
 
 </body>
 </html>
-
-
