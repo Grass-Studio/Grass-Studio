@@ -66,6 +66,27 @@ crossorigin="anonymous"></script>
       <h3>The Undead Nightmare: Book I</h3>
       <img src="assets/images/book2.jpg" alt="Book Cover">
       <p>Pre-order available</p>
+      <div class="preorder-counter">
+        <p>Pre-order ends in:</p>
+        <div id="countdown" class="countdown">
+          <div class="countdown-item">
+            <span id="days">00</span>
+            <div class="countdown-label">Days</div>
+          </div>
+          <div class="countdown-item">
+            <span id="hours">00</span>
+            <div class="countdown-label">Hours</div>
+          </div>
+          <div class="countdown-item">
+            <span id="minutes">00</span>
+            <div class="countdown-label">Minutes</div>
+          </div>
+          <div class="countdown-item">
+            <span id="seconds">00</span>
+            <div class="countdown-label">Seconds</div>
+          </div>
+        </div>
+      </div>
       <button class="buy-btn" onclick="openStores('book2')">Get it Now</button>
     </div>
 
@@ -92,7 +113,8 @@ const booksStores = {
     { logo:"assets/images/applebooks.png", url:"https://books.apple.com/us/book/id6753977863" },
     { logo:"assets/images/tolino.png", url:"https://www.thalia.de/shop/home/artikeldetails/A1077128144" },
     { logo:"assets/images/vivlio.png", url:"https://shop.vivlio.com/product/9798232849467_9798232849467_10020/the-undead-nightmare-origins" },
-    { logo:"assets/images/fable.png", url:"https://fable.co/book/x-9798232849467" }
+    { logo:"assets/images/fable.png", url:"https://fable.co/book/x-9798232849467" },
+    { logo:"assets/images/amazon.png", url:"https://www.amazon.com/dp/B0GJ5RDZBY" }
   ],
   book2: [
     { logo:"assets/images/tolino.png", url:"https://www.thalia.de/shop/home/artikeldetails/A1078033452" },
@@ -130,6 +152,36 @@ function closeStores() {
 </script>
 
 <script>
+// Countdown Timer for Book 2 (Pre-order ends February 15)
+function updateCountdown() {
+  const targetDate = new Date('February 15, 2025 23:59:59').getTime();
+  const now = new Date().getTime();
+  const timeLeft = targetDate - now;
+  
+  if (timeLeft < 0) {
+    document.getElementById('days').textContent = '00';
+    document.getElementById('hours').textContent = '00';
+    document.getElementById('minutes').textContent = '00';
+    document.getElementById('seconds').textContent = '00';
+    return;
+  }
+  
+  const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+  
+  document.getElementById('days').textContent = days.toString().padStart(2, '0');
+  document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+  document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+  document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+}
+
+// Initialize countdown
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// Intersection Observer for fade-in animations
 const faders = document.querySelectorAll('.fade-in');
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(e=>{
