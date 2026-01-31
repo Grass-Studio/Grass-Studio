@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Books - Grass Studio</title>
+<title>Books - Grass Studio | Literary Adventures</title>
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2987449339782635"
 crossorigin="anonymous"></script>
@@ -12,68 +13,235 @@ crossorigin="anonymous"></script>
 
 <body>
 
-<header>
-  <h1>Grass Studio</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="games.html">Games</a>
-    <a href="books.html">Books</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<header class="main-header">
+  <div class="container">
+    <div class="logo">
+      <h1>Grass Studio</h1>
+      <span class="tagline">Literary Adventures</span>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+      <a href="games.html" class="nav-link"><i class="fas fa-gamepad"></i> Games</a>
+      <a href="books.html" class="nav-link active"><i class="fas fa-book"></i> Books</a>
+      <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
 </header>
 
-<section id="books" class="fade-in">
-  <h2>Our Books</h2>
-  <div class="games">
-
-    <div class="game-card fade-in">
-      <h3>The Undead Nightmare: Origins</h3>
-      <img src="assets/images/book1.jpg" alt="The Undead Nightmare: Origins Book Cover">
-      <p>Series: Book 0</p>
-      <button class="buy-btn" onclick="openStores('book1')">Get It Now</button>
-    </div>
-
-    <div class="game-card fade-in">
-      <h3>The Undead Nightmare: Book I</h3>
-      <img src="assets/images/book2.jpg" alt="The Undead Nightmare: Book I Book Cover">
-      <p>Pre-order available</p>
-      <div class="preorder-counter">
-        <p>Pre-order ends in:</p>
-        <div id="countdown" class="countdown">
-          <div class="countdown-item">
-            <span id="days">00</span>
-            <div class="countdown-label">Days</div>
-          </div>
-          <div class="countdown-item">
-            <span id="hours">00</span>
-            <div class="countdown-label">Hours</div>
-          </div>
-          <div class="countdown-item">
-            <span id="minutes">00</span>
-            <div class="countdown-label">Minutes</div>
-          </div>
-          <div class="countdown-item">
-            <span id="seconds">00</span>
-            <div class="countdown-label">Seconds</div>
-          </div>
-        </div>
+<section class="hero-section mini-hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h2 class="hero-title">Our Books</h2>
+        <p class="hero-description">Immerse yourself in captivating stories and epic adventures from our literary universe</p>
       </div>
-      <button class="buy-btn" onclick="openStores('book2')">Pre-order Now</button>
     </div>
-
   </div>
 </section>
 
-<footer>© 2025 Grass Studio</footer>
+<section id="books" class="section books-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">The Undead Nightmare Series</span>
+      <h2 class="section-title">Available Now</h2>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="books-grid">
+      <div class="book-card">
+        <div class="book-badge">Book 0</div>
+        <div class="book-cover">
+          <img src="assets/images/book1.jpg" alt="The Undead Nightmare: Origins">
+          <div class="book-overlay">
+            <button class="quick-view-btn" onclick="openStores('book1')">
+              <i class="fas fa-shopping-cart"></i> Get Now
+            </button>
+          </div>
+        </div>
+        <div class="book-info">
+          <h3 class="book-title">The Undead Nightmare: Origins</h3>
+          <p class="book-series">Prequel to the Undead Nightmare Series</p>
+          <p class="book-description">Discover the origins of the nightmare that started it all. A gripping tale of survival in a world overrun by the undead. This prequel sets the stage for the epic saga that follows.</p>
+          <div class="book-meta">
+            <span><i class="fas fa-calendar"></i> Published: 2023</span>
+            <span><i class="fas fa-file-alt"></i> Series: Book 0</span>
+          </div>
+          <div class="book-actions">
+            <button class="buy-btn" onclick="openStores('book1')">
+              <i class="fas fa-store"></i> Available Stores
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="book-card featured">
+        <div class="book-badge pre-order">Pre-order</div>
+        <div class="book-cover">
+          <img src="assets/images/book2.jpg" alt="The Undead Nightmare: Book I">
+          <div class="book-overlay">
+            <button class="quick-view-btn" onclick="openStores('book2')">
+              <i class="fas fa-clock"></i> Pre-order
+            </button>
+          </div>
+        </div>
+        <div class="book-info">
+          <h3 class="book-title">The Undead Nightmare: Book I</h3>
+          <p class="book-series">The Beginning of the Saga</p>
+          <p class="book-description">The first chapter in an epic survival series. Follow the journey of characters fighting for humanity in a post-apocalyptic world filled with danger and tough choices.</p>
+          
+          <div class="book-meta">
+            <span><i class="fas fa-calendar"></i> Release: February 15, 2026</span>
+            <span><i class="fas fa-bookmark"></i> Series: Book I</span>
+          </div>
+          
+          <div class="preorder-counter">
+            <p class="preorder-text">Pre-order ends in:</p>
+            <div id="countdown" class="countdown">
+              <div class="countdown-item">
+                <span id="days">00</span>
+                <div class="countdown-label">Days</div>
+              </div>
+              <div class="countdown-item">
+                <span id="hours">00</span>
+                <div class="countdown-label">Hours</div>
+              </div>
+              <div class="countdown-item">
+                <span id="minutes">00</span>
+                <div class="countdown-label">Minutes</div>
+              </div>
+              <div class="countdown-item">
+                <span id="seconds">00</span>
+                <div class="countdown-label">Seconds</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="book-actions">
+            <button class="buy-btn preorder-btn" onclick="openStores('book2')">
+              <i class="fas fa-bolt"></i> Pre-order Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section series-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">About the Series</span>
+      <h2 class="section-title">The Undead Nightmare</h2>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="series-content">
+      <div class="series-text">
+        <h3>A World of Survival and Choices</h3>
+        <p>The Undead Nightmare series takes you on a harrowing journey through a post-apocalyptic world where every decision matters. Our characters face not only the threat of the undead but also the moral dilemmas of survival in a collapsed society.</p>
+        
+        <div class="series-features">
+          <div class="feature-item">
+            <i class="fas fa-skull-crossbones"></i>
+            <h4>Survival Horror</h4>
+            <p>Experience the tension of surviving in a world overrun by threats</p>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-users"></i>
+            <h4>Character Depth</h4>
+            <p>Complex characters with realistic motivations and growth</p>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-balance-scale"></i>
+            <h4>Moral Choices</h4>
+            <p>Decisions that affect the story and character relationships</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="series-timeline">
+        <h3>Series Timeline</h3>
+        <div class="timeline">
+          <div class="timeline-item completed">
+            <span class="timeline-date">2023</span>
+            <div class="timeline-content">
+              <h4>Origins (Book 0)</h4>
+              <p>Prequel - The beginning of the outbreak</p>
+            </div>
+          </div>
+          <div class="timeline-item current">
+            <span class="timeline-date">2026</span>
+            <div class="timeline-content">
+              <h4>Book I</h4>
+              <p>First installment - Pre-order available</p>
+            </div>
+          </div>
+          <div class="timeline-item upcoming">
+            <span class="timeline-date">Future</span>
+            <div class="timeline-content">
+              <h4>Book II & III</h4>
+              <p>Continuing the saga</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>Grass Studio</h3>
+        <p>Where Imagination Meets Innovation</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/grass.stu/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://discord.com/invite/DCHUzHJDfg" target="_blank"><i class="fab fa-discord"></i></a>
+          <a href="mailto:grass.stu@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="books.html">Books</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4>Books</h4>
+        <a href="#book1">The Undead Nightmare: Origins</a>
+        <a href="#book2">The Undead Nightmare: Book I</a>
+        <a href="#series">About the Series</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p><i class="fas fa-envelope"></i> grass.stu@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Digital Studio</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Grass Studio. All rights reserved. | Crafted with <i class="fas fa-heart"></i> & passion</p>
+    </div>
+  </div>
+</footer>
 
 <!-- STORES MODAL -->
 <div id="store-modal" class="store-modal">
   <div class="store-content">
     <span class="close" onclick="closeStores()">×</span>
-    <h3>Available On</h3>
+    <h3><i class="fas fa-store"></i> Available on</h3>
     <div class="stores" id="stores-container"></div>
   </div>
 </div>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop">
+  <i class="fas fa-chevron-up"></i>
+</button>
 
 <script>
 const booksStores = {
@@ -117,10 +285,8 @@ function openStores(bookId) {
 function closeStores() {
   document.getElementById("store-modal").style.display = "none";
 }
-</script>
 
-<script>
-// Countdown Timer for Book 2 (Pre-order ends February 15, 2026)
+// Countdown Timer for Book 2
 function updateCountdown() {
   const targetDate = new Date('2026-02-15T23:59:59').getTime();
   const now = new Date().getTime();
@@ -143,24 +309,35 @@ function updateCountdown() {
   document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
 }
 
-// Initialize countdown
 document.addEventListener('DOMContentLoaded', function() {
   updateCountdown();
   setInterval(updateCountdown, 1000);
-});
-
-// Intersection Observer for fade-in animations
-const faders = document.querySelectorAll('.fade-in');
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.style.animationPlayState="running";
-      observer.unobserve(e.target);
+  
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.querySelector('.main-nav');
+  
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function() {
+      mainNav.classList.toggle('active');
+    });
+  }
+  
+  // Back to top button
+  const backToTop = document.getElementById('backToTop');
+  
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 500) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
     }
   });
-},{threshold:0.2});
-faders.forEach(f=>observer.observe(f));
+  
+  backToTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
 </script>
-
 </body>
 </html>
