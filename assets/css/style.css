@@ -10,6 +10,7 @@ header{
   padding:25px;
   display:flex;
   justify-content:space-between;
+  align-items: center;
 }
 nav a{margin-left:15px;font-weight:bold}
 .hero{
@@ -90,10 +91,14 @@ section{
   cursor:pointer;
   margin-top: 10px;
   border-radius: 5px;
+  color: #000;
+  transition: all 0.3s ease;
 }
 
 .buy-btn:hover {
   background: #6bc04a;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(126, 217, 87, 0.3);
 }
 
 .store-modal{
@@ -103,6 +108,7 @@ section{
   background:rgba(0,0,0,.8);
   justify-content:center;
   align-items:center;
+  z-index: 1000;
 }
 .store-content{
   background:#111;
@@ -128,6 +134,7 @@ section{
 .store img{
   width:80px;
   transition: transform 0.3s;
+  border-radius: 5px;
 }
 
 .store:hover img {
@@ -150,6 +157,165 @@ section{
 }
 @keyframes fade{
   to{opacity:1}
+}
+
+/* Contact Page Styles */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.contact-card {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 10px;
+  border-left: 4px solid #7ed957;
+}
+
+.contact-card h3 {
+  color: #7ed957;
+  margin-bottom: 15px;
+  font-size: 1.3em;
+}
+
+.contact-card p {
+  margin: 8px 0;
+}
+
+.contact-card em {
+  color: #aaa;
+  font-size: 0.9em;
+}
+
+/* Social Media Buttons */
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #2a2a2a;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  color: #fff;
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+}
+
+.instagram {
+  background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+  color: white;
+}
+
+.discord {
+  background: #5865F2;
+  color: white;
+}
+
+/* Founders Section */
+#founders {
+  margin-top: 60px;
+}
+
+.founders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.founder-card {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.founder-card:hover {
+  transform: translateY(-5px);
+}
+
+.founder-avatar {
+  width: 80px;
+  height: 80px;
+  background: #7ed957;
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 auto 20px;
+}
+
+.founder-card h3 {
+  color: #7ed957;
+  margin-bottom: 5px;
+}
+
+.founder-role {
+  color: #aaa;
+  font-style: italic;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+}
+
+.founder-card p {
+  line-height: 1.6;
+  color: #ccc;
+}
+
+/* Mission Statement */
+.mission-statement {
+  background: rgba(126, 217, 87, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  margin-top: 40px;
+  border-left: 4px solid #7ed957;
+}
+
+.mission-statement h3 {
+  color: #7ed957;
+  margin-bottom: 15px;
+}
+
+.mission-statement p {
+  line-height: 1.7;
+  color: #ddd;
+  font-style: italic;
+}
+
+/* Footer */
+footer {
+  background: #111;
+  padding: 20px;
+  text-align: center;
+  color: #aaa;
+  margin-top: 40px;
+}
+
+/* Animations for countdown ended */
+.countdown-ended {
+  font-size: 16px;
+  color: #7ed957;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  border: 2px solid #7ed957;
+  border-radius: 5px;
+  margin: 10px 0;
 }
 
 /* Responsive Design */
@@ -176,6 +342,17 @@ section{
   .stores {
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  .contact-grid,
+  .founders-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-card,
+  .founder-card,
+  .mission-statement {
+    padding: 20px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -190,4 +367,47 @@ section{
   .store img {
     width: 100px;
   }
+  
+  .social-links {
+    flex-direction: column;
+  }
+  
+  .social-btn {
+    width: 100%;
+  }
+}
+
+/* Navigation hover effects */
+nav a {
+  position: relative;
+  padding: 5px 0;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #7ed957;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Game card hover effect */
+.game-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
