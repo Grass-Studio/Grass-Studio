@@ -1,86 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact - Grass Studio</title>
-<link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
+/* Founder Card Updates */
+.founder-card {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: left; /* Changed from center to left */
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
 
-<header>
-  <h1>Grass Studio</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="games.html">Games</a>
-    <a href="books.html">Books</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+.founder-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
 
-<section id="contact" class="fade-in">
-  <h2>Contact Us</h2>
+.founder-avatar {
+  width: 70px;
+  height: 70px;
+  background: #7ed957;
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+}
+
+.founder-card h3 {
+  color: #7ed957;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.founder-role {
+  color: #aaa;
+  font-style: italic;
+  margin-bottom: 20px;
+  font-size: 0.9em;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333;
+}
+
+.founder-card p {
+  line-height: 1.6;
+  color: #ccc;
+  font-size: 0.9em;
+}
+
+/* Mission Statement Updates */
+.mission-statement {
+  background: rgba(126, 217, 87, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  margin-top: 40px;
+  border-left: 4px solid #7ed957;
+}
+
+.mission-statement h3 {
+  color: #7ed957;
+  margin-bottom: 20px;
+  font-size: 1.4em;
+}
+
+.mission-statement p {
+  line-height: 1.7;
+  color: #ddd;
+  margin-bottom: 15px;
+}
+
+.philosophy-quote {
+  font-style: italic;
+  font-size: 1.1em;
+  color: #fff;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.philosophy-quote strong {
+  color: #7ed957;
+  font-size: 1.2em;
+}
+
+/* Section Header Updates */
+#founders h2 {
+  text-align: center;
+  color: #7ed957;
+  margin-bottom: 40px;
+  font-size: 2em;
+}
+
+/* Responsive Design Updates */
+@media (max-width: 768px) {
+  .founder-card {
+    padding: 20px;
+    text-align: center;
+  }
   
-  <div class="contact-grid">
-    <div class="contact-card">
-      <h3>📧 Business Inquiries</h3>
-      <p><strong>Email:</strong> grass.stu@gmail.com</p>
-      <p><em>For partnerships, media inquiries, and business opportunities</em></p>
-    </div>
-    
-    <div class="contact-card">
-      <h3>🌐 Social Media</h3>
-      <div class="social-links">
-        <a href="https://www.instagram.com/grass.stu/?igsh=MW82cGN3dTN2Z3d1Mg%3D%3D#" target="_blank" class="social-btn instagram">
-          Instagram
-        </a>
-        <a href="https://discord.com/invite/DCHUzHJDfg" target="_blank" class="social-btn discord">
-          Discord Community
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="founders" class="fade-in">
-  <h2>About the Founders</h2>
+  .founder-avatar {
+    margin: 0 auto 20px;
+  }
   
-  <div class="founders-grid">
-    <div class="founder-card">
-      <div class="founder-avatar">GS</div>
-      <h3>The Visionary</h3>
-      <p class="founder-role">Lead Developer & Creative Director</p>
-      <p>Started Grass Studio during the COVID lockdown as a passion project. Self-taught developer with a love for immersive storytelling and game design.</p>
-    </div>
-    
-    <div class="founder-card">
-      <div class="founder-avatar">AB</div>
-      <h3>The Storyteller</h3>
-      <p class="founder-role">Writer & World Builder</p>
-      <p>Crafting the narratives and lore behind our games and books. Believes in creating worlds that players can get lost in for hours.</p>
-    </div>
-  </div>
+  .founder-role {
+    text-align: center;
+  }
   
-  <div class="mission-statement">
-    <h3>Our Mission</h3>
-    <p>"We believe that great stories shouldn't be confined to one medium. Whether it's through games, books, or interactive experiences, we're passionate about creating worlds that captivate and inspire. Grass Studio represents our commitment to learning, experimenting, and sharing our creative journey with you."</p>
-  </div>
-</section>
+  .philosophy-quote {
+    padding: 15px;
+    font-size: 1em;
+  }
+}
 
-<footer>© 2025 Grass Studio. All rights reserved.</footer>
-
-<script>
-const faders = document.querySelectorAll('.fade-in');
-const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-  entries.forEach(entry => {
-    if(!entry.isIntersecting) return;
-    entry.target.style.animationPlayState = 'running';
-    observer.unobserve(entry.target);
-  });
-}, appearOptions);
-faders.forEach(fader => { appearOnScroll.observe(fader); });
-</script>
-
-</body>
-</html>
+@media (max-width: 480px) {
+  .founder-card h3 {
+    font-size: 1.1em;
+  }
+  
+  .founder-card p {
+    font-size: 0.85em;
+  }
+  
+  .philosophy-quote {
+    font-size: 0.95em;
+  }
+}
