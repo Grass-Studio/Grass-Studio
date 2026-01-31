@@ -222,7 +222,7 @@ section{
   color: white;
 }
 
-/* Founders Section */
+/* Founders Section Updates */
 #founders {
   margin-top: 60px;
 }
@@ -238,46 +238,53 @@ section{
   background: #1a1a1a;
   padding: 25px;
   border-radius: 10px;
-  text-align: center;
-  transition: transform 0.3s ease;
+  text-align: left; /* Changed from center to left */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .founder-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .founder-avatar {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   background: #7ed957;
   color: #000;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
-  margin: 0 auto 20px;
+  margin: 0 0 20px 0;
 }
 
 .founder-card h3 {
   color: #7ed957;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  font-size: 1.2em;
 }
 
 .founder-role {
   color: #aaa;
   font-style: italic;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   font-size: 0.9em;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333;
 }
 
 .founder-card p {
   line-height: 1.6;
   color: #ccc;
+  font-size: 0.9em;
 }
 
-/* Mission Statement */
+/* Mission Statement Updates */
 .mission-statement {
   background: rgba(126, 217, 87, 0.1);
   padding: 30px;
@@ -288,13 +295,40 @@ section{
 
 .mission-statement h3 {
   color: #7ed957;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  font-size: 1.4em;
 }
 
 .mission-statement p {
   line-height: 1.7;
   color: #ddd;
+  margin-bottom: 15px;
+}
+
+.philosophy-quote {
   font-style: italic;
+  font-size: 1.1em;
+  color: #fff;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  margin-top: 20px;
+  border: 1px solid rgba(126, 217, 87, 0.3);
+}
+
+.philosophy-quote strong {
+  color: #7ed957;
+  font-size: 1.2em;
+}
+
+/* Section Header Updates */
+#founders h2 {
+  text-align: center;
+  color: #7ed957;
+  margin-bottom: 40px;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* Footer */
@@ -318,69 +352,11 @@ footer {
   margin: 10px 0;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  nav {
-    margin-top: 15px;
-  }
-  
-  .countdown {
-    gap: 5px;
-  }
-  
-  .countdown-item span {
-    font-size: 18px;
-    padding: 6px 8px;
-    min-width: 40px;
-  }
-  
-  .stores {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .contact-grid,
-  .founders-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .contact-card,
-  .founder-card,
-  .mission-statement {
-    padding: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .countdown {
-    flex-wrap: wrap;
-  }
-  
-  .stores {
-    grid-template-columns: 1fr;
-  }
-  
-  .store img {
-    width: 100px;
-  }
-  
-  .social-links {
-    flex-direction: column;
-  }
-  
-  .social-btn {
-    width: 100%;
-  }
-}
-
 /* Navigation hover effects */
 nav a {
   position: relative;
   padding: 5px 0;
+  transition: color 0.3s ease;
 }
 
 nav a:hover {
@@ -410,4 +386,88 @@ nav a:hover::after {
 .game-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  nav {
+    margin-top: 15px;
+  }
+  
+  nav a {
+    margin: 0 8px;
+  }
+  
+  .countdown {
+    gap: 5px;
+  }
+  
+  .countdown-item span {
+    font-size: 18px;
+    padding: 6px 8px;
+    min-width: 40px;
+  }
+  
+  .stores {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .contact-grid,
+  .founders-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-card,
+  .founder-card,
+  .mission-statement {
+    padding: 20px;
+  }
+  
+  .founder-card {
+    text-align: center;
+  }
+  
+  .founder-avatar {
+    margin: 0 auto 20px;
+  }
+  
+  .founder-role {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown {
+    flex-wrap: wrap;
+  }
+  
+  .stores {
+    grid-template-columns: 1fr;
+  }
+  
+  .store img {
+    width: 100px;
+  }
+  
+  .social-links {
+    flex-direction: column;
+  }
+  
+  .social-btn {
+    width: 100%;
+  }
+  
+  .philosophy-quote {
+    padding: 15px;
+    font-size: 1em;
+  }
+  
+  #founders h2 {
+    font-size: 1.6em;
+  }
 }
