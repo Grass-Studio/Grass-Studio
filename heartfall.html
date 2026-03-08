@@ -1,48 +1,339 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Heartfall - Grass Studio</title>
-<link rel="stylesheet" href="assets/css/style.css">
+
+<style>
+
+/* GENERAL */
+
+body{
+font-family:Arial, Helvetica, sans-serif;
+margin:0;
+background:#0f0f0f;
+color:white;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:#111;
+}
+
+nav a{
+margin-left:20px;
+color:white;
+text-decoration:none;
+}
+
+nav a:hover{
+color:#4CAF50;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#111;
+margin-top:60px;
+}
+
+/* PAGE */
+
+.game-detail{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+h2{
+font-size:40px;
+margin-bottom:10px;
+}
+
+/* TABS */
+
+.hf-tabs{
+display:flex;
+gap:10px;
+margin:30px 0;
+flex-wrap:wrap;
+}
+
+.hf-tab{
+padding:10px 16px;
+border:none;
+background:#222;
+color:white;
+cursor:pointer;
+border-radius:6px;
+font-size:15px;
+}
+
+.hf-tab.active{
+background:#4CAF50;
+}
+
+/* PANELS */
+
+.hf-panel{
+display:none;
+animation:fade 0.4s ease;
+}
+
+.hf-panel.active{
+display:block;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+transition:0.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+/* CARDS */
+
+.card-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.info-card,
+.mob-card{
+background:#1a1a1a;
+padding:20px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.info-card:hover,
+.mob-card:hover{
+transform:translateY(-5px);
+background:#222;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+display:inline-block;
+margin-top:30px;
+text-decoration:none;
+color:white;
+background:#4CAF50;
+padding:10px 16px;
+border-radius:6px;
+}
+
+/* ANIMATIONS */
+
+.fade-in{
+opacity:0;
+animation:fadeUp 1s forwards paused;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+</style>
+
 </head>
 <body>
 
 <header>
-  <h1>Grass Studio</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="games.html">Games</a>
-    <a href="books.html">Books</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<h1>Grass Studio</h1>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="games.html">Games</a>
+<a href="books.html">Books</a>
+<a href="contact.html">Contact</a>
+</nav>
+
 </header>
 
+
 <section class="game-detail fade-in">
-  <h2>Heartfall</h2>
-  <img src="assets/images/heartfall-1.jpg" alt="Heartfall Screenshot 1">
-  <img src="assets/images/heartfall-2.jpg" alt="Heartfall Screenshot 2">
-  <p>
-    Open-world fantasy exploration game. Story is optional, freedom comes first. Wander a petrified world,
-    uncover hidden locations, forgotten creatures, and mysteries at your own pace.
-  </p>
-  <a class="back-btn" href="games.html">← Back to Games</a>
+
+<h2>Heartfall</h2>
+
+<p>
+Open-world fantasy exploration game. Story is optional, freedom comes first.
+Wander a petrified world, uncover hidden locations, forgotten creatures,
+and mysteries at your own pace.
+</p>
+
+
+<div class="hf-tabs">
+
+<button class="hf-tab active" data-tab="gallery">📸 Gallery</button>
+<button class="hf-tab" data-tab="world">🌍 Dimensions</button>
+<button class="hf-tab" data-tab="mobs">👾 Creatures</button>
+<button class="hf-tab" data-tab="lore">📜 Lore</button>
+
+</div>
+
+
+<div class="hf-panel active" id="gallery">
+
+<div class="gallery">
+
+<img src="assets/images/heartfall-1.jpg">
+<img src="assets/images/heartfall-2.jpg">
+<img src="assets/images/heartfall-3.jpg">
+
+</div>
+
+</div>
+
+
+<div class="hf-panel" id="world">
+
+<div class="card-grid">
+
+<div class="info-card">
+<h3>Mystic Forest</h3>
+<p>A magical forest filled with ancient ruins and hidden paths.</p>
+</div>
+
+<div class="info-card">
+<h3>Stone Plains</h3>
+<p>A petrified land where forgotten civilizations once thrived.</p>
+</div>
+
+<div class="info-card">
+<h3>Crystal Caves</h3>
+<p>Deep underground caverns glowing with mysterious crystals.</p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="hf-panel" id="mobs">
+
+<div class="card-grid">
+
+<div class="mob-card">
+<h3>Shadow Wolf</h3>
+<p>A fast predator that hunts travelers at night.</p>
+</div>
+
+<div class="mob-card">
+<h3>Stone Guardian</h3>
+<p>An ancient statue that awakens to protect ruins.</p>
+</div>
+
+<div class="mob-card">
+<h3>Crystal Spirit</h3>
+<p>A magical entity guarding crystal caves.</p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="hf-panel" id="lore">
+
+<p>
+Long ago the world of Heartfall was united by powerful relics.
+When those relics shattered, the land fractured and strange
+creatures began appearing across the world.
+Now explorers search the ruins hoping to uncover the truth.
+</p>
+
+</div>
+
+<a class="back-btn" href="games.html">← Back to Games</a>
+
 </section>
 
-<footer>© 2025 Grass Studio. All rights reserved.</footer>
+
+<footer>
+© 2025 Grass Studio. All rights reserved.
+</footer>
+
 
 <script>
-const faders = document.querySelectorAll('.fade-in');
-const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-  entries.forEach(entry => {
-    if(!entry.isIntersecting) return;
-    entry.target.style.animationPlayState = 'running';
-    observer.unobserve(entry.target);
-  });
-}, appearOptions);
-faders.forEach(fader => { appearOnScroll.observe(fader); });
+
+/* TABS */
+
+const tabs=document.querySelectorAll(".hf-tab");
+const panels=document.querySelectorAll(".hf-panel");
+
+tabs.forEach(tab=>{
+tab.addEventListener("click",()=>{
+
+tabs.forEach(t=>t.classList.remove("active"));
+panels.forEach(p=>p.classList.remove("active"));
+
+tab.classList.add("active");
+
+const target=tab.dataset.tab;
+document.getElementById(target).classList.add("active");
+
+});
+});
+
+
+/* FADE IN ON SCROLL */
+
+const faders=document.querySelectorAll('.fade-in');
+
+const appearOptions={
+threshold:0.2,
+rootMargin:"0px 0px -50px 0px"
+};
+
+const appearOnScroll=new IntersectionObserver(function(entries,observer){
+
+entries.forEach(entry=>{
+if(!entry.isIntersecting) return;
+
+entry.target.style.animationPlayState='running';
+observer.unobserve(entry.target);
+});
+
+},appearOptions);
+
+faders.forEach(fader=>{
+appearOnScroll.observe(fader);
+});
+
 </script>
 
 </body>
 </html>
+```
