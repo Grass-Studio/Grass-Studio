@@ -1985,3 +1985,97 @@ body {
     border: 1px solid #ddd !important;
   }
 }
+/* ===== DIMENSIONS ===== */
+
+.dimension-card{
+
+display:flex;
+gap:30px;
+margin-bottom:60px;
+flex-wrap:wrap;
+align-items:center;
+
+}
+
+.dimension-card img{
+
+width:420px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.1);
+
+}
+
+.dimension-card h3{
+
+color:#7ed957;
+margin-bottom:10px;
+font-size:26px;
+
+}
+
+.dimension-card p{
+
+color:#ccc;
+max-width:600px;
+
+}
+
+
+/* ===== CREATURES ===== */
+
+.creature-card{
+
+background:#111;
+padding:20px;
+border-radius:10px;
+margin-bottom:20px;
+position:relative;
+border:1px solid rgba(255,255,255,0.08);
+
+}
+
+.creature-card h4{
+
+color:white;
+margin-bottom:6px;
+
+}
+
+.creature-card p{
+
+color:#aaa;
+
+}
+
+
+/* ===== TAGS ===== */
+
+.tag{
+
+position:absolute;
+top:10px;
+right:10px;
+padding:4px 10px;
+font-size:12px;
+border-radius:6px;
+color:white;
+
+}
+
+.tag.overworld{
+
+background:#2e7d32;
+
+}
+
+.tag.underworld{
+
+background:#8b0000;
+
+}
+
+.tag.sky{
+
+background:#1565c0;
+
+}
