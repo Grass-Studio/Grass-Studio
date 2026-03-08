@@ -4,8 +4,653 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Heartfall In Grass</title>
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <style>
+    /* ===== RESET & GLOBAL STYLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+      background: #0a0a0a;
+      color: #eee;
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ===== LAYOUT & CONTAINER ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(15px, 4vw, 20px);
+      width: 100%;
+    }
+
+    /* ===== HEADER & NAVIGATION ===== */
+    .main-header {
+      background: rgba(17, 17, 17, 0.98);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      padding: clamp(12px, 3vw, 15px) 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(126, 217, 87, 0.15);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .main-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo h1 {
+      font-size: clamp(22px, 5vw, 28px);
+      background: linear-gradient(45deg, #7ed957, #4ecdc4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 2px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .tagline {
+      font-size: clamp(9px, 2vw, 12px);
+      color: #aaa;
+      letter-spacing: 1.2px;
+      font-weight: 400;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: clamp(10px, 3vw, 30px);
+    }
+
+    .nav-link {
+      color: #ddd;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 0;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: clamp(13px, 2vw, 16px);
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #7ed957;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #7ed957, #4ecdc4);
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 2px;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #7ed957;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+      background: rgba(126, 217, 87, 0.1);
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero-section {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
+      gap: clamp(30px, 6vw, 50px);
+      align-items: center;
+      z-index: 2;
+      width: 100%;
+      position: relative;
+    }
+
+    .hero-text {
+      animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+
+    @keyframes slideInLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .hero-subtitle {
+      color: #7ed957;
+      font-size: clamp(14px, 3vw, 18px);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      background: linear-gradient(45deg, #7ed957, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: clamp(15px, 4vw, 20px);
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .hero-description {
+      font-size: clamp(1rem, 3vw, 1.25rem);
+      color: #ccc;
+      margin-bottom: clamp(20px, 5vw, 30px);
+      max-width: 600px;
+      opacity: 0.9;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: clamp(15px, 3vw, 20px);
+      margin-top: clamp(25px, 6vw, 30px);
+      flex-wrap: wrap;
+    }
+
+    .hero-btn {
+      padding: clamp(12px, 3vw, 15px) clamp(20px, 4vw, 30px);
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: clamp(14px, 2vw, 16px);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hero-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.6s ease;
+      z-index: -1;
+    }
+
+    .hero-btn:hover::before {
+      left: 100%;
+    }
+
+    .primary-btn {
+      background: linear-gradient(135deg, #7ed957, #4ecdc4);
+      color: #000;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(126, 217, 87, 0.3);
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+      opacity: 0;
+      transform: translateX(30px);
+    }
+
+    @keyframes slideInRight {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .floating-element {
+      width: clamp(180px, 40vw, 300px);
+      height: clamp(180px, 40vw, 300px);
+      background: radial-gradient(circle, rgba(126, 217, 87, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      box-shadow: 0 0 60px rgba(126, 217, 87, 0.2);
+    }
+
+    .floating-element::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background: linear-gradient(45deg, #7ed957, #4ecdc4, #7ed957);
+      border-radius: 50%;
+      z-index: -1;
+      opacity: 0.2;
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .floating-element i {
+      font-size: clamp(60px, 12vw, 120px);
+      color: #7ed957;
+      filter: drop-shadow(0 0 10px rgba(126, 217, 87, 0.5));
+    }
+
+    /* ===== SECTIONS COMMON STYLES ===== */
+    .section {
+      padding: clamp(60px, 10vw, 100px) 0;
+      position: relative;
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(126, 217, 87, 0.2), transparent);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: clamp(30px, 6vw, 60px);
+      position: relative;
+    }
+
+    .section-subtitle {
+      color: #7ed957;
+      font-size: clamp(13px, 2vw, 16px);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 12px;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 6vw, 2.625rem);
+      color: #fff;
+      margin-bottom: clamp(15px, 4vw, 20px);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .section-divider {
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #7ed957, #4ecdc4);
+      margin: 0 auto;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-divider::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      to { left: 100%; }
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
+      gap: clamp(30px, 6vw, 60px);
+      align-items: center;
+    }
+
+    .about-text .lead-text {
+      font-size: clamp(1.25rem, 4vw, 1.5rem);
+      color: #fff;
+      margin-bottom: clamp(20px, 5vw, 30px);
+      line-height: 1.4;
+      font-weight: 500;
+      opacity: 0.95;
+    }
+
+    .about-text p {
+      color: #ccc;
+      margin-bottom: clamp(15px, 4vw, 20px);
+      font-size: clamp(16px, 3vw, 18px);
+      line-height: 1.7;
+      opacity: 0.9;
+    }
+
+    /* ===== DIMENSIONS ===== */
+    .dimension-card {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .dimension-card img {
+      width: 420px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .dimension-card h3 {
+      color: #7ed957;
+      margin-bottom: 10px;
+      font-size: 26px;
+    }
+
+    .dimension-card p {
+      color: #ccc;
+      max-width: 600px;
+    }
+
+    /* ===== CREATURES ===== */
+    .creatures-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .creature-card {
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .creature-card h4 {
+      color: white;
+      margin-bottom: 6px;
+    }
+
+    .creature-card p {
+      color: #aaa;
+    }
+
+    /* ===== TAGS ===== */
+    .tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 6px;
+      color: white;
+    }
+
+    .tag.overworld {
+      background: #2e7d32;
+    }
+
+    .tag.underworld {
+      background: #8b0000;
+    }
+
+    .tag.sky {
+      background: #1565c0;
+    }
+
+    /* ===== FOOTER ===== */
+    .main-footer {
+      background: linear-gradient(135deg, #111, #0a0a0a);
+      padding: clamp(40px, 8vw, 60px) 0 clamp(20px, 4vw, 30px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(126, 217, 87, 0.3), transparent);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: clamp(20px, 5vw, 30px);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #777;
+      font-size: clamp(13px, 2vw, 14px);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+
+    /* Tablets and Small Laptops */
+    @media (max-width: 1024px) {
+      .hero-content {
+        text-align: center;
+      }
+      
+      .hero-buttons {
+        justify-content: center;
+      }
+    }
+
+    /* Tablets */
+    @media (max-width: 768px) {
+      .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(17, 17, 17, 0.98);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        text-align: center;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border-top: 1px solid rgba(126, 217, 87, 0.1);
+      }
+      
+      .main-nav.active {
+        display: flex;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      .nav-link {
+        justify-content: center;
+        padding: 12px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+      
+      .nav-link:hover {
+        background: rgba(126, 217, 87, 0.1);
+      }
+      
+      .nav-link::after {
+        display: none;
+      }
+      
+      .hero-section {
+        padding-top: 100px;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .hero-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+      
+      .dimension-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .dimension-card img {
+        width: 100%;
+        max-width: 420px;
+      }
+    }
+
+    /* Mobile Phones */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 12px;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+      }
+      
+      .dimension-card h3 {
+        font-size: 22px;
+      }
+      
+      .creatures-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Small Mobile Phones */
+    @media (max-width: 320px) {
+      .logo h1 {
+        font-size: 20px;
+      }
+      
+      .hero-title {
+        font-size: 1.75rem;
+      }
+      
+      .hero-btn {
+        font-size: 12px;
+        padding: 10px 15px;
+      }
+    }
+
+    /* High Resolution Screens */
+    @media (min-width: 1400px) {
+      .container {
+        max-width: 1300px;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      .menu-toggle,
+      .hero-buttons {
+        display: none !important;
+      }
+      
+      body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt !important;
+      }
+      
+      .main-header {
+        position: static !important;
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+      }
+      
+      .hero-section {
+        min-height: auto !important;
+        padding: 20px 0 !important;
+      }
+      
+      .section {
+        padding: 40px 0 !important;
+        break-inside: avoid;
+      }
+      
+      a {
+        color: #000 !important;
+        text-decoration: underline !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -35,6 +680,169 @@
       <span class="hero-subtitle">Open World Adventure</span>
       <h1 class="hero-title">Heartfall In Grass</h1>
       <p class="hero-description">
+        Explore a massive world filled with mountains, hidden caves,
+        mysterious dimensions and powerful creatures.
+        Your journey begins in a peaceful land... but not everything
+        is what it seems.
+      </p>
+      <div class="hero-buttons">
+        <a href="#" class="hero-btn primary-btn">Coming Soon</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="floating-element">
+        <i class="fas fa-globe"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">The Game</span>
+      <h2 class="section-title">About Heartfall</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="about-content">
+      <div class="about-text">
+        <p class="lead-text">
+          Heartfall is an open world exploration game where players
+          travel between mysterious dimensions searching for rare
+          treasures and ancient secrets.
+        </p>
+        <p>
+          The world is huge and filled with mountains, forests,
+          rivers and strange places hidden deep underground.
+          Most creatures in the main world are peaceful,
+          but other dimensions are far more dangerous.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dimensions" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">World</span>
+      <h2 class="section-title">Dimensions</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="dimension-card">
+      <img src="images/overworld.jpg" alt="Overworld landscape">
+      <div>
+        <h3>The Overworld</h3>
+        <p>
+          The default world where the adventure begins.
+          It is the largest dimension in the game with
+          mountains reaching up to 2000 units high,
+          large plains, rivers, forests and swamps.
+          Players spend most of their journey here.
+          The inhabitants of this world are mostly peaceful.
+        </p>
+      </div>
+    </div>
+
+    <div class="dimension-card">
+      <img src="images/underworld.jpg" alt="Underworld cavern">
+      <div>
+        <h3>The Underworld</h3>
+        <p>
+          This world lies deep underground.
+          The entrance is a massive cave that acts as a giant
+          mining tunnel beneath the cliffs of the overworld.
+          The area is covered in heavy fog and toxic gas.
+          Time itself feels strange here.
+          The only biome is the Dead Soil biome,
+          a cold land filled with deadly gas pits.
+        </p>
+      </div>
+    </div>
+
+    <div class="dimension-card">
+      <img src="images/sky.jpg" alt="Sky dimension with floating islands">
+      <div>
+        <h3>Sky Dimension</h3>
+        <p>
+          A smaller floating dimension above the world.
+          The entrance appears on a remote island and
+          opens only when a special key is used.
+          This world is full of gemstones and beautiful clouds.
+          There are two land types:
+          peaceful white clouds and dangerous dark clouds.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="creatures" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">Creatures</span>
+      <h2 class="section-title">World Creatures</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="creatures-grid">
+      <div class="creature-card">
+        <span class="tag overworld">Overworld</span>
+        <h4>Shadow Wolf</h4>
+        <p>A fast predator appearing mostly in forests at night.</p>
+      </div>
+
+      <div class="creature-card">
+        <span class="tag underworld">Underworld</span>
+        <h4>Lava Beast</h4>
+        <p>A creature born from molten rock in the underworld.</p>
+      </div>
+
+      <div class="creature-card">
+        <span class="tag sky">Sky</span>
+        <h4>Cloud Spirit</h4>
+        <p>A peaceful floating spirit living in the sky lands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2026 Heartfall Project</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    
+    if (menuToggle) {
+      menuToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+        menuToggle.innerHTML = mainNav.classList.contains('active') 
+          ? '<i class="fas fa-times"></i>' 
+          : '<i class="fas fa-bars"></i>';
+      });
+    }
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        mainNav.classList.remove('active');
+        if (menuToggle) menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>      <p class="hero-description">
         Explore a massive world filled with mountains, hidden caves,
         mysterious dimensions and powerful creatures.
         Your journey begins in a peaceful land... but not everything
@@ -176,3 +984,4 @@
 
 </body>
 </html>
+
