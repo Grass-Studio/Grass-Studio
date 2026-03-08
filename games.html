@@ -1,14 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Games - Grass Studio | Interactive Experiences</title>
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2987449339782635"
-crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games - Grass Studio | Interactive Experiences</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2987449339782635" crossorigin="anonymous"></script>
+  
+  <style>
+    /* Quick optimization for game action buttons */
+    .game-actions-duo {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    
+    .game-actions-duo .page-btn {
+      flex: 1;
+      padding: 12px 8px;
+      font-size: 14px;
+      text-align: center;
+    }
+    
+    .game-actions-duo .page-btn i {
+      margin-right: 6px;
+    }
+    
+    .btn-itch {
+      background: linear-gradient(135deg, #7ed957, #4ecdc4);
+    }
+    
+    .btn-info {
+      background: linear-gradient(135deg, #4ecdc4, #3a8bff);
+    }
+    
+    @media (max-width: 480px) {
+      .game-actions-duo {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -49,62 +82,8 @@ crossorigin="anonymous"></script>
       <div class="section-divider"></div>
     </div>
     
-    <div class="games-grid">
-      <div class="game-card featured">
-        <div class="game-image">
-          <div class="game-icon">
-            <i class="fas fa-mountain"></i>
-          </div>
-        </div>
-        <div class="game-content">
-          <span class="game-tag">Adventure RPG</span>
-          <h3 class="game-title">Mountain Tales</h3>
-          <p class="game-description">Embark on an epic journey through vast mountains and discover mythical villages hidden from the world. Uncover ancient secrets, forge alliances, and become a legend in a living, breathing fantasy world. A story-driven adventure that combines exploration with deep narrative.</p>
-          <div class="game-features">
-            <span><i class="fas fa-globe"></i> Exploration</span>
-            <span><i class="fas fa-book"></i> Rich Story</span>
-            <span><i class="fas fa-dragon"></i> Fantasy</span>
-            <span><i class="fas fa-quest"></i> Quests</span>
-          </div>
-          <div class="game-status">
-            <div class="status-indicator available"></div>
-            <span>Available Now on itch.io</span>
-          </div>
-          <div class="game-actions">
-            <a href="https://grassstudio2.itch.io/mountain-tales" target="_blank" class="game-btn page-btn">
-              <i class="fas fa-external-link-alt"></i> Visit Game Page
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="game-card">
-        <div class="game-image">
-          <div class="game-icon">
-            <i class="fas fa-heart"></i>
-          </div>
-        </div>
-        <div class="game-content">
-          <span class="game-tag">Fantasy Exploration</span>
-          <h3 class="game-title">Heartfall</h3>
-          <p class="game-description">Explore a breathtaking open-world fantasy realm where every decision shapes your journey and the world around you. From enchanted forests to mystical ruins, discover a world full of wonder and danger. Experience freedom and magic in this exploration-focused adventure.</p>
-          <div class="game-features">
-            <span><i class="fas fa-expand"></i> Open World</span>
-            <span><i class="fas fa-magic"></i> Magic System</span>
-            <span><i class="fas fa-compass"></i> Exploration</span>
-            <span><i class="fas fa-puzzle-piece"></i> Puzzles</span>
-          </div>
-          <div class="game-status">
-            <div class="status-indicator available"></div>
-            <span>Available Now on itch.io</span>
-          </div>
-          <div class="game-actions">
-            <a href="https://grassstudio2.itch.io/heartfall" target="_blank" class="game-btn page-btn">
-              <i class="fas fa-external-link-alt"></i> Visit Game Page
-            </a>
-          </div>
-        </div>
-      </div>
+    <div class="games-grid" id="gamesGrid">
+      <!-- Games will be dynamically loaded here -->
     </div>
   </div>
 </section>
@@ -247,43 +226,122 @@ crossorigin="anonymous"></script>
 </button>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Mobile menu toggle
-  const menuToggle = document.getElementById('menuToggle');
-  const mainNav = document.querySelector('.main-nav');
-  
-  if (menuToggle) {
-    menuToggle.addEventListener('click', function() {
-      mainNav.classList.toggle('active');
-    });
-  }
-  
-  // Back to top button
-  const backToTop = document.getElementById('backToTop');
-  
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 500) {
-      backToTop.classList.add('visible');
-    } else {
-      backToTop.classList.remove('visible');
+  // ===== GAME DATA =====
+  const games = [
+    {
+      id: 'mountain-tales',
+      title: 'Mountain Tales',
+      tag: 'Adventure RPG',
+      description: 'Embark on an epic journey through vast mountains and discover mythical villages hidden from the world. Uncover ancient secrets, forge alliances, and become a legend in a living, breathing fantasy world. A story-driven adventure that combines exploration with deep narrative.',
+      features: ['Exploration', 'Rich Story', 'Fantasy', 'Quests'],
+      featuresIcons: ['globe', 'book', 'dragon', 'quest'],
+      itchUrl: 'https://grassstudio2.itch.io/mountain-tales',
+      localUrl: 'mountain-tales.html',
+      status: 'Available Now on itch.io',
+      featured: true,
+      icon: 'mountain'
+    },
+    {
+      id: 'heartfall',
+      title: 'Heartfall',
+      tag: 'Fantasy Exploration',
+      description: 'Explore a breathtaking open-world fantasy realm where every decision shapes your journey and the world around you. From enchanted forests to mystical ruins, discover a world full of wonder and danger. Experience freedom and magic in this exploration-focused adventure.',
+      features: ['Open World', 'Magic System', 'Exploration', 'Puzzles'],
+      featuresIcons: ['expand', 'magic', 'compass', 'puzzle-piece'],
+      itchUrl: 'https://grassstudio2.itch.io/heartfall',
+      localUrl: 'heartfall.html',
+      status: 'Available Now on itch.io',
+      featured: false,
+      icon: 'heart'
     }
-  });
-  
-  backToTop.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-  
-  // Newsletter form submission
-  const newsletterForm = document.getElementById('newsletterForm');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = this.querySelector('input[type="email"]').value;
-      alert(`Thank you for subscribing with ${email}! You'll be the first to know about our game releases and updates.`);
-      this.reset();
-    });
+  ];
+
+  // ===== RENDER GAMES =====
+  function renderGames() {
+    const gamesGrid = document.getElementById('gamesGrid');
+    if (!gamesGrid) return;
+    
+    gamesGrid.innerHTML = games.map(game => `
+      <div class="game-card ${game.featured ? 'featured' : ''}">
+        <div class="game-image">
+          <div class="game-icon">
+            <i class="fas fa-${game.icon}"></i>
+          </div>
+        </div>
+        <div class="game-content">
+          <span class="game-tag">${game.tag}</span>
+          <h3 class="game-title">${game.title}</h3>
+          <p class="game-description">${game.description}</p>
+          <div class="game-features">
+            ${game.features.map((feature, index) => `
+              <span><i class="fas fa-${game.featuresIcons[index]}"></i> ${feature}</span>
+            `).join('')}
+          </div>
+          <div class="game-status">
+            <div class="status-indicator available"></div>
+            <span>${game.status}</span>
+          </div>
+          <div class="game-actions-duo">
+            <a href="${game.itchUrl}" target="_blank" class="page-btn btn-itch">
+              <i class="fas fa-external-link-alt"></i> itch.io
+            </a>
+            <a href="${game.localUrl}" class="page-btn btn-info">
+              <i class="fas fa-info-circle"></i> Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+    `).join('');
   }
-});
+
+  // ===== INITIALIZE =====
+  document.addEventListener('DOMContentLoaded', function() {
+    // Render games
+    renderGames();
+    
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.querySelector('.main-nav');
+    
+    if (menuToggle) {
+      menuToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+        menuToggle.innerHTML = mainNav.classList.contains('active') 
+          ? '<i class="fas fa-times"></i>' 
+          : '<i class="fas fa-bars"></i>';
+      });
+    }
+    
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', function() {
+      backToTop.classList.toggle('visible', window.scrollY > 500);
+    });
+    
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Newsletter form submission
+    const newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        alert(`✨ Thank you for subscribing!\n\nYou'll be first to know about new releases, updates, and exclusive content.`);
+        this.reset();
+      });
+    }
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('active');
+        if (menuToggle) menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+  });
 </script>
 
 </body>
