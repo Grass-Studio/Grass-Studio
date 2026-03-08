@@ -1,44 +1,304 @@
-.dimension{
-display:flex;
-gap:25px;
-margin-top:50px;
-align-items:flex-start;
-flex-wrap:wrap;
-}
+<!DOCTYPE html>
+<html lang="en">
 
-.dimension img{
-width:420px;
-border-radius:10px;
-}
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-.dimension-info{
-max-width:500px;
-}
+<title>Heartfall In Grass</title>
 
-.mob-list{
-margin-top:15px;
-display:grid;
-gap:12px;
-}
+<link rel="stylesheet" href="style.css">
 
-.mob{
-background:#1b1b1b;
-padding:14px;
-border-radius:8px;
-position:relative;
-}
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-.mob-tag{
-position:absolute;
-top:10px;
-right:10px;
-padding:3px 8px;
-border-radius:5px;
-font-size:12px;
-}
+</head>
 
-.mob-tag.overworld{
-background:#2e7d32;
-}
 
-.mob
+<body>
+
+
+<header class="main-header">
+
+<div class="container">
+
+<div class="logo">
+<h1>Heartfall</h1>
+<span class="tagline">Adventure In Grass</span>
+</div>
+
+<nav class="main-nav">
+
+<a href="#about" class="nav-link">About</a>
+<a href="#dimensions" class="nav-link">World</a>
+<a href="#creatures" class="nav-link">Creatures</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+
+<section class="hero-section">
+
+<div class="container hero-content">
+
+<div class="hero-text">
+
+<span class="hero-subtitle">Open World Adventure</span>
+
+<h1 class="hero-title">Heartfall In Grass</h1>
+
+<p class="hero-description">
+
+Explore a massive world filled with mountains, hidden caves,
+mysterious dimensions and powerful creatures.
+Your journey begins in a peaceful land... but not everything
+is what it seems.
+
+</p>
+
+<div class="hero-buttons">
+
+<a class="hero-btn primary-btn">Coming Soon</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-image">
+
+<div class="floating-element">
+<i class="fas fa-globe"></i>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section id="about" class="section">
+
+<div class="container">
+
+<div class="section-header">
+
+<span class="section-subtitle">The Game</span>
+<h2 class="section-title">About Heartfall</h2>
+
+<div class="section-divider"></div>
+
+</div>
+
+
+<div class="about-content">
+
+<div class="about-text">
+
+<p class="lead-text">
+
+Heartfall is an open world exploration game where players
+travel between mysterious dimensions searching for rare
+treasures and ancient secrets.
+
+</p>
+
+<p>
+
+The world is huge and filled with mountains, forests,
+rivers and strange places hidden deep underground.
+
+Most creatures in the main world are peaceful,
+but other dimensions are far more dangerous.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section id="dimensions" class="section">
+
+<div class="container">
+
+<div class="section-header">
+
+<span class="section-subtitle">World</span>
+<h2 class="section-title">Dimensions</h2>
+
+<div class="section-divider"></div>
+
+</div>
+
+
+
+<div class="dimension-card">
+
+<img src="images/overworld.jpg">
+
+<div>
+
+<h3>The Overworld</h3>
+
+<p>
+
+The default world where the adventure begins.
+
+It is the largest dimension in the game with
+mountains reaching up to 2000 units high,
+large plains, rivers, forests and swamps.
+
+Players spend most of their journey here.
+The inhabitants of this world are mostly peaceful.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="dimension-card">
+
+<img src="images/underworld.jpg">
+
+<div>
+
+<h3>The Underworld</h3>
+
+<p>
+
+This world lies deep underground.
+
+The entrance is a massive cave that acts as a giant
+mining tunnel beneath the cliffs of the overworld.
+
+The area is covered in heavy fog and toxic gas.
+Time itself feels strange here.
+
+The only biome is the Dead Soil biome,
+a cold land filled with deadly gas pits.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="dimension-card">
+
+<img src="images/sky.jpg">
+
+<div>
+
+<h3>Sky Dimension</h3>
+
+<p>
+
+A smaller floating dimension above the world.
+
+The entrance appears on a remote island and
+opens only when a special key is used.
+
+This world is full of gemstones and beautiful clouds.
+
+There are two land types:
+peaceful white clouds and dangerous dark clouds.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section id="creatures" class="section">
+
+<div class="container">
+
+<div class="section-header">
+
+<span class="section-subtitle">Creatures</span>
+<h2 class="section-title">World Creatures</h2>
+
+<div class="section-divider"></div>
+
+</div>
+
+
+<div class="creature-card">
+
+<span class="tag overworld">Overworld</span>
+
+<h4>Shadow Wolf</h4>
+
+<p>A fast predator appearing mostly in forests at night.</p>
+
+</div>
+
+
+<div class="creature-card">
+
+<span class="tag underworld">Underworld</span>
+
+<h4>Lava Beast</h4>
+
+<p>A creature born from molten rock in the underworld.</p>
+
+</div>
+
+
+<div class="creature-card">
+
+<span class="tag sky">Sky</span>
+
+<h4>Cloud Spirit</h4>
+
+<p>A peaceful floating spirit living in the sky lands.</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<footer class="main-footer">
+
+<div class="container">
+
+<div class="footer-bottom">
+
+<p>© 2026 Heartfall Project</p>
+
+</div>
+
+</div>
+
+</footer>
+
+
+</body>
+</html>
