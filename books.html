@@ -51,6 +51,7 @@ crossorigin="anonymous"></script>
     </div>
     
     <div class="books-grid">
+      <!-- Book 0 – unchanged -->
       <div class="book-card">
         <div class="book-badge">Book 0</div>
         <div class="book-cover">
@@ -79,15 +80,16 @@ crossorigin="anonymous"></script>
         </div>
       </div>
       
-      <div class="book-card featured">
-        <div class="book-badge pre-order">Pre-order</div>
+      <!-- Book 1 – updated: no pre-order, now available -->
+      <div class="book-card">
+        <div class="book-badge">Book 1</div>
         <div class="book-cover">
           <div class="cover-image">
             <img src="assets/images/book2.jpg" alt="The Undead Nightmare: Book I">
           </div>
           <div class="book-overlay">
             <button class="quick-view-btn" onclick="openStores('book2')">
-              <i class="fas fa-clock"></i> Pre-order
+              <i class="fas fa-shopping-cart"></i> Get Now
             </button>
           </div>
         </div>
@@ -97,35 +99,15 @@ crossorigin="anonymous"></script>
           <p class="book-description">The first chapter in an epic survival series. Follow the journey of characters fighting for humanity in a post-apocalyptic world filled with danger and tough choices.</p>
           
           <div class="book-meta">
-            <span><i class="fas fa-calendar"></i> Release: February 15, 2026</span>
+            <span><i class="fas fa-calendar"></i> Published: February 15, 2026</span>
             <span><i class="fas fa-bookmark"></i> Series: Book I</span>
           </div>
           
-          <div class="preorder-counter">
-            <p class="preorder-text">Pre-order ends in:</p>
-            <div id="countdown" class="countdown">
-              <div class="countdown-item">
-                <span id="days">00</span>
-                <div class="countdown-label">Days</div>
-              </div>
-              <div class="countdown-item">
-                <span id="hours">00</span>
-                <div class="countdown-label">Hours</div>
-              </div>
-              <div class="countdown-item">
-                <span id="minutes">00</span>
-                <div class="countdown-label">Minutes</div>
-              </div>
-              <div class="countdown-item">
-                <span id="seconds">00</span>
-                <div class="countdown-label">Seconds</div>
-              </div>
-            </div>
-          </div>
+          <!-- preorder-counter DIV removed -->
           
           <div class="book-actions">
-            <button class="buy-btn preorder-btn" onclick="openStores('book2')">
-              <i class="fas fa-bolt"></i> Pre-order Now
+            <button class="buy-btn" onclick="openStores('book2')">
+              <i class="fas fa-store"></i> Available Stores
             </button>
           </div>
         </div>
@@ -176,11 +158,11 @@ crossorigin="anonymous"></script>
               <p>Published - The beginning of the outbreak</p>
             </div>
           </div>
-          <div class="timeline-item current">
+          <div class="timeline-item completed">   <!-- changed from current to completed -->
             <span class="timeline-date">Feb 15, 2026</span>
             <div class="timeline-content">
               <h4>Book I</h4>
-              <p>First installment - Pre-order available</p>
+              <p>First installment - Available now</p>   <!-- updated text -->
             </div>
           </div>
           <div class="timeline-item upcoming">
@@ -285,11 +267,16 @@ const booksStores = {
     { logo:"assets/images/amazon.png", url:"https://www.amazon.com/dp/B0GJ5RDZBY" }
   ],
   book2: [
+    // existing stores
     { logo:"assets/images/tolino.png", url:"https://www.thalia.de/shop/home/artikeldetails/A1078033452" },
     { logo:"assets/images/applebooks.png", url:"https://books.apple.com/us/book/the-undead-origins-be-awear/id6758108621" },
     { logo:"assets/images/kobo.png", url:"https://kobo.com/search?query=9798233007323" },
     { logo:"assets/images/vivlio.png", url:"https://shop.vivlio.com/product/9798233007323_9798233007323_10020/the-undead-origins-be-awear" },
-    { logo:"assets/images/smashwords.png", url:"https://www.smashwords.com/books/view/1950152" }
+    { logo:"assets/images/smashwords.png", url:"https://www.smashwords.com/books/view/1950152" },
+    // new stores (now available worldwide)
+    { logo:"assets/images/barnesandnoble.png", url:"https://www.barnesandnoble.com/w/x/x?ean=2940183514698" },
+    { logo:"assets/images/everand.png", url:"https://fr.everand.com/book/990462938/The-Undead-Origins-Be-Awear-The-Undead-Nightmare-1" },  // please add everand.png to assets/images/
+    { logo:"assets/images/amazon.png", url:"https://www.amazon.com/dp/B0GQJX1DCP" }
   ]
 };
 
@@ -315,33 +302,8 @@ function closeStores() {
   document.getElementById("store-modal").style.display = "none";
 }
 
-// Countdown Timer for Book 2
-function updateCountdown() {
-  const targetDate = new Date('2026-02-15T23:59:59').getTime();
-  const now = new Date().getTime();
-  const timeLeft = targetDate - now;
-  
-  if (timeLeft < 0) {
-    document.getElementById('countdown').innerHTML = 
-      '<div class="countdown-ended">Pre-order period has ended!</div>';
-    return;
-  }
-  
-  const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-  
-  document.getElementById('days').textContent = days.toString().padStart(2, '0');
-  document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-  document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-  document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-}
-
+// DOM ready
 document.addEventListener('DOMContentLoaded', function() {
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-  
   // Mobile menu toggle
   const menuToggle = document.getElementById('menuToggle');
   const mainNav = document.querySelector('.main-nav');
