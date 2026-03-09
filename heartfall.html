@@ -129,6 +129,38 @@
       background: rgba(126, 217, 87, 0.1);
     }
 
+    /* ===== BACK TO GAMES BUTTON ===== */
+    .back-to-games {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(126, 217, 87, 0.1);
+      color: #7ed957;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid rgba(126, 217, 87, 0.3);
+      transition: all 0.3s ease;
+      margin-right: 15px;
+    }
+
+    .back-to-games:hover {
+      background: rgba(126, 217, 87, 0.2);
+      transform: translateX(-3px);
+      border-color: #7ed957;
+    }
+
+    .back-to-games i {
+      font-size: 12px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+    }
+
     /* ===== HERO SECTION ===== */
     .hero-section {
       min-height: 100vh;
@@ -428,6 +460,12 @@
       border: 1px solid rgba(255,255,255,0.08);
     }
 
+    .creature-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
     .creature-card h4 {
       color: white;
       margin-bottom: 6px;
@@ -608,6 +646,11 @@
         width: 100%;
         max-width: 420px;
       }
+
+      .back-to-games {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
     }
 
     /* Mobile Phones */
@@ -660,7 +703,8 @@
     @media print {
       .menu-toggle,
       .hero-buttons,
-      .back-to-top {
+      .back-to-top,
+      .back-to-games {
         display: none !important;
       }
       
@@ -698,9 +742,16 @@
 
 <header class="main-header">
   <div class="container">
-    <div class="logo">
-      <h1>Heartfall</h1>
-      <span class="tagline">Adventure In Grass</span>
+    <div class="header-actions">
+      <!-- Back to Games Button -->
+      <a href="games.html" class="back-to-games">
+        <i class="fas fa-arrow-left"></i> Back to Games
+      </a>
+      
+      <div class="logo">
+        <h1>Heartfall</h1>
+        <span class="tagline">Adventure In Grass</span>
+      </div>
     </div>
 
     <!-- Mobile menu toggle (hidden on desktop via CSS) -->
@@ -833,8 +884,7 @@
       <!-- Moblz - Underworld -->
       <div class="creature-card">
         <span class="tag underworld">Underworld</span>
-        <!-- Suggested image name: moblz.jpg or moblz-creature.jpg -->
-        <!-- <img src="images/moblz.jpg" alt="Moblz" style="width:100%; border-radius:8px; margin-bottom:10px;"> -->
+        <img src="images/moblz.jpg" alt="Moblz creature">
         <h4>Moblz</h4>
         <p>Slow stone creatures living deep in the Underworld, formed by ancient gases. They move in groups, attack by throwing rocks, and can create toxic fog that kills quickly. They rarely feel threatened, but when they do, they become extremely dangerous.</p>
       </div>
@@ -842,8 +892,7 @@
       <!-- Flujzist Kor - Sky -->
       <div class="creature-card">
         <span class="tag sky">Sky</span>
-        <!-- Suggested image name: flujzist-kor.jpg or sky-creature-flujzist.jpg -->
-        <!-- <img src="images/flujzist-kor.jpg" alt="Flujzist Kor" style="width:100%; border-radius:8px; margin-bottom:10px;"> -->
+        <img src="images/flujzist-kor.jpg" alt="Flujzist Kor creature">
         <h4>Flujzist Kor</h4>
         <p>A guardian of the Sky Dimension with a core heart and four protective pillars. Once used in ancient battles, it now protects the good lands. It leaps high, walks fast, and has a hidden wind shield that keeps non-aerial creatures away.</p>
       </div>
