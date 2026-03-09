@@ -431,10 +431,12 @@
     .creature-card h4 {
       color: white;
       margin-bottom: 6px;
+      font-size: 22px;
     }
 
     .creature-card p {
       color: #aaa;
+      line-height: 1.5;
     }
 
     /* ===== TAGS ===== */
@@ -486,6 +488,45 @@
       font-size: clamp(13px, 2vw, 14px);
       position: relative;
       z-index: 1;
+    }
+
+    /* ===== BACK TO TOP BUTTON ===== */
+    .back-to-top {
+      position: fixed;
+      bottom: clamp(20px, 5vw, 30px);
+      right: clamp(20px, 5vw, 30px);
+      width: clamp(44px, 8vw, 50px);
+      height: clamp(44px, 8vw, 50px);
+      background: linear-gradient(135deg, #7ed957, #4ecdc4);
+      color: #000;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: clamp(16px, 3vw, 20px);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 999;
+      box-shadow: 0 5px 20px rgba(126, 217, 87, 0.3);
+      transform: translateY(20px);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(126, 217, 87, 0.4);
+    }
+
+    .back-to-top:active {
+      transform: translateY(0);
     }
 
     /* ===== RESPONSIVE DESIGN ===== */
@@ -618,7 +659,8 @@
     /* Print Styles */
     @media print {
       .menu-toggle,
-      .hero-buttons {
+      .hero-buttons,
+      .back-to-top {
         display: none !important;
       }
       
@@ -787,22 +829,18 @@
     </div>
 
     <div class="creatures-grid">
-      <div class="creature-card">
-        <span class="tag overworld">Overworld</span>
-        <h4>Shadow Wolf</h4>
-        <p>A fast predator appearing mostly in forests at night.</p>
-      </div>
-
+      <!-- Moblz - Underworld -->
       <div class="creature-card">
         <span class="tag underworld">Underworld</span>
-        <h4>Lava Beast</h4>
-        <p>A creature born from molten rock in the underworld.</p>
+        <h4>Moblz</h4>
+        <p>مخلوقات حجرية بطيئة تعيش في أعماق العالم السفلي، تشكلت بفعل الغازات القديمة. تتحرك في مجموعات، تهاجم برمي الحجارة، وتستطيع فتح شقوق في الأرض تطلق ضباباً ساماً يقتل بسرعة.</p>
       </div>
 
+      <!-- Flujzist Kor - Sky -->
       <div class="creature-card">
         <span class="tag sky">Sky</span>
-        <h4>Cloud Spirit</h4>
-        <p>A peaceful floating spirit living in the sky lands.</p>
+        <h4>Flujzist Kor</h4>
+        <p>حارس العالم السماوي، مكون من قلب جوهري وأربعة أعمدة حامية. يقفز عالياً ويمتلك درعاً خفياً من الريح يمنع الكائنات اللاهوائية من الاقتراب.</p>
       </div>
     </div>
   </div>
@@ -815,6 +853,11 @@
     </div>
   </div>
 </footer>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop">
+  <i class="fas fa-chevron-up"></i>
+</button>
 
 <script>
   // Mobile menu functionality
@@ -837,6 +880,21 @@
         mainNav.classList.remove('active');
         if (menuToggle) menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
       });
+    });
+
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+    
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   });
 </script>
