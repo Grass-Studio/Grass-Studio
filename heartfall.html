@@ -25,7 +25,6 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* ===== LAYOUT & CONTAINER ===== */
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -427,10 +426,28 @@
       align-items: center;
     }
 
-    .dimension-card img {
+    .dimension-placeholder {
       width: 420px;
+      height: 240px;
+      background: linear-gradient(145deg, #1a1a1a, #111);
       border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(126, 217, 87, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #7ed957;
+      font-size: 20px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+
+    .dimension-placeholder i {
+      font-size: 48px;
+      margin-bottom: 10px;
+      opacity: 0.8;
     }
 
     .dimension-card h3 {
@@ -460,12 +477,6 @@
       border: 1px solid rgba(255,255,255,0.08);
     }
 
-    .creature-card img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-
     .creature-card h4 {
       color: white;
       margin-bottom: 6px;
@@ -475,6 +486,12 @@
     .creature-card p {
       color: #aaa;
       line-height: 1.5;
+    }
+
+    .creature-icon {
+      font-size: 36px;
+      color: #7ed957;
+      margin-bottom: 10px;
     }
 
     /* ===== TAGS ===== */
@@ -567,20 +584,7 @@
       transform: translateY(0);
     }
 
-    /* ===== RESPONSIVE DESIGN ===== */
-
-    /* Tablets and Small Laptops */
-    @media (max-width: 1024px) {
-      .hero-content {
-        text-align: center;
-      }
-      
-      .hero-buttons {
-        justify-content: center;
-      }
-    }
-
-    /* Tablets */
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .main-nav {
         display: none;
@@ -594,147 +598,25 @@
         gap: 15px;
         text-align: center;
         backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         border-top: 1px solid rgba(126, 217, 87, 0.1);
       }
-      
-      .main-nav.active {
-        display: flex;
-      }
-      
-      .menu-toggle {
-        display: block;
-      }
-      
-      .nav-link {
-        justify-content: center;
-        padding: 12px;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-      }
-      
-      .nav-link:hover {
-        background: rgba(126, 217, 87, 0.1);
-      }
-      
-      .nav-link::after {
-        display: none;
-      }
-      
-      .hero-section {
-        padding-top: 100px;
-      }
-      
-      .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .hero-btn {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
-      }
-      
-      .dimension-card {
-        flex-direction: column;
-        text-align: center;
-      }
-      
-      .dimension-card img {
-        width: 100%;
-        max-width: 420px;
-      }
-
-      .back-to-games {
-        margin-right: 0;
-        margin-bottom: 10px;
-      }
+      .main-nav.active { display: flex; }
+      .menu-toggle { display: block; }
+      .nav-link { justify-content: center; padding: 12px; border-radius: 8px; }
+      .nav-link:hover { background: rgba(126, 217, 87, 0.1); }
+      .nav-link::after { display: none; }
+      .hero-section { padding-top: 100px; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .hero-btn { width: 100%; max-width: 300px; justify-content: center; }
+      .dimension-card { flex-direction: column; text-align: center; }
+      .dimension-placeholder { width: 100%; }
     }
 
-    /* Mobile Phones */
     @media (max-width: 480px) {
-      .container {
-        padding: 0 12px;
-      }
-      
-      .hero-title {
-        font-size: 2rem;
-      }
-      
-      .section-title {
-        font-size: 1.5rem;
-      }
-      
-      .dimension-card h3 {
-        font-size: 22px;
-      }
-      
-      .creatures-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Small Mobile Phones */
-    @media (max-width: 320px) {
-      .logo h1 {
-        font-size: 20px;
-      }
-      
-      .hero-title {
-        font-size: 1.75rem;
-      }
-      
-      .hero-btn {
-        font-size: 12px;
-        padding: 10px 15px;
-      }
-    }
-
-    /* High Resolution Screens */
-    @media (min-width: 1400px) {
-      .container {
-        max-width: 1300px;
-      }
-    }
-
-    /* Print Styles */
-    @media print {
-      .menu-toggle,
-      .hero-buttons,
-      .back-to-top,
-      .back-to-games {
-        display: none !important;
-      }
-      
-      body {
-        background: white !important;
-        color: black !important;
-        font-size: 12pt !important;
-      }
-      
-      .main-header {
-        position: static !important;
-        background: white !important;
-        color: black !important;
-        box-shadow: none !important;
-      }
-      
-      .hero-section {
-        min-height: auto !important;
-        padding: 20px 0 !important;
-      }
-      
-      .section {
-        padding: 40px 0 !important;
-        break-inside: avoid;
-      }
-      
-      a {
-        color: #000 !important;
-        text-decoration: underline !important;
-      }
+      .hero-title { font-size: 2rem; }
+      .section-title { font-size: 1.5rem; }
+      .creatures-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -743,22 +625,13 @@
 <header class="main-header">
   <div class="container">
     <div class="header-actions">
-      <!-- Back to Games Button -->
-      <a href="games.html" class="back-to-games">
-        <i class="fas fa-arrow-left"></i> Back to Games
-      </a>
-      
+      <a href="games.html" class="back-to-games"><i class="fas fa-arrow-left"></i> Back to Games</a>
       <div class="logo">
         <h1>Heartfall</h1>
         <span class="tagline">Adventure In Grass</span>
       </div>
     </div>
-
-    <!-- Mobile menu toggle (hidden on desktop via CSS) -->
-    <button class="menu-toggle" aria-label="Toggle navigation">
-      <i class="fas fa-bars"></i>
-    </button>
-
+    <button class="menu-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
     <nav class="main-nav">
       <a href="#about" class="nav-link">About</a>
       <a href="#dimensions" class="nav-link">World</a>
@@ -772,44 +645,20 @@
     <div class="hero-text">
       <span class="hero-subtitle">Open World Adventure</span>
       <h1 class="hero-title">Heartfall In Grass</h1>
-      <p class="hero-description">
-        Explore a massive world filled with mountains, hidden caves,
-        mysterious dimensions and powerful creatures.
-        Your journey begins in a peaceful land... but not everything
-        is what it seems.
-      </p>
-      <div class="hero-buttons">
-        <a href="#" class="hero-btn primary-btn">Coming Soon</a>
-      </div>
+      <p class="hero-description">Explore a massive world filled with mountains, hidden caves, mysterious dimensions and powerful creatures. Your journey begins in a peaceful land... but not everything is what it seems.</p>
+      <div class="hero-buttons"><a href="#" class="hero-btn primary-btn">Coming Soon</a></div>
     </div>
-    <div class="hero-image">
-      <div class="floating-element">
-        <i class="fas fa-globe"></i>
-      </div>
-    </div>
+    <div class="hero-image"><div class="floating-element"><i class="fas fa-globe"></i></div></div>
   </div>
 </section>
 
 <section id="about" class="section">
   <div class="container">
-    <div class="section-header">
-      <span class="section-subtitle">The Game</span>
-      <h2 class="section-title">About Heartfall</h2>
-      <div class="section-divider"></div>
-    </div>
+    <div class="section-header"><span class="section-subtitle">The Game</span><h2 class="section-title">About Heartfall</h2><div class="section-divider"></div></div>
     <div class="about-content">
       <div class="about-text">
-        <p class="lead-text">
-          Heartfall is an open world exploration game where players
-          travel between mysterious dimensions searching for rare
-          treasures and ancient secrets.
-        </p>
-        <p>
-          The world is huge and filled with mountains, forests,
-          rivers and strange places hidden deep underground.
-          Most creatures in the main world are peaceful,
-          but other dimensions are far more dangerous.
-        </p>
+        <p class="lead-text">Heartfall is an open world exploration game where players travel between mysterious dimensions searching for rare treasures and ancient secrets.</p>
+        <p>The world is huge and filled with mountains, forests, rivers and strange places hidden deep underground. Most creatures in the main world are peaceful, but other dimensions are far more dangerous.</p>
       </div>
     </div>
   </div>
@@ -817,82 +666,40 @@
 
 <section id="dimensions" class="section">
   <div class="container">
-    <div class="section-header">
-      <span class="section-subtitle">World</span>
-      <h2 class="section-title">Dimensions</h2>
-      <div class="section-divider"></div>
-    </div>
+    <div class="section-header"><span class="section-subtitle">World</span><h2 class="section-title">Dimensions</h2><div class="section-divider"></div></div>
 
-    <!-- Image names: overworld.jpg, underworld.jpg, sky.jpg -->
     <div class="dimension-card">
-      <img src="images/overworld.jpg" alt="Overworld landscape">
-      <div>
-        <h3>The Overworld</h3>
-        <p>
-          The default world where the adventure begins.
-          It is the largest dimension in the game with
-          mountains reaching up to 2000 units high,
-          large plains, rivers, forests and swamps.
-          Players spend most of their journey here.
-          The inhabitants of this world are mostly peaceful.
-        </p>
-      </div>
+      <div class="dimension-placeholder"><i class="fas fa-mountain"></i><span>Overworld</span></div>
+      <div><h3>The Overworld</h3><p>The default world where the adventure begins. It is the largest dimension in the game with mountains reaching up to 2000 units high, large plains, rivers, forests and swamps. Players spend most of their journey here. The inhabitants of this world are mostly peaceful.</p></div>
     </div>
 
     <div class="dimension-card">
-      <img src="images/underworld.jpg" alt="Underworld cavern">
-      <div>
-        <h3>The Underworld</h3>
-        <p>
-          This world lies deep underground.
-          The entrance is a massive cave that acts as a giant
-          mining tunnel beneath the cliffs of the overworld.
-          The area is covered in heavy fog and toxic gas.
-          Time itself feels strange here.
-          The only biome is the Dead Soil biome,
-          a cold land filled with deadly gas pits.
-        </p>
-      </div>
+      <div class="dimension-placeholder"><i class="fas fa-dungeon"></i><span>Underworld</span></div>
+      <div><h3>The Underworld</h3><p>This world lies deep underground. The entrance is a massive cave that acts as a giant mining tunnel beneath the cliffs of the overworld. The area is covered in heavy fog and toxic gas. Time itself feels strange here. The only biome is the Dead Soil biome, a cold land filled with deadly gas pits.</p></div>
     </div>
 
     <div class="dimension-card">
-      <img src="images/sky.jpg" alt="Sky dimension with floating islands">
-      <div>
-        <h3>Sky Dimension</h3>
-        <p>
-          A smaller floating dimension above the world.
-          The entrance appears on a remote island and
-          opens only when a special key is used.
-          This world is full of gemstones and beautiful clouds.
-          There are two land types:
-          peaceful white clouds and dangerous dark clouds.
-        </p>
-      </div>
+      <div class="dimension-placeholder"><i class="fas fa-cloud"></i><span>Sky</span></div>
+      <div><h3>Sky Dimension</h3><p>A smaller floating dimension above the world. The entrance appears on a remote island and opens only when a special key is used. This world is full of gemstones and beautiful clouds. There are two land types: peaceful white clouds and dangerous dark clouds.</p></div>
     </div>
   </div>
 </section>
 
 <section id="creatures" class="section">
   <div class="container">
-    <div class="section-header">
-      <span class="section-subtitle">Creatures</span>
-      <h2 class="section-title">World Creatures</h2>
-      <div class="section-divider"></div>
-    </div>
+    <div class="section-header"><span class="section-subtitle">Creatures</span><h2 class="section-title">World Creatures</h2><div class="section-divider"></div></div>
 
     <div class="creatures-grid">
-      <!-- Moblz - Underworld -->
       <div class="creature-card">
         <span class="tag underworld">Underworld</span>
-        <img src="images/moblz.jpg" alt="Moblz creature">
+        <div class="creature-icon"><i class="fas fa-stone"></i></div>
         <h4>Moblz</h4>
         <p>Slow stone creatures living deep in the Underworld, formed by ancient gases. They move in groups, attack by throwing rocks, and can create toxic fog that kills quickly. They rarely feel threatened, but when they do, they become extremely dangerous.</p>
       </div>
 
-      <!-- Flujzist Kor - Sky -->
       <div class="creature-card">
         <span class="tag sky">Sky</span>
-        <img src="images/flujzist-kor.jpg" alt="Flujzist Kor creature">
+        <div class="creature-icon"><i class="fas fa-wind"></i></div>
         <h4>Flujzist Kor</h4>
         <p>A guardian of the Sky Dimension with a core heart and four protective pillars. Once used in ancient battles, it now protects the good lands. It leaps high, walks fast, and has a hidden wind shield that keeps non-aerial creatures away.</p>
       </div>
@@ -901,52 +708,31 @@
 </section>
 
 <footer class="main-footer">
-  <div class="container">
-    <div class="footer-bottom">
-      <p>© 2026 Heartfall Project</p>
-    </div>
-  </div>
+  <div class="container"><div class="footer-bottom"><p>© 2026 Heartfall Project</p></div></div>
 </footer>
 
-<!-- Back to Top Button -->
-<button class="back-to-top" id="backToTop">
-  <i class="fas fa-chevron-up"></i>
-</button>
+<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
 
 <script>
-  // Mobile menu functionality
   document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.menu-toggle');
     const mainNav = document.querySelector('.main-nav');
-    
     if (menuToggle) {
       menuToggle.addEventListener('click', function() {
         mainNav.classList.toggle('active');
-        menuToggle.innerHTML = mainNav.classList.contains('active') 
-          ? '<i class="fas fa-times"></i>' 
-          : '<i class="fas fa-bars"></i>';
+        menuToggle.innerHTML = mainNav.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
       });
     }
-    
-    // Close mobile menu when clicking a link
     document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', function(e) {
+      link.addEventListener('click', function() {
         mainNav.classList.remove('active');
         if (menuToggle) menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
       });
     });
-
-    // Back to top button
     const backToTop = document.getElementById('backToTop');
-    
     window.addEventListener('scroll', function() {
-      if (window.scrollY > 500) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
-      }
+      backToTop.classList.toggle('visible', window.scrollY > 500);
     });
-    
     backToTop.addEventListener('click', function() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
