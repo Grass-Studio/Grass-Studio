@@ -10,200 +10,193 @@
   <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Grass Studio — Where Imagination Meets Innovation</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Grass Studio — Infinite Dimensions</title>
+  <meta name="description" content="Grass Studio: Where imagination meets innovation. Award‑winning indie games and the Undead Nightmare book series. No limits, just passion.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2987449339782635" crossorigin="anonymous"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    /* ===== RESET & GLOBAL ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #f8fafc;
-      color: #0f172a;
+      background: #0a0c0f;
+      color: #eef5ff;
       line-height: 1.5;
       overflow-x: hidden;
-    }
-
-    /* smooth scroll */
-    html {
       scroll-behavior: smooth;
     }
-
-    /* modern container */
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 2rem;
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+    
+    /* ===== ANIMATED PARTICLES BACKGROUND ===== */
+    #particles-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
     }
-
-    /* header glassmorphism */
+    
+    /* ===== MODERN HEADER (GLASS) ===== */
     .main-header {
       position: sticky;
       top: 0;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      background: rgba(10, 12, 15, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(126, 217, 87, 0.2);
       z-index: 100;
       transition: all 0.2s;
     }
-    .main-header .container {
+    .header-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
     }
     .logo h1 {
       font-size: 1.8rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #2b5e2b, #7ed957);
+      background: linear-gradient(135deg, #7ed957, #aaff88);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      letter-spacing: -0.5px;
     }
     .tagline {
-      font-size: 0.8rem;
-      color: #4a6741;
+      font-size: 0.75rem;
+      color: #7ed957;
       display: block;
-      margin-top: 0.2rem;
     }
-    .main-nav {
+    .nav-links {
       display: flex;
       gap: 2rem;
       align-items: center;
     }
-    .nav-link {
+    .nav-links a {
+      color: #ddd;
       text-decoration: none;
-      color: #1e2a1e;
       font-weight: 500;
       transition: 0.2s;
-      font-size: 1rem;
+      position: relative;
     }
-    .nav-link i {
-      margin-right: 0.4rem;
+    .nav-links a:hover, .nav-links a.active { color: #7ed957; }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #7ed957;
+      transition: width 0.3s;
     }
-    .nav-link:hover, .nav-link.active {
-      color: #3b8c2e;
-    }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
     .menu-toggle {
       display: none;
       background: none;
       border: none;
+      color: #7ed957;
       font-size: 1.8rem;
       cursor: pointer;
-      color: #1e2a1e;
     }
-
-    /* hero */
-    .hero-section {
-      min-height: 90vh;
+    
+    /* ===== HERO SECTION ===== */
+    .hero {
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: linear-gradient(145deg, #eef5e8 0%, #ffffff 100%);
       position: relative;
-      overflow: hidden;
-    }
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
+      z-index: 2;
       padding: 2rem;
     }
-    .hero-subtitle {
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      color: #3b8c2e;
-      font-weight: 600;
-    }
-    .hero-title {
+    .hero h2 {
       font-size: 4rem;
       font-weight: 800;
-      margin: 0.5rem 0;
-      background: linear-gradient(135deg, #1f3b1a, #3b8c2e);
+      background: linear-gradient(135deg, #fff, #7ed957);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-    }
-    .hero-description {
-      font-size: 1.2rem;
-      color: #334155;
-      margin: 1rem 0;
+      animation: float 3s infinite ease;
     }
     .hero-quote {
-      font-style: italic;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       border-left: 3px solid #7ed957;
       padding-left: 1rem;
       margin: 2rem auto;
       max-width: 500px;
-      color: #2d3e2a;
+    }
+    @keyframes float {
+      0%,100%{ transform: translateY(0);}
+      50%{ transform: translateY(-8px);}
     }
     .hero-buttons {
       display: flex;
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
+      margin-top: 2rem;
     }
-    .hero-btn {
+    .btn {
       padding: 0.8rem 2rem;
       border-radius: 40px;
       text-decoration: none;
       font-weight: 600;
-      transition: 0.2s;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-    .primary-btn {
-      background: #2b5e2b;
-      color: white;
-      box-shadow: 0 4px 12px rgba(43,94,43,0.2);
+    .btn-primary {
+      background: #7ed957;
+      color: #0a0c0f;
+      box-shadow: 0 5px 15px rgba(126,217,87,0.3);
     }
-    .primary-btn:hover {
-      background: #1f451f;
-      transform: translateY(-2px);
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(126,217,87,0.4);
     }
-    .secondary-btn {
-      border: 1px solid #2b5e2b;
-      color: #2b5e2b;
+    .btn-outline {
+      border: 1px solid #7ed957;
+      color: #7ed957;
     }
-    .secondary-btn:hover {
-      background: #eef5e8;
-      transform: translateY(-2px);
+    .btn-outline:hover {
+      background: rgba(126,217,87,0.1);
+      transform: translateY(-3px);
     }
     .scroll-indicator {
       position: absolute;
       bottom: 2rem;
       left: 0;
       right: 0;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #5b6e53;
       animation: bounce 2s infinite;
     }
     @keyframes bounce {
       0%,100%{ transform: translateY(0);}
-      50%{ transform: translateY(6px);}
+      50%{ transform: translateY(8px);}
     }
-
-    /* sections */
+    
+    /* ===== SECTIONS ===== */
     .section {
       padding: 5rem 0;
+      position: relative;
+      z-index: 2;
     }
     .section-header {
       text-align: center;
       margin-bottom: 3rem;
     }
     .section-subtitle {
-      font-size: 0.9rem;
-      text-transform: uppercase;
+      color: #7ed957;
       letter-spacing: 2px;
-      color: #3b8c2e;
       font-weight: 600;
     }
     .section-title {
@@ -218,240 +211,214 @@
       margin: 1rem auto;
       border-radius: 3px;
     }
-
-    /* about */
-    .about-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-    .lead-text {
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: #2b5e2b;
-      margin-bottom: 1rem;
-    }
-    .stats-container {
+    
+    /* ===== ABOUT STATS ===== */
+    .stats-grid {
       display: flex;
       gap: 2rem;
+      justify-content: center;
       margin-top: 2rem;
+      flex-wrap: wrap;
     }
-    .stat-item {
+    .stat-card {
       text-align: center;
-    }
-    .stat-number {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: #1f451f;
-    }
-    .stat-label {
-      font-size: 0.8rem;
-      color: #4a6741;
-    }
-    .floating-card {
-      background: #ffffffcc;
+      background: rgba(126,217,87,0.05);
+      padding: 1.5rem;
+      border-radius: 1rem;
       backdrop-filter: blur(8px);
-      padding: 2rem;
-      border-radius: 2rem;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
-      text-align: center;
-      border: 1px solid rgba(126,217,87,0.3);
+      border: 1px solid rgba(126,217,87,0.2);
+      min-width: 150px;
+      transition: all 0.3s;
     }
-
-    /* games grid */
-    .games-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    .game-card {
-      background: white;
-      border-radius: 1.5rem;
-      overflow: hidden;
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-      border: 1px solid #e2e8f0;
-    }
-    .game-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 35px -12px rgba(0,0,0,0.15);
+    .stat-card:hover {
+      transform: translateY(-5px);
       border-color: #7ed957;
     }
-    .game-icon {
-      background: #eef5e8;
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #7ed957;
+    }
+    
+    /* ===== GAMES & BOOKS CARDS ===== */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: rgba(20, 30, 20, 0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      transition: all 0.4s;
+      border: 1px solid rgba(126,217,87,0.2);
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: #7ed957;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+    }
+    .card-icon {
+      background: linear-gradient(135deg, #1a2a1a, #0f1a0f);
       padding: 2rem;
       text-align: center;
       font-size: 3rem;
-      color: #2b5e2b;
+      color: #7ed957;
     }
-    .game-content {
+    .card-content {
       padding: 1.5rem;
     }
-    .game-tag {
-      background: #eef5e8;
+    .card-tag {
+      background: rgba(126,217,87,0.15);
       padding: 0.2rem 0.8rem;
       border-radius: 20px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #2b5e2b;
+      font-size: 0.75rem;
       display: inline-block;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
+      color: #7ed957;
     }
-    .game-title {
+    .card-title {
       font-size: 1.5rem;
-      font-weight: 700;
       margin-bottom: 0.5rem;
     }
-    .game-features {
+    .card-desc {
+      color: #ccc;
+      margin: 1rem 0;
+    }
+    .card-features {
       display: flex;
       gap: 1rem;
+      flex-wrap: wrap;
       margin: 1rem 0;
+    }
+    .card-features span {
       font-size: 0.8rem;
-      color: #4a6741;
+      background: rgba(255,255,255,0.05);
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
     }
-    .game-status {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin: 1rem 0;
-    }
-    .status-indicator {
-      width: 8px;
-      height: 8px;
-      background: #7ed957;
-      border-radius: 50%;
-    }
-    .game-btn {
+    .card-btn {
       display: inline-block;
-      background: #1f451f;
-      color: white;
+      background: #7ed957;
+      color: #0a0c0f;
       padding: 0.5rem 1.2rem;
       border-radius: 40px;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 1rem;
       transition: 0.2s;
     }
-    .game-btn:hover {
-      background: #0f2a0f;
+    .card-btn:hover {
+      background: #aaff88;
+      transform: scale(1.02);
     }
-
-    /* books */
-    .books-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .book-card {
-      background: white;
-      border-radius: 1.5rem;
-      overflow: hidden;
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
-      transition: 0.2s;
-    }
-    .book-card:hover {
-      transform: translateY(-5px);
-    }
-    .book-cover {
-      background: #eef5e8;
-      padding: 2rem;
-      text-align: center;
-      font-size: 3rem;
-      color: #2b5e2b;
-    }
-    .book-info {
-      padding: 1.5rem;
-    }
-    .book-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-    }
-    .book-meta {
-      font-size: 0.8rem;
-      color: #5b6e53;
-      margin: 0.5rem 0;
-    }
-    .buy-btn {
-      background: #2b5e2b;
-      border: none;
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border-radius: 40px;
-      cursor: pointer;
-      font-weight: 500;
-      width: 100%;
-      transition: 0.2s;
-    }
-    .buy-btn:hover {
-      background: #1f451f;
-    }
-
-    /* newsletter */
-    .newsletter-section {
-      background: #eef5e8;
+    
+    /* ===== NEWSLETTER ===== */
+    .newsletter {
+      background: linear-gradient(135deg, #0f1a0f, #1a2a1a);
       border-radius: 2rem;
-      margin: 2rem 0;
-    }
-    .newsletter-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 2rem;
+      padding: 3rem;
+      text-align: center;
     }
     .newsletter-form {
       display: flex;
       gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1rem;
     }
     .newsletter-form input {
       padding: 0.8rem 1.2rem;
-      border-radius: 60px;
-      border: 1px solid #cbd5e1;
-      width: 260px;
+      border-radius: 40px;
+      border: none;
+      width: 280px;
+      background: rgba(255,255,255,0.1);
+      color: white;
     }
     .newsletter-form button {
-      background: #2b5e2b;
+      background: #7ed957;
       border: none;
-      color: white;
       padding: 0 1.5rem;
-      border-radius: 60px;
+      border-radius: 40px;
+      font-weight: bold;
       cursor: pointer;
     }
-
-    /* ad container */
-    .ad-container {
-      margin: 2rem 0;
-      text-align: center;
-      background: #f1f5f9;
-      padding: 1rem;
-      border-radius: 1rem;
+    
+    /* ===== MODAL ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
     }
-
-    /* footer */
-    .main-footer {
-      background: #0f172a;
-      color: #cbd5e1;
+    .modal-content {
+      background: #111;
+      border-radius: 1.5rem;
+      max-width: 500px;
+      width: 90%;
+      padding: 2rem;
+      border: 1px solid #7ed957;
+      text-align: center;
+    }
+    .store-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin: 1.5rem 0;
+    }
+    .store-link {
+      background: #1e2a1e;
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      color: #7ed957;
+      text-decoration: none;
+    }
+    
+    /* ===== FOOTER ===== */
+    footer {
+      background: #030609;
       padding: 3rem 0 1rem;
       margin-top: 4rem;
     }
-    .footer-content {
+    .footer-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 2rem;
     }
-    .social-links a {
-      color: #cbd5e1;
+    .social-icons a {
+      color: #7ed957;
       margin-right: 1rem;
       font-size: 1.2rem;
     }
+    
+    /* ===== REVEAL ANIMATIONS ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* ===== BACK TO TOP ===== */
     .back-to-top {
       position: fixed;
       bottom: 2rem;
       right: 2rem;
-      background: #2b5e2b;
-      color: white;
-      width: 44px;
-      height: 44px;
+      background: #7ed957;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -462,380 +429,373 @@
       border: none;
       z-index: 99;
     }
-    .back-to-top.visible {
-      opacity: 1;
-    }
-
-    /* animations on scroll */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
+    .back-to-top.visible { opacity: 1; }
+    
     @media (max-width: 768px) {
-      .main-nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: white;
-        flex-direction: column;
-        padding: 1rem;
-        gap: 1rem;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      }
-      .main-nav.active {
-        display: flex;
-      }
-      .menu-toggle {
-        display: block;
-      }
-      .about-content {
-        grid-template-columns: 1fr;
-      }
-      .hero-title {
-        font-size: 2.5rem;
-      }
-      .container {
-        padding: 0 1rem;
-      }
-      .newsletter-content {
-        flex-direction: column;
-        text-align: center;
-      }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #0a0c0fcc; backdrop-filter: blur(20px); flex-direction: column; padding: 1rem; gap: 1rem; }
+      .nav-links.active { display: flex; }
+      .menu-toggle { display: block; }
+      .hero h2 { font-size: 2.5rem; }
+      .container { padding: 0 1rem; }
+      .section { padding: 3rem 0; }
     }
   </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDD3LJKG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
+  <canvas id="particles-canvas"></canvas>
+  
   <header class="main-header">
-    <div class="container">
+    <div class="header-container">
       <div class="logo">
         <h1>Grass Studio</h1>
         <span class="tagline">Where Imagination Meets Innovation</span>
       </div>
-      <nav class="main-nav" id="mainNav">
-        <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a>
-        <a href="#games" class="nav-link"><i class="fas fa-gamepad"></i> Games</a>
-        <a href="#books" class="nav-link"><i class="fas fa-book"></i> Books</a>
-        <a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#" data-section="hero">Home</a>
+        <a href="#" data-section="games">Games</a>
+        <a href="#" data-section="books">Books</a>
+        <a href="#" data-section="contact">Contact</a>
       </nav>
       <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
     </div>
   </header>
-
+  
   <main>
-    <!-- Hero -->
-    <section class="hero-section">
-      <div class="hero-content">
-        <span class="hero-subtitle">Welcome to</span>
-        <h2 class="hero-title">Grass Studio</h2>
-        <p class="hero-description">Where boundless creativity meets cutting-edge technology</p>
-        <div class="hero-quote">
-          <p>"No Genre, No Limits. Just games & passion"</p>
-        </div>
+    <!-- HERO -->
+    <section id="hero" class="hero">
+      <div class="container" style="text-align: center;">
+        <span class="section-subtitle">Welcome to</span>
+        <h2>Grass Studio</h2>
+        <p style="font-size: 1.2rem;">Where boundless creativity meets cutting-edge technology</p>
+        <div class="hero-quote"><p>"No Genre, No Limits. Just games & passion"</p></div>
         <div class="hero-buttons">
-          <a href="#games" class="hero-btn primary-btn"><i class="fas fa-gamepad"></i> Explore Games</a>
-          <a href="#books" class="hero-btn secondary-btn"><i class="fas fa-book"></i> Discover Books</a>
+          <a href="#games" class="btn btn-primary"><i class="fas fa-gamepad"></i> Explore Games</a>
+          <a href="#books" class="btn btn-outline"><i class="fas fa-book"></i> Discover Books</a>
         </div>
-      </div>
-      <div class="scroll-indicator">
-        <span>Scroll to explore</span>
-        <i class="fas fa-chevron-down"></i>
+        <div class="scroll-indicator">
+          <span>Scroll to explore</span><br>
+          <i class="fas fa-chevron-down"></i>
+        </div>
       </div>
     </section>
-
-    <!-- About -->
+    
+    <!-- ABOUT + STATS -->
     <section id="about" class="section">
       <div class="container">
-        <div class="section-header fade-up">
+        <div class="section-header reveal">
           <span class="section-subtitle">Our Story</span>
           <h2 class="section-title">About Us</h2>
           <div class="section-divider"></div>
         </div>
-        <div class="about-content">
-          <div class="about-text fade-up">
-            <p class="lead-text">This studio didn't start with a big plan. It started with learning, curiosity, and small random games.</p>
-            <p>During the challenging times of COVID-19, Grass Studio emerged as an experimental passion project. What began as a simple curiosity evolved into a creative powerhouse dedicated to crafting immersive experiences.</p>
-            <p>Today, we continue our journey of learning and building, pushing the boundaries of what's possible in gaming and storytelling.</p>
-            <div class="stats-container">
-              <div class="stat-item">
-                <span class="stat-number">11</span>
-                <span class="stat-label">Our Games</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number">1</span>
-                <span class="stat-label">Book Series</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number">∞</span>
-                <span class="stat-label">Creative Ideas</span>
-              </div>
-            </div>
-          </div>
-          <div class="about-image fade-up">
-            <div class="floating-card">
-              <i class="fas fa-lightbulb" style="font-size: 2.5rem; color: #2b5e2b;"></i>
-              <h4>Innovation First</h4>
-              <p>We believe in pushing creative boundaries</p>
-            </div>
-          </div>
+        <div class="reveal">
+          <p style="font-size: 1.2rem; font-weight: 500; color: #7ed957;">This studio didn't start with a big plan. It started with learning, curiosity, and small random games.</p>
+          <p>During the challenging times of COVID-19, Grass Studio emerged as an experimental passion project. What began as a simple curiosity evolved into a creative powerhouse dedicated to crafting immersive experiences.</p>
+          <p>Today, we continue our journey of learning and building, pushing the boundaries of what's possible in gaming and storytelling.</p>
+        </div>
+        <div class="stats-grid reveal">
+          <div class="stat-card"><span class="stat-number">11</span><br>Our Games</div>
+          <div class="stat-card"><span class="stat-number">1</span><br>Book Series</div>
+          <div class="stat-card"><span class="stat-number">∞</span><br>Creative Ideas</div>
         </div>
       </div>
     </section>
-
+    
     <!-- AdSense Unit 1 -->
-    <div class="container ad-container fade-up">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-2987449339782635"
-           data-ad-slot="1234567890"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
+    <div class="container reveal">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2987449339782635" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
-
-    <!-- Games -->
+    
+    <!-- GAMES SECTION -->
     <section id="games" class="section">
       <div class="container">
-        <div class="section-header fade-up">
+        <div class="section-header reveal">
           <span class="section-subtitle">Interactive Experiences</span>
           <h2 class="section-title">Our Games</h2>
           <div class="section-divider"></div>
         </div>
-        <div class="games-grid">
-          <div class="game-card fade-up">
-            <div class="game-icon"><i class="fas fa-mountain"></i></div>
-            <div class="game-content">
-              <span class="game-tag">Adventure RPG</span>
-              <h3 class="game-title">Mountain Tales</h3>
-              <p class="game-description">Embark on an epic journey through vast mountains and discover mythical villages hidden from the world.</p>
-              <div class="game-features">
-                <span><i class="fas fa-globe"></i> Exploration</span>
-                <span><i class="fas fa-book"></i> Rich Story</span>
-                <span><i class="fas fa-dragon"></i> Fantasy</span>
-              </div>
-              <div class="game-status">
-                <div class="status-indicator"></div>
-                <span>Available on itch.io</span>
-              </div>
-              <a href="#" class="game-btn page-btn" onclick="alert('Visit itch.io: https://grass-stu.itch.io/'); return false;"><i class="fas fa-info-circle"></i> Learn More</a>
+        <div class="grid-2">
+          <div class="card reveal">
+            <div class="card-icon"><i class="fas fa-mountain"></i></div>
+            <div class="card-content">
+              <span class="card-tag">Adventure RPG</span>
+              <h3 class="card-title">Mountain Tales</h3>
+              <p class="card-desc">Embark on an epic journey through vast mountains and discover mythical villages hidden from the world.</p>
+              <div class="card-features"><span><i class="fas fa-globe"></i> Exploration</span><span><i class="fas fa-book"></i> Rich Story</span><span><i class="fas fa-dragon"></i> Fantasy</span></div>
+              <div style="display: flex; gap: 10px; margin-top: 1rem;"><button class="card-btn" onclick="openGame('https://grassstudio2.itch.io/mountain-tales')"><i class="fas fa-external-link-alt"></i> Play on itch.io</button><button class="card-btn" onclick="showGameDetails('mountain')"><i class="fas fa-info-circle"></i> Details</button></div>
             </div>
           </div>
-          <div class="game-card fade-up">
-            <div class="game-icon"><i class="fas fa-heart"></i></div>
-            <div class="game-content">
-              <span class="game-tag">Fantasy Exploration</span>
-              <h3 class="game-title">Heartfall</h3>
-              <p class="game-description">Explore a breathtaking open-world fantasy realm where every decision shapes your journey.</p>
-              <div class="game-features">
-                <span><i class="fas fa-expand"></i> Open World</span>
-                <span><i class="fas fa-magic"></i> Magic System</span>
-                <span><i class="fas fa-compass"></i> Exploration</span>
-              </div>
-              <div class="game-status">
-                <div class="status-indicator"></div>
-                <span>Available on itch.io</span>
-              </div>
-              <a href="#" class="game-btn page-btn" onclick="alert('Visit itch.io: https://grass-stu.itch.io/'); return false;"><i class="fas fa-info-circle"></i> Learn More</a>
+          <div class="card reveal">
+            <div class="card-icon"><i class="fas fa-heart"></i></div>
+            <div class="card-content">
+              <span class="card-tag">Fantasy Exploration</span>
+              <h3 class="card-title">Heartfall</h3>
+              <p class="card-desc">Explore a breathtaking open-world fantasy realm where every decision shapes your journey.</p>
+              <div class="card-features"><span><i class="fas fa-expand"></i> Open World</span><span><i class="fas fa-magic"></i> Magic System</span><span><i class="fas fa-compass"></i> Exploration</span></div>
+              <div style="display: flex; gap: 10px; margin-top: 1rem;"><button class="card-btn" onclick="openGame('https://grassstudio2.itch.io/heartfall')"><i class="fas fa-external-link-alt"></i> Play on itch.io</button><button class="card-btn" onclick="showGameDetails('heart')"><i class="fas fa-info-circle"></i> Details</button></div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Books -->
-    <section id="books" class="section">
-      <div class="container">
-        <div class="section-header fade-up">
-          <span class="section-subtitle">Literary Adventures</span>
-          <h2 class="section-title">Our Books</h2>
-          <div class="section-divider"></div>
-        </div>
-        <div class="books-grid">
-          <!-- Book 0 -->
-          <div class="book-card fade-up">
-            <div class="book-cover"><i class="fas fa-skull" style="font-size: 3rem;"></i></div>
-            <div class="book-info">
-              <div class="book-badge" style="background:#eef5e8; display:inline-block; padding:0.2rem 0.8rem; border-radius:20px; font-size:0.7rem;">Book 0</div>
-              <h3 class="book-title">The Undead Nightmare: Origins</h3>
-              <p class="book-series" style="color:#4a6741;">Prequel to the Undead Nightmare Series</p>
-              <p class="book-description">Discover the origins of the nightmare that started it all.</p>
-              <div class="book-meta"><i class="fas fa-calendar"></i> Published: Oct 14, 2025</div>
-              <button class="buy-btn" onclick="openStores('book1')"><i class="fas fa-store"></i> Available Stores</button>
-            </div>
-          </div>
-          <!-- Book I -->
-          <div class="book-card fade-up">
-            <div class="book-cover"><i class="fas fa-book-dead" style="font-size: 3rem;"></i></div>
-            <div class="book-info">
-              <div class="book-badge" style="background:#eef5e8; display:inline-block; padding:0.2rem 0.8rem; border-radius:20px; font-size:0.7rem;">Book I</div>
-              <h3 class="book-title">The Undead Nightmare: Book I</h3>
-              <p class="book-series" style="color:#4a6741;">The Beginning of the Saga</p>
-              <p class="book-description">The first chapter in an epic survival series.</p>
-              <div class="book-meta"><i class="fas fa-calendar"></i> Published: Feb 15, 2026</div>
-              <button class="buy-btn" onclick="openStores('book2')"><i class="fas fa-store"></i> Available Stores</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    
     <!-- AdSense Unit 2 -->
-    <div class="container ad-container fade-up">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-2987449339782635"
-           data-ad-slot="0987654321"
-           data-ad-format="rectangle"
-           data-full-width-responsive="true"></ins>
+    <div class="container reveal">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2987449339782635" data-ad-slot="0987654321" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
-
-    <!-- Newsletter -->
-    <section id="contact" class="section newsletter-section">
+    
+    <!-- BOOKS SECTION -->
+    <section id="books" class="section">
       <div class="container">
-        <div class="newsletter-content fade-up">
-          <div class="newsletter-text">
-            <h3>Stay Updated</h3>
-            <p>Subscribe for latest games, books, and studio news.</p>
+        <div class="section-header reveal">
+          <span class="section-subtitle">Literary Adventures</span>
+          <h2 class="section-title">The Undead Nightmare</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="grid-2">
+          <div class="card reveal">
+            <div class="card-icon"><i class="fas fa-skull"></i></div>
+            <div class="card-content">
+              <span class="card-tag">Book 0 · Prequel</span>
+              <h3 class="card-title">Origins</h3>
+              <p class="card-desc">Discover the origins of the nightmare that started it all. A gripping tale of survival in a world overrun by the undead.</p>
+              <div class="card-features"><span><i class="fas fa-calendar"></i> Oct 14, 2025</span></div>
+              <button class="card-btn" onclick="openStores('book1')"><i class="fas fa-store"></i> Available Stores</button>
+            </div>
           </div>
-          <div class="newsletter-form">
-            <form id="newsletterForm">
-              <input type="email" placeholder="Your email address" required>
-              <button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
-            </form>
+          <div class="card reveal">
+            <div class="card-icon"><i class="fas fa-book-dead"></i></div>
+            <div class="card-content">
+              <span class="card-tag">Book I · Available Now</span>
+              <h3 class="card-title">The Undead Nightmare: Book I</h3>
+              <p class="card-desc">The first chapter in an epic survival series. Follow characters fighting for humanity in a post-apocalyptic world.</p>
+              <div class="card-features"><span><i class="fas fa-calendar"></i> Feb 15, 2026</span></div>
+              <button class="card-btn" onclick="openStores('book2')"><i class="fas fa-store"></i> Available Stores</button>
+            </div>
           </div>
         </div>
       </div>
     </section>
-  </main>
-
-  <footer class="main-footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <h3>Grass Studio</h3>
-          <p>Where Imagination Meets Innovation</p>
-          <div class="social-links">
-            <a href="https://www.instagram.com/grass.stu/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://discord.com/invite/DCHUzHJDfg" target="_blank"><i class="fab fa-discord"></i></a>
-            <a href="mailto:grass.stu@gmail.com"><i class="fas fa-envelope"></i></a>
+    
+    <!-- CONTACT + FOUNDERS -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-subtitle">Get in Touch</span>
+          <h2 class="section-title">Meet the Team</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="grid-2 reveal">
+          <div class="card">
+            <div class="card-content">
+              <h3><i class="fas fa-user-circle"></i> Walid Bahri Menad</h3>
+              <p>Co-Founder & Co-CEO · Web & Game Developer</p>
+              <p style="font-size:0.9rem;">Born 2008, leading technical innovation and product development.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <h3><i class="fas fa-chart-line"></i> Ahmed Issa Ahmed</h3>
+              <p>Co-Founder, Co-CEO & Head of Marketing</p>
+              <p style="font-size:0.9rem;">Brand strategy, market expansion, and creative direction.</p>
+            </div>
           </div>
         </div>
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <a href="index.html">Home</a>
-          <a href="#games">Games</a>
-          <a href="#books">Books</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <div class="footer-contact">
-          <h4>Contact</h4>
+        <div class="reveal" style="text-align: center; margin-top: 2rem;">
           <p><i class="fas fa-envelope"></i> grass.stu@gmail.com</p>
+          <div class="social-icons">
+            <a href="https://www.instagram.com/grass.stu/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://discord.com/invite/DCHUzHJDfg" target="_blank"><i class="fab fa-discord"></i></a>
+          </div>
         </div>
       </div>
-      <div class="footer-bottom" style="text-align:center; margin-top:2rem;">
-        <p>© 2026 Grass Studio. All rights reserved. | Crafted with <i class="fas fa-heart"></i> & passion</p>
+    </section>
+    
+    <!-- NEWSLETTER -->
+    <div class="container reveal">
+      <div class="newsletter">
+        <h3>Stay Updated</h3>
+        <p>Subscribe for latest games, books, and studio news.</p>
+        <form id="newsletterForm" class="newsletter-form">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
+        </form>
       </div>
+    </div>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><h3>Grass Studio</h3><p>Where Imagination Meets Innovation</p></div>
+        <div><h4>Quick Links</h4><a href="#hero" style="color:#aaa;">Home</a><br><a href="#games" style="color:#aaa;">Games</a><br><a href="#books" style="color:#aaa;">Books</a></div>
+        <div><h4>Legal</h4><a href="#" style="color:#aaa;">Privacy Policy</a><br><a href="#" style="color:#aaa;">Terms</a></div>
+      </div>
+      <div class="footer-bottom" style="text-align:center; margin-top:2rem;">© 2026 Grass Studio. Crafted with <i class="fas fa-heart" style="color:#ff6b6b;"></i> & passion</div>
     </div>
   </footer>
-
-  <!-- Store Modal (same as original but restyled) -->
-  <div id="store-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); backdrop-filter:blur(8px); z-index:1000; align-items:center; justify-content:center;">
-    <div style="background:white; border-radius:2rem; max-width:500px; width:90%; padding:2rem; text-align:center;">
+  
+  <!-- MODAL for stores -->
+  <div id="storeModal" class="modal">
+    <div class="modal-content">
+      <span style="float:right; cursor:pointer;" onclick="closeModal()">&times;</span>
       <h3><i class="fas fa-store"></i> Available on</h3>
-      <div id="stores-container" style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; margin:1.5rem 0;"></div>
-      <button onclick="closeStores()" style="background:#2b5e2b; border:none; color:white; padding:0.5rem 1.5rem; border-radius:40px; cursor:pointer;">Close</button>
+      <div id="storeLinks" class="store-links"></div>
+      <button class="card-btn" onclick="closeModal()">Close</button>
     </div>
   </div>
-
+  
+  <!-- MODAL for game details -->
+  <div id="gameModal" class="modal">
+    <div class="modal-content">
+      <span style="float:right; cursor:pointer;" onclick="closeGameModal()">&times;</span>
+      <div id="gameDetailContent"></div>
+    </div>
+  </div>
+  
   <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
-
+  
   <script>
-    // Store data (original)
-    const booksStores = {
+    // ---- PARTICLE BACKGROUND (lightweight & hypnotic) ----
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let particleCount = 80;
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 3 + 1,
+          alpha: Math.random() * 0.4 + 0.1,
+          speedX: (Math.random() - 0.5) * 0.3,
+          speedY: (Math.random() - 0.5) * 0.3,
+        });
+      }
+    }
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#7ed957';
+      for (let p of particles) {
+        ctx.globalAlpha = p.alpha;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+        p.x += p.speedX;
+        p.y += p.speedY;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+      }
+      requestAnimationFrame(drawParticles);
+    }
+    window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
+    resizeCanvas();
+    initParticles();
+    drawParticles();
+    
+    // ---- SCROLL REVEAL ----
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    reveals.forEach(r => observer.observe(r));
+    
+    // ---- MOBILE MENU ----
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+    
+    // ---- SMOOTH SCROLL ----
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+    
+    // ---- BACK TO TOP ----
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 500) backBtn.classList.add('visible');
+      else backBtn.classList.remove('visible');
+    });
+    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    
+    // ---- NEWSLETTER ----
+    document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('🔥 You’re now part of the Grass revolution. Expect creative chaos!');
+      e.target.reset();
+    });
+    
+    // ---- BOOK STORES DATA ----
+    const storesData = {
       book1: [
-        { logo:"Smashwords", url:"https://www.smashwords.com/books/view/1878337" },
-        { logo:"Barnes & Noble", url:"https://www.barnesandnoble.com/w/x/x?ean=2940182427364" },
-        { logo:"Kobo", url:"https://kobo.com/search?query=9798232849467" },
-        { logo:"Apple Books", url:"https://books.apple.com/us/book/id6753977863" },
-        { logo:"Amazon", url:"https://www.amazon.com/dp/B0GJ5RDZBY" }
+        { name: "Smashwords", url: "https://www.smashwords.com/books/view/1878337" },
+        { name: "Barnes & Noble", url: "https://www.barnesandnoble.com/w/x/x?ean=2940182427364" },
+        { name: "Kobo", url: "https://kobo.com/search?query=9798232849467" },
+        { name: "Apple Books", url: "https://books.apple.com/us/book/id6753977863" },
+        { name: "Amazon", url: "https://www.amazon.com/dp/B0GJ5RDZBY" }
       ],
       book2: [
-        { logo:"Tolino", url:"https://www.thalia.de/shop/home/artikeldetails/A1078033452" },
-        { logo:"Apple Books", url:"https://books.apple.com/us/book/the-undead-origins-be-awear/id6758108621" },
-        { logo:"Kobo", url:"https://kobo.com/search?query=9798233007323" },
-        { logo:"Smashwords", url:"https://www.smashwords.com/books/view/1950152" },
-        { logo:"Amazon", url:"https://www.amazon.com/dp/B0GQJX1DCP" }
+        { name: "Tolino", url: "https://www.thalia.de/shop/home/artikeldetails/A1078033452" },
+        { name: "Apple Books", url: "https://books.apple.com/us/book/the-undead-origins-be-awear/id6758108621" },
+        { name: "Kobo", url: "https://kobo.com/search?query=9798233007323" },
+        { name: "Smashwords", url: "https://www.smashwords.com/books/view/1950152" },
+        { name: "Amazon", url: "https://www.amazon.com/dp/B0GQJX1DCP" }
       ]
     };
-
-    function openStores(bookId) {
-      const container = document.getElementById("stores-container");
-      container.innerHTML = "";
-      booksStores[bookId].forEach(store => {
-        const a = document.createElement("a");
+    window.openStores = (bookId) => {
+      const modal = document.getElementById('storeModal');
+      const container = document.getElementById('storeLinks');
+      container.innerHTML = '';
+      storesData[bookId].forEach(store => {
+        const a = document.createElement('a');
         a.href = store.url;
-        a.target = "_blank";
-        a.style = "background:#eef5e8; padding:0.5rem 1rem; border-radius:40px; text-decoration:none; color:#2b5e2b; font-weight:500; display:inline-block;";
-        a.innerText = store.logo;
+        a.target = '_blank';
+        a.className = 'store-link';
+        a.innerText = store.name;
         container.appendChild(a);
       });
-      document.getElementById("store-modal").style.display = "flex";
-    }
-    function closeStores() {
-      document.getElementById("store-modal").style.display = "none";
-    }
-    window.openStores = openStores;
-    window.closeStores = closeStores;
-
-    // Mobile menu
-    const menuToggle = document.getElementById('menuToggle');
-    const mainNav = document.getElementById('mainNav');
-    menuToggle.addEventListener('click', () => mainNav.classList.toggle('active'));
-
-    // Back to top
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 500) backToTop.classList.add('visible');
-      else backToTop.classList.remove('visible');
-    });
-    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // Newsletter
-    const newsletterForm = document.getElementById('newsletterForm');
-    newsletterForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = newsletterForm.querySelector('input').value;
-      alert(`Thank you ${email}! You're now part of Grass Studio.`);
-      newsletterForm.reset();
-    });
-
-    // Scroll reveal (fade-up)
-    const faders = document.querySelectorAll('.fade-up');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2, rootMargin: '0px 0px -20px 0px' });
-    faders.forEach(el => observer.observe(el));
-
-    // AdSense refresh (ensure ads load)
-    if (typeof adsbygoogle !== 'undefined') {
-      try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
-    }
+      modal.style.display = 'flex';
+    };
+    window.closeModal = () => { document.getElementById('storeModal').style.display = 'none'; };
+    
+    // ---- GAME DETAILS (immersive) ----
+    window.openGame = (url) => { window.open(url, '_blank'); };
+    window.showGameDetails = (game) => {
+      const modal = document.getElementById('gameModal');
+      const content = document.getElementById('gameDetailContent');
+      if(game === 'mountain') {
+        content.innerHTML = `<h3>🏔️ Mountain Tales</h3><p>A deep narrative RPG set in mythical peaks. Uncover ancient secrets, forge alliances, and shape your legend.</p><p><strong>Features:</strong> Exploration, rich story, fantasy, dynamic quests.</p><p>Available now on itch.io.</p><button class="card-btn" onclick="openGame('https://grassstudio2.itch.io/mountain-tales')">Play Now</button>`;
+      } else {
+        content.innerHTML = `<h3>❤️ Heartfall</h3><p>Open-world fantasy where every decision reshapes the realm. Master magic, explore vast landscapes, and discover hidden dimensions.</p><p><strong>Features:</strong> Open world, magic system, puzzles, living world.</p><p>Available now on itch.io.</p><button class="card-btn" onclick="openGame('https://grassstudio2.itch.io/heartfall')">Play Now</button>`;
+      }
+      modal.style.display = 'flex';
+    };
+    window.closeGameModal = () => { document.getElementById('gameModal').style.display = 'none'; };
+    
+    // close modals on background click
+    window.onclick = (e) => {
+      if(e.target === document.getElementById('storeModal')) closeModal();
+      if(e.target === document.getElementById('gameModal')) closeGameModal();
+    };
+    
+    // Ads refresh
+    if(typeof adsbygoogle !== 'undefined') { try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e){} }
   </script>
 </body>
 </html>
