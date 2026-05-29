@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grass Studio — Infinite Dimensions</title>
+  <meta name="description" content="Grass Studio: indie games & the Undead Nightmare book series. No genre, no limits.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --ink: #0d0d0d;
+      --paper: #f5f0e8;
+      --acid: #b8ff57;
+      --blood: #c0392b;
+      --smoke: #8a8a7a;
+      --dim: #1a1a1a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--paper);
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    h1, h2, h3, h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+      font-weight: 400;
+      line-height: 0.95;
+    }
+
+    .mono {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--smoke);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 3rem;
+      mix-blend-mode: normal;
+    }
+
+    nav::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0) 100%);
+      pointer-events: none;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.1em;
+      color: var(--paper);
+      text-decoration: none;
+      position: relative;
+    }
+
+    .nav-logo span { color: var(--acid); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      position: relative;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--acid); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 70% 40%, rgba(184,255,87,0.04) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 60%, rgba(192,57,43,0.06) 0%, transparent 60%);
+    }
+
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 8rem 3rem 3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--acid);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(5rem, 18vw, 16rem);
+      line-height: 0.85;
+      color: var(--paper);
+      margin-bottom: 2rem;
+    }
+
+    .hero-title .stroke {
+      -webkit-text-stroke: 1px var(--paper);
+      color: transparent;
+    }
+
+    .hero-sub {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-tagline {
+      font-family: 'Crimson Pro', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--smoke);
+      max-width: 400px;
+      border-left: 2px solid var(--acid);
+      padding-left: 1.2rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .hero-bottom {
+      border-top: 1px solid rgba(245,240,232,0.08);
+      padding: 1.2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-n {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--acid);
+      display: block;
+    }
+
+    .stat-l {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--smoke);
+    }
+
+    .scroll-hint {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.75rem 1.8rem;
+      border-radius: 0;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    .btn-acid {
+      background: var(--acid);
+      color: var(--ink);
+      border: 1px solid var(--acid);
+    }
+
+    .btn-acid:hover {
+      background: transparent;
+      color: var(--acid);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid rgba(245,240,232,0.3);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--paper);
+      background: rgba(245,240,232,0.05);
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      padding: 7rem 3rem;
+      position: relative;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--acid);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: var(--acid);
+    }
+
+    .section-title {
+      font-size: clamp(3rem, 8vw, 7rem);
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .about-text p {
+      color: rgba(245,240,232,0.7);
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .about-text p:first-child {
+      font-size: 1.4rem;
+      color: var(--paper);
+      font-style: italic;
+    }
+
+    .about-sidebar {
+      border-left: 1px solid rgba(245,240,232,0.12);
+      padding-left: 3rem;
+    }
+
+    .founder-card {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(245,240,232,0.08);
+    }
+
+    .founder-card:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .founder-role {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--acid);
+      margin-bottom: 0.4rem;
+    }
+
+    .founder-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    .founder-desc {
+      font-size: 0.9rem;
+      color: var(--smoke);
+      font-style: italic;
+    }
+
+    /* ── GAMES ── */
+    .games-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 3rem;
+    }
+
+    .game-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--dim);
+      cursor: pointer;
+    }
+
+    .game-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease, filter 0.4s ease;
+      filter: grayscale(30%) brightness(0.6);
+    }
+
+    .game-card:hover .game-card-img {
+      transform: scale(1.05);
+      filter: grayscale(0%) brightness(0.75);
+    }
+
+    .game-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0.2) 50%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      transition: opacity 0.3s;
+    }
+
+    .game-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--acid);
+      margin-bottom: 0.5rem;
+    }
+
+    .game-title {
+      font-size: 3rem;
+      color: var(--paper);
+      margin-bottom: 0.75rem;
+    }
+
+    .game-desc {
+      font-size: 0.95rem;
+      color: rgba(245,240,232,0.65);
+      margin-bottom: 1.2rem;
+      max-width: 340px;
+    }
+
+    .game-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--acid);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .game-card:hover .game-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .game-link::after {
+      content: '→';
+    }
+
+    /* ── BOOKS ── */
+    .books-section {
+      background: var(--dim);
+    }
+
+    .books-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(184,255,87,0.3), transparent);
+    }
+
+    .books-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .book-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      padding: 2rem;
+      border: 1px solid rgba(245,240,232,0.08);
+      transition: border-color 0.3s;
+    }
+
+    .book-card:hover {
+      border-color: rgba(184,255,87,0.3);
+    }
+
+    .book-cover-wrap {
+      width: 120px;
+      flex-shrink: 0;
+    }
+
+    .book-cover-wrap img {
+      width: 100%;
+      display: block;
+      filter: brightness(0.9);
+    }
+
+    .book-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .book-series-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blood);
+    }
+
+    .book-title-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+    }
+
+    .book-blurb {
+      font-size: 0.9rem;
+      color: rgba(245,240,232,0.6);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .book-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--smoke);
+    }
+
+    .book-stores-btn {
+      margin-top: auto;
+    }
+
+    /* ── STORE MODAL ── */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(13,13,13,0.93);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .modal-backdrop.open { display: flex; }
+
+    .modal-box {
+      background: #111;
+      border: 1px solid rgba(245,240,232,0.15);
+      padding: 3rem;
+      max-width: 480px;
+      width: 90%;
+    }
+
+    .modal-title {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      margin-bottom: 2rem;
+    }
+
+    .store-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .store-pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(245,240,232,0.2);
+      color: var(--paper);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .store-pill:hover {
+      border-color: var(--acid);
+      color: var(--acid);
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .modal-close:hover { color: var(--paper); }
+
+    /* ── CONTACT ── */
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .contact-text {
+      font-size: 1.1rem;
+      color: rgba(245,240,232,0.65);
+      margin-bottom: 2rem;
+    }
+
+    .contact-email {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      color: var(--paper);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid rgba(245,240,232,0.15);
+      padding-bottom: 1rem;
+      transition: color 0.2s;
+    }
+
+    .contact-email:hover { color: var(--acid); }
+
+    .social-row {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .social-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+    }
+
+    .social-link:hover { color: var(--acid); }
+
+    /* Newsletter */
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .newsletter-form label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--smoke);
+    }
+
+    .newsletter-form input {
+      background: rgba(245,240,232,0.05);
+      border: 1px solid rgba(245,240,232,0.15);
+      color: var(--paper);
+      padding: 0.9rem 1.2rem;
+      font-family: 'Crimson Pro', serif;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      border-radius: 0;
+      width: 100%;
+    }
+
+    .newsletter-form input:focus {
+      border-color: var(--acid);
+    }
+
+    .newsletter-form input::placeholder { color: var(--smoke); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(245,240,232,0.08);
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--smoke);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--paper); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: rgba(245,240,232,0.08);
+      margin: 0 3rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 800px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+
+      .hero-main { padding: 6rem 1.5rem 2rem; }
+      .hero-bottom { padding: 1rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .hero-stats { gap: 1.5rem; }
+
+      .section { padding: 4rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-sidebar { border-left: none; border-top: 1px solid rgba(245,240,232,0.12); padding-left: 0; padding-top: 2rem; }
+      .games-grid { grid-template-columns: 1fr; }
+      .books-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .book-card { grid-template-columns: 80px 1fr; gap: 1.2rem; padding: 1.5rem; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .divider { margin: 0 1.5rem; }
+      footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Grass<span>.</span>Studio</a>
+    <ul class="nav-links">
+      <li><a href="#games">Games</a></li>
+      <li><a href="#books">Books</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-main">
+      <p class="hero-eyebrow">Est. 2020 · Indie Games &amp; Fiction</p>
+      <h1 class="hero-title">
+        Grass<br><span class="stroke">Studio</span>
+      </h1>
+      <div class="hero-sub">
+        <p class="hero-tagline">"No genre, no limits. Just games &amp; passion."</p>
+        <div class="hero-cta">
+          <a href="#games" class="btn btn-acid">Explore Games</a>
+          <a href="#books" class="btn btn-ghost">Read Books</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-bottom">
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-n">11</span>
+          <span class="stat-l">Games</span>
+        </div>
+        <div class="stat">
+          <span class="stat-n">02</span>
+          <span class="stat-l">Books</span>
+        </div>
+        <div class="stat">
+          <span class="stat-n">∞</span>
+          <span class="stat-l">Ideas</span>
+        </div>
+      </div>
+      <p class="scroll-hint"><i class="fas fa-arrow-down" style="font-size:0.6rem;"></i> Scroll</p>
+    </div>
+  </section>
+
+  <!-- GAMES -->
+  <section id="games" class="section" style="padding-bottom: 0;">
+    <div class="section-label fade-up">Interactive Experiences</div>
+    <h2 class="section-title fade-up">Our<br>Games</h2>
+  </section>
+
+  <div class="games-grid fade-up">
+    <div class="game-card">
+      <img src="assets/images/mountain-tales-1.jpg" alt="Mountain Tales" class="game-card-img">
+      <div class="game-card-overlay">
+        <p class="game-tag">Adventure RPG</p>
+        <h3 class="game-title">Mountain Tales</h3>
+        <p class="game-desc">An epic journey through vast peaks and hidden mythical villages.</p>
+        <a href="https://grassstudio2.itch.io/mountain-tales" target="_blank" class="game-link">Play on itch.io</a>
+      </div>
+    </div>
+    <div class="game-card">
+      <img src="assets/images/heartfall-1.jpg" alt="Heartfall" class="game-card-img">
+      <div class="game-card-overlay">
+        <p class="game-tag">Fantasy Exploration</p>
+        <h3 class="game-title">Heartfall</h3>
+        <p class="game-desc">An open-world fantasy realm where every decision shapes your journey.</p>
+        <a href="https://grassstudio2.itch.io/heartfall" target="_blank" class="game-link">Play on itch.io</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top: 2rem; padding-bottom: 2rem;">
+    <a href="games.html" class="btn btn-ghost">View All 11 Games →</a>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BOOKS -->
+  <section id="books" class="section books-section">
+    <div class="section-label fade-up">Literary Horror</div>
+    <h2 class="section-title fade-up">The Undead<br>Nightmare</h2>
+
+    <div class="books-layout">
+      <div class="book-card fade-up">
+        <div class="book-cover-wrap">
+          <img src="assets/images/book1.jpg" alt="Origins cover">
+        </div>
+        <div class="book-info">
+          <p class="book-series-tag">Book 0 · Prequel</p>
+          <h3 class="book-title-text">Origins</h3>
+          <p class="book-blurb">The nightmare that started it all. A survival tale in a world reclaimed by the dead.</p>
+          <p class="book-date">Oct 14, 2025</p>
+          <div class="book-stores-btn">
+            <button class="btn btn-acid" onclick="openStores('book1')" style="font-size:0.58rem; padding: 0.6rem 1.2rem;">Available Stores</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="book-card fade-up">
+        <div class="book-cover-wrap">
+          <img src="assets/images/book2.jpg" alt="Book I cover">
+        </div>
+        <div class="book-info">
+          <p class="book-series-tag">Book I · Available Now</p>
+          <h3 class="book-title-text">The Undead Nightmare: Book I</h3>
+          <p class="book-blurb">The first chapter in the epic series. Humanity's last stand in a post-apocalyptic world.</p>
+          <p class="book-date">Feb 15, 2026</p>
+          <div class="book-stores-btn">
+            <button class="btn btn-acid" onclick="openStores('book2')" style="font-size:0.58rem; padding: 0.6rem 1.2rem;">Available Stores</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="section-label fade-up">Our Story</div>
+    <h2 class="section-title fade-up">Born from<br>Curiosity</h2>
+
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p>This studio didn't start with a grand plan. It started with learning, late nights, and small random games built for the love of it.</p>
+        <p>During the uncertainty of COVID-19, Grass Studio emerged as a passion experiment. Two young creators in Algeria, building worlds from scratch — no budget, no blueprint, just relentless curiosity.</p>
+        <p>Today we make indie games and horror fiction that we'd want to experience ourselves. No genre police. No limits.</p>
+      </div>
+      <div class="about-sidebar fade-up">
+        <div class="founder-card">
+          <p class="founder-role">Co-Founder &amp; Co-CEO · Dev</p>
+          <h3 class="founder-name">Walid Bahri Menad</h3>
+          <p class="founder-desc">Web &amp; game development, technical architecture, product vision.</p>
+        </div>
+        <div class="founder-card">
+          <p class="founder-role">Co-Founder, Co-CEO &amp; Marketing</p>
+          <h3 class="founder-name">Ahmed Issa Ahmed</h3>
+          <p class="founder-desc">Brand strategy, creative direction, market expansion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="section-label fade-up">Get in Touch</div>
+    <h2 class="section-title fade-up">Contact</h2>
+
+    <div class="contact-inner">
+      <div class="fade-up">
+        <p class="contact-text">Have a question, collab idea, or just want to say hello? We read every message.</p>
+        <a href="mailto:grass.stu@gmail.com" class="contact-email">grass.stu@gmail.com</a>
+        <div class="social-row">
+          <a href="https://www.instagram.com/grass.stu/" target="_blank" class="social-link">
+            <i class="fab fa-instagram"></i> Instagram
+          </a>
+          <a href="https://discord.com/invite/DCHUzHJDfg" target="_blank" class="social-link">
+            <i class="fab fa-discord"></i> Discord
+          </a>
+        </div>
+      </div>
+      <div class="fade-up">
+        <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+          <label for="nl-email">Stay Updated</label>
+          <input type="email" id="nl-email" placeholder="your@email.com" required>
+          <button type="submit" class="btn btn-acid" style="align-self: flex-start;">Subscribe →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-copy">© 2026 Grass Studio · Infinite Dimensions</p>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+      <a href="games.html">Games</a>
+      <a href="books.html">Books</a>
+    </div>
+  </footer>
+
+  <!-- STORE MODAL -->
+  <div class="modal-backdrop" id="storeModal">
+    <div class="modal-box">
+      <h3 class="modal-title" id="modalTitle">Available On</h3>
+      <p class="modal-sub" id="modalSub"></p>
+      <div class="store-grid" id="storeGrid"></div>
+      <button class="modal-close" onclick="closeModal()">← Close</button>
+    </div>
+  </div>
+
+  <script>
+    const stores = {
+      book1: {
+        title: "Origins",
+        sub: "Book 0 · The Undead Nightmare",
+        links: [
+          { name: "Amazon", url: "https://www.amazon.com/dp/B0GJ5RDZBY" },
+          { name: "Apple Books", url: "https://books.apple.com/us/book/id6753977863" },
+          { name: "Kobo", url: "https://kobo.com/search?query=9798232849467" },
+          { name: "Barnes & Noble", url: "https://www.barnesandnoble.com/w/x/x?ean=2940182427364" },
+          { name: "Smashwords", url: "https://www.smashwords.com/books/view/1878337" }
+        ]
+      },
+      book2: {
+        title: "Book I",
+        sub: "The Undead Nightmare",
+        links: [
+          { name: "Amazon", url: "https://www.amazon.com/dp/B0GQJX1DCP" },
+          { name: "Apple Books", url: "https://books.apple.com/us/book/the-undead-origins-be-awear/id6758108621" },
+          { name: "Kobo", url: "https://kobo.com/search?query=9798233007323" },
+          { name: "Smashwords", url: "https://www.smashwords.com/books/view/1950152" },
+          { name: "Tolino", url: "https://www.thalia.de/shop/home/artikeldetails/A1078033452" }
+        ]
+      }
+    };
+
+    function openStores(id) {
+      const data = stores[id];
+      document.getElementById('modalTitle').textContent = data.title;
+      document.getElementById('modalSub').textContent = data.sub;
+      const grid = document.getElementById('storeGrid');
+      grid.innerHTML = data.links.map(s =>
+        `<a href="${s.url}" target="_blank" class="store-pill">${s.name}</a>`
+      ).join('');
+      document.getElementById('storeModal').classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('storeModal').classList.remove('open');
+    }
+
+    document.getElementById('storeModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'Subscribed ✓';
+      btn.style.background = 'transparent';
+      btn.style.color = 'var(--acid)';
+      e.target.reset();
+    }
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('in');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
