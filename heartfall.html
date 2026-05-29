@@ -3,741 +3,281 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Heartfall In Grass</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
+  <title>Heartfall — Grass Studio</title>
+  <meta name="description" content="Heartfall — open world fantasy exploration across three dimensions by Grass Studio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* ===== RESET & GLOBAL STYLES ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
-      background: #0a0a0a;
-      color: #eee;
-      line-height: 1.6;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 clamp(15px, 4vw, 20px);
-      width: 100%;
-    }
-
-    /* ===== HEADER & NAVIGATION ===== */
-    .main-header {
-      background: rgba(17, 17, 17, 0.98);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      padding: clamp(12px, 3vw, 15px) 0;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(126, 217, 87, 0.15);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .main-header .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .logo h1 {
-      font-size: clamp(22px, 5vw, 28px);
-      background: linear-gradient(45deg, #7ed957, #4ecdc4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 2px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
-
-    .tagline {
-      font-size: clamp(9px, 2vw, 12px);
-      color: #aaa;
-      letter-spacing: 1.2px;
-      font-weight: 400;
-    }
-
-    .main-nav {
-      display: flex;
-      gap: clamp(10px, 3vw, 30px);
-    }
-
-    .nav-link {
-      color: #ddd;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 8px 0;
-      position: relative;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: clamp(13px, 2vw, 16px);
-    }
-
-    .nav-link:hover,
-    .nav-link.active {
-      color: #7ed957;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #7ed957, #4ecdc4);
-      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      border-radius: 2px;
-    }
-
-    .nav-link:hover::after,
-    .nav-link.active::after {
-      width: 100%;
-    }
-
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: #7ed957;
-      font-size: 24px;
-      cursor: pointer;
-      padding: 8px;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-
-    .menu-toggle:hover {
-      background: rgba(126, 217, 87, 0.1);
-    }
-
-    /* ===== BACK TO GAMES BUTTON ===== */
-    .back-to-games {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(126, 217, 87, 0.1);
-      color: #7ed957;
-      text-decoration: none;
-      padding: 8px 16px;
-      border-radius: 50px;
-      font-size: 14px;
-      font-weight: 600;
-      border: 1px solid rgba(126, 217, 87, 0.3);
-      transition: all 0.3s ease;
-      margin-right: 15px;
-    }
-
-    .back-to-games:hover {
-      background: rgba(126, 217, 87, 0.2);
-      transform: translateX(-3px);
-      border-color: #7ed957;
-    }
-
-    .back-to-games i {
-      font-size: 12px;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-    }
-
-    /* ===== HERO SECTION ===== */
-    .hero-section {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding-top: 80px;
-    }
-
-    .hero-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
-      gap: clamp(30px, 6vw, 50px);
-      align-items: center;
-      z-index: 2;
-      width: 100%;
-      position: relative;
-    }
-
-    .hero-text {
-      animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-      opacity: 0;
-      transform: translateX(-30px);
-    }
-
-    @keyframes slideInLeft {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .hero-subtitle {
-      color: #7ed957;
-      font-size: clamp(14px, 3vw, 18px);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      display: block;
-      font-weight: 600;
-      opacity: 0.9;
-    }
-
-    .hero-title {
-      font-size: clamp(2.5rem, 8vw, 4rem);
-      background: linear-gradient(45deg, #7ed957, #fff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: clamp(15px, 4vw, 20px);
-      line-height: 1.1;
-      font-weight: 800;
-      letter-spacing: -1px;
-    }
-
-    .hero-description {
-      font-size: clamp(1rem, 3vw, 1.25rem);
-      color: #ccc;
-      margin-bottom: clamp(20px, 5vw, 30px);
-      max-width: 600px;
-      opacity: 0.9;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: clamp(15px, 3vw, 20px);
-      margin-top: clamp(25px, 6vw, 30px);
-      flex-wrap: wrap;
-    }
-
-    .hero-btn {
-      padding: clamp(12px, 3vw, 15px) clamp(20px, 4vw, 30px);
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      font-size: clamp(14px, 2vw, 16px);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .hero-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      transition: left 0.6s ease;
-      z-index: -1;
-    }
-
-    .hero-btn:hover::before {
-      left: 100%;
-    }
-
-    .primary-btn {
-      background: linear-gradient(135deg, #7ed957, #4ecdc4);
-      color: #000;
-    }
-
-    .hero-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(126, 217, 87, 0.3);
-    }
-
-    .hero-image {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
-      opacity: 0;
-      transform: translateX(30px);
-    }
-
-    @keyframes slideInRight {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .floating-element {
-      width: clamp(180px, 40vw, 300px);
-      height: clamp(180px, 40vw, 300px);
-      background: radial-gradient(circle, rgba(126, 217, 87, 0.15) 0%, transparent 70%);
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      box-shadow: 0 0 60px rgba(126, 217, 87, 0.2);
-    }
-
-    .floating-element::before {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      right: -10px;
-      bottom: -10px;
-      background: linear-gradient(45deg, #7ed957, #4ecdc4, #7ed957);
-      border-radius: 50%;
-      z-index: -1;
-      opacity: 0.2;
-      animation: rotate 20s linear infinite;
-    }
-
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .floating-element i {
-      font-size: clamp(60px, 12vw, 120px);
-      color: #7ed957;
-      filter: drop-shadow(0 0 10px rgba(126, 217, 87, 0.5));
-    }
-
-    /* ===== SECTIONS COMMON STYLES ===== */
-    .section {
-      padding: clamp(60px, 10vw, 100px) 0;
-      position: relative;
-    }
-
-    .section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(126, 217, 87, 0.2), transparent);
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: clamp(30px, 6vw, 60px);
-      position: relative;
-    }
-
-    .section-subtitle {
-      color: #7ed957;
-      font-size: clamp(13px, 2vw, 16px);
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 12px;
-      font-weight: 600;
-      opacity: 0.9;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 6vw, 2.625rem);
-      color: #fff;
-      margin-bottom: clamp(15px, 4vw, 20px);
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    .section-divider {
-      width: 80px;
-      height: 4px;
-      background: linear-gradient(90deg, #7ed957, #4ecdc4);
-      margin: 0 auto;
-      border-radius: 2px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .section-divider::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-      animation: shimmer 2s infinite;
-    }
-
-    @keyframes shimmer {
-      to { left: 100%; }
-    }
-
-    /* ===== ABOUT SECTION ===== */
-    .about-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
-      gap: clamp(30px, 6vw, 60px);
-      align-items: center;
-    }
-
-    .about-text .lead-text {
-      font-size: clamp(1.25rem, 4vw, 1.5rem);
-      color: #fff;
-      margin-bottom: clamp(20px, 5vw, 30px);
-      line-height: 1.4;
-      font-weight: 500;
-      opacity: 0.95;
-    }
-
-    .about-text p {
-      color: #ccc;
-      margin-bottom: clamp(15px, 4vw, 20px);
-      font-size: clamp(16px, 3vw, 18px);
-      line-height: 1.7;
-      opacity: 0.9;
-    }
-
-    /* ===== DIMENSIONS ===== */
-    .dimension-card {
-      display: flex;
-      gap: 30px;
-      margin-bottom: 60px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .dimension-placeholder {
-      width: 420px;
-      height: 240px;
-      background: linear-gradient(145deg, #1a1a1a, #111);
-      border-radius: 12px;
-      border: 1px solid rgba(126, 217, 87, 0.2);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: #7ed957;
-      font-size: 20px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    }
-
-    .dimension-placeholder i {
-      font-size: 48px;
-      margin-bottom: 10px;
-      opacity: 0.8;
-    }
-
-    .dimension-card h3 {
-      color: #7ed957;
-      margin-bottom: 10px;
-      font-size: 26px;
-    }
-
-    .dimension-card p {
-      color: #ccc;
-      max-width: 600px;
-    }
-
-    /* ===== CREATURES ===== */
-    .creatures-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-
-    .creature-card {
-      background: #111;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      position: relative;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .creature-card h4 {
-      color: white;
-      margin-bottom: 6px;
-      font-size: 22px;
-    }
-
-    .creature-card p {
-      color: #aaa;
-      line-height: 1.5;
-    }
-
-    .creature-icon {
-      font-size: 36px;
-      color: #7ed957;
-      margin-bottom: 10px;
-    }
-
-    /* ===== TAGS ===== */
-    .tag {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      padding: 4px 10px;
-      font-size: 12px;
-      border-radius: 6px;
-      color: white;
-    }
-
-    .tag.overworld {
-      background: #2e7d32;
-    }
-
-    .tag.underworld {
-      background: #8b0000;
-    }
-
-    .tag.sky {
-      background: #1565c0;
-    }
-
-    /* ===== FOOTER ===== */
-    .main-footer {
-      background: linear-gradient(135deg, #111, #0a0a0a);
-      padding: clamp(40px, 8vw, 60px) 0 clamp(20px, 4vw, 30px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .main-footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(126, 217, 87, 0.3), transparent);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      padding-top: clamp(20px, 5vw, 30px);
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: #777;
-      font-size: clamp(13px, 2vw, 14px);
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ===== BACK TO TOP BUTTON ===== */
-    .back-to-top {
-      position: fixed;
-      bottom: clamp(20px, 5vw, 30px);
-      right: clamp(20px, 5vw, 30px);
-      width: clamp(44px, 8vw, 50px);
-      height: clamp(44px, 8vw, 50px);
-      background: linear-gradient(135deg, #7ed957, #4ecdc4);
-      color: #000;
-      border: none;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: clamp(16px, 3vw, 20px);
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 999;
-      box-shadow: 0 5px 20px rgba(126, 217, 87, 0.3);
-      transform: translateY(20px);
-    }
-
-    .back-to-top.visible {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .back-to-top:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(126, 217, 87, 0.4);
-    }
-
-    .back-to-top:active {
-      transform: translateY(0);
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      .main-nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: rgba(17, 17, 17, 0.98);
-        flex-direction: column;
-        padding: 20px;
-        gap: 15px;
-        text-align: center;
-        backdrop-filter: blur(20px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        border-top: 1px solid rgba(126, 217, 87, 0.1);
-      }
-      .main-nav.active { display: flex; }
-      .menu-toggle { display: block; }
-      .nav-link { justify-content: center; padding: 12px; border-radius: 8px; }
-      .nav-link:hover { background: rgba(126, 217, 87, 0.1); }
-      .nav-link::after { display: none; }
-      .hero-section { padding-top: 100px; }
-      .hero-buttons { flex-direction: column; align-items: center; }
-      .hero-btn { width: 100%; max-width: 300px; justify-content: center; }
-      .dimension-card { flex-direction: column; text-align: center; }
-      .dimension-placeholder { width: 100%; }
-    }
-
-    @media (max-width: 480px) {
-      .hero-title { font-size: 2rem; }
-      .section-title { font-size: 1.5rem; }
-      .creatures-grid { grid-template-columns: 1fr; }
+    :root{--ink:#0d0d0d;--paper:#f5f0e8;--acid:#b8ff57;--blood:#c0392b;--smoke:#8a8a7a;--dim:#1a1a1a;}
+    *{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
+    body{background:var(--ink);color:var(--paper);font-family:'Crimson Pro',Georgia,serif;font-size:18px;line-height:1.6;overflow-x:hidden;}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:0.04;pointer-events:none;z-index:9999;}
+    h1,h2,h3,h4{font-family:'Bebas Neue',sans-serif;letter-spacing:0.04em;font-weight:400;line-height:0.95;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;}
+    nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,13,13,0.95) 0%,rgba(13,13,13,0) 100%);pointer-events:none;}
+    .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.1em;color:var(--paper);text-decoration:none;position:relative;}
+    .nav-logo span{color:var(--acid);}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;position:relative;}
+    .nav-links a{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--smoke);text-decoration:none;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--acid);}
+
+    /* HERO */
+    .game-hero{position:relative;min-height:90vh;display:flex;align-items:flex-end;overflow:hidden;}
+    .game-hero-bg{position:absolute;inset:0;}
+    .game-hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(0.4);}
+    .game-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,13,1) 0%,rgba(13,13,13,0.4) 50%,rgba(13,13,13,0.05) 100%);}
+    .game-hero-content{position:relative;z-index:2;padding:4rem 3rem 3rem;}
+    .game-hero-back{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--smoke);text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:2rem;transition:color 0.2s;}
+    .game-hero-back:hover{color:var(--acid);}
+    .game-hero-eyebrow{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--acid);margin-bottom:1rem;}
+    .game-hero-title{font-size:clamp(4rem,12vw,10rem);line-height:0.85;margin-bottom:1.5rem;}
+    .game-hero-title .stroke{-webkit-text-stroke:1px var(--paper);color:transparent;}
+    .game-hero-tagline{font-style:italic;color:rgba(245,240,232,0.7);font-size:1.15rem;max-width:500px;border-left:2px solid var(--acid);padding-left:1.2rem;margin-bottom:2rem;}
+    .game-hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+
+    /* SECTIONS */
+    .section{padding:5rem 3rem;position:relative;}
+    .section-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--acid);margin-bottom:1rem;display:flex;align-items:center;gap:1rem;}
+    .section-label::after{content:'';flex:1;max-width:60px;height:1px;background:var(--acid);}
+    .section-title{font-size:clamp(2.5rem,6vw,5rem);margin-bottom:2.5rem;}
+
+    /* ABOUT */
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+    .about-lead{font-size:1.3rem;color:var(--paper);margin-bottom:1.5rem;}
+    .about-body{color:rgba(245,240,232,0.65);font-size:1rem;line-height:1.8;}
+    .feature-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:2rem;}
+    .ftag{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.35rem 0.8rem;border:1px solid rgba(245,240,232,0.15);color:var(--smoke);}
+
+    /* SCREENSHOT PAIR */
+    .screenshots{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+    .screenshots img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;filter:brightness(0.8);transition:filter 0.3s;}
+    .screenshots img:hover{filter:brightness(1);}
+
+    /* DIMENSIONS */
+    .dimensions-section{background:var(--dim);}
+    .dimensions-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(184,255,87,0.2),transparent);}
+    .dimension-list{display:flex;flex-direction:column;gap:2px;margin-top:3rem;}
+    .dimension-card{display:grid;grid-template-columns:auto 1fr;gap:0;border:1px solid rgba(245,240,232,0.07);overflow:hidden;transition:border-color 0.3s;}
+    .dimension-card:hover{border-color:rgba(184,255,87,0.25);}
+    .dimension-img{width:280px;flex-shrink:0;overflow:hidden;}
+    .dimension-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.65) saturate(0.8);transition:filter 0.4s;}
+    .dimension-card:hover .dimension-img img{filter:brightness(0.8) saturate(1);}
+    .dimension-body{padding:2.5rem;background:var(--dim);display:flex;flex-direction:column;justify-content:center;gap:0.8rem;}
+    .dimension-badge{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--acid);}
+    .dimension-badge.under{color:#e67e22;}
+    .dimension-badge.sky{color:#5dade2;}
+    .dimension-title{font-size:2.5rem;}
+    .dimension-desc{color:rgba(245,240,232,0.65);font-style:italic;font-size:0.95rem;line-height:1.7;}
+
+    /* CREATURES */
+    .creatures-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:3rem;background:rgba(245,240,232,0.05);}
+    .creature-card{background:var(--ink);padding:2.5rem 2rem;transition:background 0.3s;position:relative;overflow:hidden;}
+    .creature-card:hover{background:var(--dim);}
+    .creature-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--acid);}
+    .creature-badge{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--smoke);margin-bottom:0.8rem;}
+    .creature-icon{font-size:1.5rem;color:var(--acid);margin-bottom:0.8rem;}
+    .creature-title{font-size:2rem;margin-bottom:0.75rem;}
+    .creature-desc{color:rgba(245,240,232,0.6);font-size:0.95rem;line-height:1.7;font-style:italic;}
+
+    /* DIVIDER */
+    .divider{height:1px;background:rgba(245,240,232,0.08);margin:0 3rem;}
+
+    /* BUTTONS */
+    .btn{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;padding:0.75rem 1.8rem;border-radius:0;transition:all 0.2s;display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer;}
+    .btn-acid{background:var(--acid);color:var(--ink);border:1px solid var(--acid);}
+    .btn-acid:hover{background:transparent;color:var(--acid);}
+    .btn-ghost{background:transparent;color:var(--paper);border:1px solid rgba(245,240,232,0.3);}
+    .btn-ghost:hover{border-color:var(--paper);background:rgba(245,240,232,0.05);}
+
+    /* FOOTER */
+    footer{border-top:1px solid rgba(245,240,232,0.08);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .footer-copy{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--smoke);}
+    .footer-links{display:flex;gap:2rem;}
+    .footer-links a{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--smoke);text-decoration:none;transition:color 0.2s;}
+    .footer-links a:hover{color:var(--paper);}
+
+    .fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .fade-up.in{opacity:1;transform:translateY(0);}
+
+    @media(max-width:800px){
+      nav{padding:1rem 1.5rem;} .nav-links{display:none;}
+      .game-hero-content{padding:3rem 1.5rem 2rem;}
+      .section{padding:3rem 1.5rem;}
+      .about-grid{grid-template-columns:1fr;gap:2.5rem;}
+      .screenshots{grid-template-columns:1fr;}
+      .dimension-card{grid-template-columns:1fr;}
+      .dimension-img{width:100%;height:200px;}
+      .dimension-body{padding:1.5rem;}
+      .creatures-grid{grid-template-columns:1fr;}
+      .divider{margin:0 1.5rem;}
+      footer{padding:1.5rem;flex-direction:column;align-items:flex-start;}
     }
   </style>
 </head>
 <body>
 
-<header class="main-header">
-  <div class="container">
-    <div class="header-actions">
-      <a href="games.html" class="back-to-games"><i class="fas fa-arrow-left"></i> Back to Games</a>
-      <div class="logo">
-        <h1>Heartfall</h1>
-        <span class="tagline">Adventure In Grass</span>
+  <nav>
+    <a href="index.html" class="nav-logo">Grass<span>.</span>Studio</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="games.html">Games</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="game-hero">
+    <div class="game-hero-bg">
+      <img src="assets/images/heartfall-2.jpg" alt="Heartfall">
+    </div>
+    <div class="game-hero-content">
+      <a href="games.html" class="game-hero-back">← Back to Games</a>
+      <p class="game-hero-eyebrow">Fantasy Exploration · Open World · Available on itch.io</p>
+      <h1 class="game-hero-title">Heart<br><span class="stroke">fall</span></h1>
+      <p class="game-hero-tagline">A world of mountains, hidden caves, mysterious dimensions, and creatures that guard ancient secrets.</p>
+      <div class="game-hero-actions">
+        <a href="https://grassstudio2.itch.io/heartfall" target="_blank" class="btn btn-acid"><i class="fas fa-external-link-alt"></i> Play on itch.io</a>
+        <a href="#about" class="btn btn-ghost">Explore the World ↓</a>
       </div>
     </div>
-    <button class="menu-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
-    <nav class="main-nav">
-      <a href="#about" class="nav-link">About</a>
-      <a href="#dimensions" class="nav-link">World</a>
-      <a href="#creatures" class="nav-link">Creatures</a>
-    </nav>
-  </div>
-</header>
+  </section>
 
-<section class="hero-section">
-  <div class="container hero-content">
-    <div class="hero-text">
-      <span class="hero-subtitle">Open World Adventure</span>
-      <h1 class="hero-title">Heartfall In Grass</h1>
-      <p class="hero-description">Explore a massive world filled with mountains, hidden caves, mysterious dimensions and powerful creatures. Your journey begins in a peaceful land... but not everything is what it seems.</p>
-      <div class="hero-buttons"><a href="#" class="hero-btn primary-btn">Coming Soon</a></div>
-    </div>
-    <div class="hero-image"><div class="floating-element"><i class="fas fa-globe"></i></div></div>
-  </div>
-</section>
-
-<section id="about" class="section">
-  <div class="container">
-    <div class="section-header"><span class="section-subtitle">The Game</span><h2 class="section-title">About Heartfall</h2><div class="section-divider"></div></div>
-    <div class="about-content">
-      <div class="about-text">
-        <p class="lead-text">Heartfall is an open world exploration game where players travel between mysterious dimensions searching for rare treasures and ancient secrets.</p>
-        <p>The world is huge and filled with mountains, forests, rivers and strange places hidden deep underground. Most creatures in the main world are peaceful, but other dimensions are far more dangerous.</p>
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="section-label fade-up">The Game</div>
+    <div class="about-grid">
+      <div class="fade-up">
+        <p class="about-lead">An open world exploration game where players travel between mysterious dimensions searching for rare treasures and ancient secrets.</p>
+        <p class="about-body">The world is massive — mountains, forests, rivers and strange places hidden deep underground. Most creatures in the main world are peaceful, but cross into the other dimensions and the danger multiplies fast.</p>
+        <p class="about-body" style="margin-top:1rem;">Every decision shapes your path. Every dimension has its own rules. Your journey begins in a peaceful land... but not everything is what it seems.</p>
+        <div class="feature-tags">
+          <span class="ftag">Open World</span>
+          <span class="ftag">Magic System</span>
+          <span class="ftag">Exploration</span>
+          <span class="ftag">Puzzles</span>
+          <span class="ftag">Multi-Dimension</span>
+        </div>
+      </div>
+      <div class="fade-up">
+        <div class="screenshots">
+          <img src="assets/images/heartfall-1.jpg" alt="Heartfall screenshot 1">
+          <img src="assets/images/heartfall-2.jpg" alt="Heartfall screenshot 2">
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="dimensions" class="section">
-  <div class="container">
-    <div class="section-header"><span class="section-subtitle">World</span><h2 class="section-title">Dimensions</h2><div class="section-divider"></div></div>
+  <div class="divider"></div>
 
-    <div class="dimension-card">
-      <div class="dimension-placeholder"><i class="fas fa-mountain"></i><span>Overworld</span></div>
-      <div><h3>The Overworld</h3><p>The default world where the adventure begins. It is the largest dimension in the game with mountains reaching up to 2000 units high, large plains, rivers, forests and swamps. Players spend most of their journey here. The inhabitants of this world are mostly peaceful.</p></div>
+  <!-- DIMENSIONS -->
+  <section id="dimensions" class="section dimensions-section">
+    <div class="section-label fade-up">World Building</div>
+    <h2 class="section-title fade-up">The Three<br>Dimensions</h2>
+    <div class="dimension-list">
+
+      <div class="dimension-card fade-up">
+        <div class="dimension-img">
+          <img src="assets/images/overworld.jpg" alt="The Overworld">
+        </div>
+        <div class="dimension-body">
+          <p class="dimension-badge">Dimension I · Default World</p>
+          <h3 class="dimension-title">The Overworld</h3>
+          <p class="dimension-desc">The largest dimension — where the adventure begins. Mountains reach 2,000 units high, vast plains stretch between rivers and forests. Inhabitants are mostly peaceful. This is the world you'll know best, and still never fully map.</p>
+        </div>
+      </div>
+
+      <div class="dimension-card fade-up">
+        <div class="dimension-img">
+          <img src="assets/images/underworld.jpg" alt="The Underworld">
+        </div>
+        <div class="dimension-body">
+          <p class="dimension-badge under">Dimension II · Deep Below</p>
+          <h3 class="dimension-title">The Underworld</h3>
+          <p class="dimension-desc">Accessed through a massive cave beneath the overworld cliffs. Heavy fog. Toxic gas. Time itself feels wrong here. The only biome: Dead Soil — a cold, silent land filled with gas pits and creatures that have never seen the sun.</p>
+        </div>
+      </div>
+
+      <div class="dimension-card fade-up">
+        <div class="dimension-img">
+          <img src="assets/images/flujzist-kor.jpg" alt="Sky Dimension">
+        </div>
+        <div class="dimension-body">
+          <p class="dimension-badge sky">Dimension III · High Above</p>
+          <h3 class="dimension-title">Sky Dimension</h3>
+          <p class="dimension-desc">A floating world accessible only by special key, found on a remote island. Gemstones embedded in clouds. Two land types: peaceful white clouds and treacherous dark ones. Beautiful. Lethal. Worth every risk.</p>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <div class="dimension-card">
-      <div class="dimension-placeholder"><i class="fas fa-dungeon"></i><span>Underworld</span></div>
-      <div><h3>The Underworld</h3><p>This world lies deep underground. The entrance is a massive cave that acts as a giant mining tunnel beneath the cliffs of the overworld. The area is covered in heavy fog and toxic gas. Time itself feels strange here. The only biome is the Dead Soil biome, a cold land filled with deadly gas pits.</p></div>
-    </div>
+  <div class="divider"></div>
 
-    <div class="dimension-card">
-      <div class="dimension-placeholder"><i class="fas fa-cloud"></i><span>Sky</span></div>
-      <div><h3>Sky Dimension</h3><p>A smaller floating dimension above the world. The entrance appears on a remote island and opens only when a special key is used. This world is full of gemstones and beautiful clouds. There are two land types: peaceful white clouds and dangerous dark clouds.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="creatures" class="section">
-  <div class="container">
-    <div class="section-header"><span class="section-subtitle">Creatures</span><h2 class="section-title">World Creatures</h2><div class="section-divider"></div></div>
-
+  <!-- CREATURES -->
+  <section id="creatures" class="section">
+    <div class="section-label fade-up">Bestiary</div>
+    <h2 class="section-title fade-up">World<br>Creatures</h2>
     <div class="creatures-grid">
-      <div class="creature-card">
-        <span class="tag underworld">Underworld</span>
-        <div class="creature-icon"><i class="fas fa-stone"></i></div>
-        <h4>Mobles</h4>
-        <p>Slow stone creatures living deep in the Underworld, formed by ancient gases. They move in groups, attack by throwing rocks, and can create toxic fog that kills quickly. They rarely feel threatened, but when they do, they become extremely dangerous.</p>
+
+      <div class="creature-card fade-up">
+        <p class="creature-badge">Underworld · Hostile</p>
+        <div class="creature-icon"><i class="fas fa-mountain"></i></div>
+        <h3 class="creature-title">Mobles</h3>
+        <p class="creature-desc">Slow stone creatures formed by ancient underground gases. They move in groups, attack by throwing rocks, and generate toxic fog that kills quickly. Rarely threatened — but when they are, they become something terrifying.</p>
       </div>
 
-      <div class="creature-card">
-        <span class="tag sky">Sky</span>
+      <div class="creature-card fade-up">
+        <p class="creature-badge">Sky Dimension · Guardian</p>
         <div class="creature-icon"><i class="fas fa-wind"></i></div>
-        <h4>Flogst Core</h4>
-        <p>A guardian of the Sky Dimension with a core heart and four protective pillars. Once used in ancient battles, it now protects the good lands. It leaps high, walks fast, and has a hidden wind shield that keeps non-aerial creatures away.</p>
+        <h3 class="creature-title">Flogst Core</h3>
+        <p class="creature-desc">An ancient guardian with a core heart and four protective pillars. Once used in battles long forgotten, it now defends the peaceful sky lands. It leaps high, moves fast, and carries a hidden wind shield that repels anything airborne.</p>
       </div>
+
+      <div class="creature-card fade-up">
+        <p class="creature-badge">Sky Dimension · Rare</p>
+        <div class="creature-icon"><i class="fas fa-feather"></i></div>
+        <h3 class="creature-title">Moblz</h3>
+        <p class="creature-desc">A rare sky creature seen hovering near dark cloud formations. Little is known about its origins — only that encountering one means you've gone somewhere most players never reach.</p>
+      </div>
+
+      <div class="creature-card fade-up">
+        <p class="creature-badge">Overworld · Mysterious</p>
+        <div class="creature-icon"><i class="fas fa-question"></i></div>
+        <h3 class="creature-title">Unknown</h3>
+        <p class="creature-desc">The overworld holds creatures yet to be fully catalogued. Some say certain mountains move at night. Others claim the forests have a rhythm. Explore and see what you find.</p>
+      </div>
+
     </div>
-  </div>
-</section>
+  </section>
 
-<footer class="main-footer">
-  <div class="container"><div class="footer-bottom"><p>© 2026 Heartfall Project</p></div></div>
-</footer>
+  <!-- CTA -->
+  <section class="section fade-up" style="text-align:center;">
+    <h2 class="section-title" style="margin-bottom:1.5rem;">Enter the<br>World</h2>
+    <p style="color:rgba(245,240,232,0.6);font-style:italic;max-width:400px;margin:0 auto 2rem;">Three dimensions. Endless secrets. Play Heartfall free on itch.io.</p>
+    <a href="https://grassstudio2.itch.io/heartfall" target="_blank" class="btn btn-acid" style="font-size:0.7rem;padding:1rem 2.5rem;"><i class="fas fa-external-link-alt"></i> Play Now on itch.io</a>
+  </section>
 
-<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+  <footer>
+    <p class="footer-copy">© 2026 Grass Studio · Infinite Dimensions</p>
+    <div class="footer-links">
+      <a href="games.html">All Games</a>
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mainNav = document.querySelector('.main-nav');
-    if (menuToggle) {
-      menuToggle.addEventListener('click', function() {
-        mainNav.classList.toggle('active');
-        menuToggle.innerHTML = mainNav.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-      });
-    }
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', function() {
-        mainNav.classList.remove('active');
-        if (menuToggle) menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-      });
-    });
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', function() {
-      backToTop.classList.toggle('visible', window.scrollY > 500);
-    });
-    backToTop.addEventListener('click', function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  });
-</script>
-
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
+
+Vous n’avez plus de messages gratuits jusqu’à 16:50.
