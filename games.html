@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games — Grass Studio</title>
+  <meta name="description" content="All games by Grass Studio — indie adventures built with passion.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --ink: #0d0d0d;
+      --paper: #f5f0e8;
+      --acid: #b8ff57;
+      --blood: #c0392b;
+      --smoke: #8a8a7a;
+      --dim: #1a1a1a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--ink);
+      color: var(--paper);
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    h1,h2,h3,h4 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; font-weight: 400; line-height: 0.95; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 3rem;
+    }
+    nav::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0) 100%);
+      pointer-events: none;
+    }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.1em; color: var(--paper); text-decoration: none; position: relative; }
+    .nav-logo span { color: var(--acid); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; position: relative; }
+    .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--smoke); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--acid); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 12rem 3rem 4rem;
+      position: relative;
+      border-bottom: 1px solid rgba(245,240,232,0.08);
+    }
+    .page-header-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--acid); margin-bottom: 1.2rem; }
+    .page-header h1 { font-size: clamp(4rem, 12vw, 10rem); line-height: 0.85; }
+    .page-header h1 .stroke { -webkit-text-stroke: 1px var(--paper); color: transparent; }
+    .page-header-sub { font-style: italic; color: var(--smoke); margin-top: 1.5rem; font-size: 1.1rem; max-width: 500px; }
+
+    /* SECTION */
+    .section { padding: 5rem 3rem; position: relative; }
+    .section-label {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--acid); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--acid); }
+    .section-title { font-size: clamp(2.5rem, 6vw, 5rem); margin-bottom: 3rem; }
+
+    /* GAME LIST — full editorial cards */
+    .games-list { display: flex; flex-direction: column; gap: 2px; }
+
+    .game-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 420px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(245,240,232,0.06);
+      transition: border-color 0.3s;
+    }
+    .game-row:hover { border-color: rgba(184,255,87,0.25); }
+    .game-row.reverse { direction: rtl; }
+    .game-row.reverse > * { direction: ltr; }
+
+    .game-row-img {
+      position: relative;
+      overflow: hidden;
+    }
+    .game-row-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: grayscale(20%) brightness(0.65);
+      transition: transform 0.7s ease, filter 0.4s;
+    }
+    .game-row:hover .game-row-img img {
+      transform: scale(1.04);
+      filter: grayscale(0%) brightness(0.75);
+    }
+
+    .game-row-content {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--dim);
+      position: relative;
+    }
+
+    .game-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      color: rgba(245,240,232,0.05);
+      line-height: 1;
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      letter-spacing: 0;
+    }
+
+    .game-tag-pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--acid);
+      margin-bottom: 1rem;
+    }
+    .game-row-title { font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1rem; }
+    .game-row-desc { color: rgba(245,240,232,0.65); font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.7; }
+
+    .game-features-row {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;
+    }
+    .game-feature {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid rgba(245,240,232,0.15);
+      color: var(--smoke);
+    }
+
+    .game-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* ITCH.IO SECTION */
+    .itch-banner {
+      background: var(--dim);
+      border: 1px solid rgba(184,255,87,0.15);
+      padding: 4rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 3rem;
+    }
+    .itch-title { font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 0.5rem; }
+    .itch-sub { color: var(--smoke); font-style: italic; }
+
+    /* PHILOSOPHY GRID */
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1px;
+      background: rgba(245,240,232,0.06);
+      margin-top: 3rem;
+    }
+    .phil-card {
+      background: var(--ink);
+      padding: 2.5rem 2rem;
+      transition: background 0.3s;
+    }
+    .phil-card:hover { background: var(--dim); }
+    .phil-icon {
+      font-size: 1.5rem;
+      color: var(--acid);
+      margin-bottom: 1rem;
+    }
+    .phil-title { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .phil-text { color: rgba(245,240,232,0.6); font-size: 0.95rem; }
+
+    /* BUTTONS */
+    .btn {
+      font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; text-decoration: none; padding: 0.75rem 1.8rem;
+      border-radius: 0; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;
+    }
+    .btn-acid { background: var(--acid); color: var(--ink); border: 1px solid var(--acid); }
+    .btn-acid:hover { background: transparent; color: var(--acid); }
+    .btn-ghost { background: transparent; color: var(--paper); border: 1px solid rgba(245,240,232,0.3); }
+    .btn-ghost:hover { border-color: var(--paper); background: rgba(245,240,232,0.05); }
+
+    /* DIVIDER */
+    .divider { height: 1px; background: rgba(245,240,232,0.08); margin: 0 3rem; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid rgba(245,240,232,0.08); padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--smoke); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--smoke); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--paper); }
+
+    /* ANIMATIONS */
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.in { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 800px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .page-header { padding: 8rem 1.5rem 3rem; }
+      .section { padding: 3rem 1.5rem; }
+      .game-row, .game-row.reverse { grid-template-columns: 1fr; direction: ltr; }
+      .game-row-img { aspect-ratio: 16/9; }
+      .game-row-content { padding: 2rem 1.5rem; }
+      .itch-banner { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; gap: 1.5rem; }
+      .divider { margin: 0 1.5rem; }
+      footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Grass<span>.</span>Studio</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="games.html" class="active">Games</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="page-header">
+    <p class="page-header-eyebrow">Interactive Experiences · 11 Titles</p>
+    <h1>Our<br><span class="stroke">Games</span></h1>
+    <p class="page-header-sub">Worlds built with curiosity, passion, and a lot of late nights.</p>
+  </header>
+
+  <section class="section">
+    <div class="section-label fade-up">Featured Titles</div>
+    <div class="games-list">
+
+      <div class="game-row fade-up">
+        <div class="game-row-img">
+          <img src="assets/images/mountain-tales-1.jpg" alt="Mountain Tales">
+        </div>
+        <div class="game-row-content">
+          <span class="game-number">01</span>
+          <p class="game-tag-pill">Adventure RPG</p>
+          <h2 class="game-row-title">Mountain Tales</h2>
+          <p class="game-row-desc">An epic journey through vast mountain ranges and hidden mythical villages. Uncover ancient secrets, forge alliances, and become a legend in a living fantasy world built for deep narrative exploration.</p>
+          <div class="game-features-row">
+            <span class="game-feature">Exploration</span>
+            <span class="game-feature">Rich Story</span>
+            <span class="game-feature">Fantasy</span>
+            <span class="game-feature">Quests</span>
+          </div>
+          <div class="game-actions">
+            <a href="https://grassstudio2.itch.io/mountain-tales" target="_blank" class="btn btn-acid"><i class="fas fa-external-link-alt"></i> Play on itch.io</a>
+            <a href="mountain-tales.html" class="btn btn-ghost">Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-row reverse fade-up">
+        <div class="game-row-img">
+          <img src="assets/images/heartfall-1.jpg" alt="Heartfall">
+        </div>
+        <div class="game-row-content">
+          <span class="game-number">02</span>
+          <p class="game-tag-pill">Fantasy Exploration</p>
+          <h2 class="game-row-title">Heartfall</h2>
+          <p class="game-row-desc">A breathtaking open-world fantasy realm where every decision reshapes the world around you. From enchanted forests to mystical ruins — experience freedom and magic in this exploration-focused adventure.</p>
+          <div class="game-features-row">
+            <span class="game-feature">Open World</span>
+            <span class="game-feature">Magic System</span>
+            <span class="game-feature">Puzzles</span>
+            <span class="game-feature">Exploration</span>
+          </div>
+          <div class="game-actions">
+            <a href="https://grassstudio2.itch.io/heartfall" target="_blank" class="btn btn-acid"><i class="fas fa-external-link-alt"></i> Play on itch.io</a>
+            <a href="heartfall.html" class="btn btn-ghost">Details →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ITCH.IO CTA -->
+  <section class="section fade-up">
+    <div class="itch-banner">
+      <div>
+        <p class="section-label" style="margin-bottom: 0.5rem;">All 11 Titles</p>
+        <h2 class="itch-title">Find All Our<br>Games on itch.io</h2>
+        <p class="itch-sub">The full catalogue — adventures, experiments, and everything in between.</p>
+      </div>
+      <a href="https://grassstudio2.itch.io/" target="_blank" class="btn btn-acid" style="white-space: nowrap;">Visit Profile →</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PHILOSOPHY -->
+  <section class="section">
+    <div class="section-label fade-up">Development Philosophy</div>
+    <h2 class="section-title fade-up">How We Build</h2>
+    <div class="philosophy-grid">
+      <div class="phil-card fade-up">
+        <div class="phil-icon"><i class="fas fa-hat-wizard"></i></div>
+        <h3 class="phil-title">Immersive Worlds</h3>
+        <p class="phil-text">Every environment tells its own story. Locations have history, purpose, and atmosphere worth exploring.</p>
+      </div>
+      <div class="phil-card fade-up">
+        <div class="phil-icon"><i class="fas fa-compass"></i></div>
+        <h3 class="phil-title">Player Freedom</h3>
+        <p class="phil-text">We build for players who want to explore on their own terms. No invisible walls. No hand-holding.</p>
+      </div>
+      <div class="phil-card fade-up">
+        <div class="phil-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3 class="phil-title">Innovative Design</h3>
+        <p class="phil-text">Fresh mechanics and unconventional storytelling approaches. We'd rather surprise than repeat.</p>
+      </div>
+      <div class="phil-card fade-up">
+        <div class="phil-icon"><i class="fas fa-palette"></i></div>
+        <h3 class="phil-title">Artistic Vision</h3>
+        <p class="phil-text">Each game has a distinct visual identity crafted to match its world. Atmosphere is everything.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="footer-copy">© 2026 Grass Studio · Infinite Dimensions</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="books.html">Books</a>
+      <a href="contact.html">Contact</a>
+      <a href="#">Privacy</a>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
